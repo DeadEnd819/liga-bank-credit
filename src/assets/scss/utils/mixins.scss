@@ -1,0 +1,19 @@
+@mixin base-font($weight: $regular) {
+  font-family: "Roboto", "Arial", sans-serif;
+  font-weight: $weight;
+}
+
+@mixin reset-list {
+  list-style: none;
+  @include reset-text
+}
+
+@mixin reset-text {
+  padding: 0;
+  margin: 0;
+}
+
+@mixin base-flex {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,51 @@
+import {extend} from '../../../utils';
+import {
+  ActionType,
+  STORE_AUTHORIZED_DATA_NAME
+} from '../../../const';
+
+const {
+  MODAL_OPEN,
+  MODAL_CLOSE,
+  AUTHORIZED_SAVE_DATA,
+  AUTHORIZED_CLEAR_DATA,
+  REQUIRED_INPUT_CHANGE
+} = ActionType;
+
+const initialState = {
+  data: {},
+  requiredInput: {},
+  isModalOpen: false
+};
+
+const authorization = (state = initialState, action) => {
+  switch (action.type) {
+    case MODAL_OPEN:
+      return extend(state, {
+        isModalOpen: true
+      });
+    case MODAL_CLOSE:
+      return extend(state, {
+        isModalOpen: false
+      });
+    case REQUIRED_INPUT_CHANGE:
+      return extend(state, {
+        requiredInput: action.payload
+      });
+    case AUTHORIZED_SAVE_DATA:
+      localStorage[STORE_AUTHORIZED_DATA_NAME] = JSON.stringify(action.payload);
+      return extend(state, {
+        data: action.payload
+      });
+    case AUTHORIZED_CLEAR_DATA:
+      localStorage.removeItem(STORE_AUTHORIZED_DATA_NAME);
+      return extend(state, {
+        data: {},
+        requiredInput: {},
+      });
+    default:
+      return state;
+  }
+};
+
+export {authorization};
