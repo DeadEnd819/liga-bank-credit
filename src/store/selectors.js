@@ -2,7 +2,7 @@ export const getCredit = (state) => {
   return state.CREDIT.credit;
 };
 
-export const getModalData = (state) => {
+export const getAuthorizationData = (state) => {
   return state.AUTHORIZED.data;
 };
 

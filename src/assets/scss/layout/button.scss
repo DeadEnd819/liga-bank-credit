@@ -1,0 +1,34 @@
+.button {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  background-color: transparent;
+  border: none;
+
+  &:focus,
+  &:hover {
+    color: $button-color;
+    cursor: pointer;
+  }
+}
+
+.button-icon {
+  position: absolute;
+
+  &--toggle {
+    top: 6px;
+    left: 4px;
+  }
+
+  &--login {
+    width: 14px;
+    height: 16px;
+    top: 3px;
+    left: 5px;
+  }
+
+  &--close {
+    top: 5px;
+    left: 5px;
+  }
+}

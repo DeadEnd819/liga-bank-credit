@@ -22,12 +22,12 @@ export const setPopupClose = () => ({
   type: MODAL_CLOSE,
 });
 
-export const setModalData = (data) => ({
+export const setAuthorizationData = (data) => ({
   type: AUTHORIZED_SAVE_DATA,
   payload: data,
 });
 
-export const clearModalData = () => ({
+export const clearAuthorizationData = () => ({
   type: AUTHORIZED_CLEAR_DATA,
 });
 

@@ -13,7 +13,10 @@ const {
 } = ActionType;
 
 const initialState = {
-  data: {},
+  data: {
+    login: ``,
+    password: ``
+  },
   requiredInput: {},
   isModalOpen: false
 };
@@ -40,7 +43,10 @@ const authorization = (state = initialState, action) => {
     case AUTHORIZED_CLEAR_DATA:
       localStorage.removeItem(STORE_AUTHORIZED_DATA_NAME);
       return extend(state, {
-        data: {},
+        data: {
+          login: ``,
+          password: ``
+        },
         requiredInput: {},
       });
     default:
