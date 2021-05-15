@@ -5,14 +5,14 @@ import {ReactComponent as IconLogin} from '../../assets/img/svg/icon-login.svg';
 import {NAVIGATION_ITEMS, ACTIVE_PAGE} from '../../const';
 import {setModalOpen} from "../../store/action";
 
-const MainNavigation = ({openModal}) => {
+const MainNavigation = ({openModal, modifierName}) => {
   const handleModalOpen = (evt) => {
     evt.preventDefault();
     openModal()
   };
 
   return (
-    <nav className="header__nav main-nav">
+    <nav className={`header__nav main-nav${modifierName ? ` main-nav${modifierName}` : modifierName}`}>
       <ul className="main-nav__list main-nav__list--site">
         {NAVIGATION_ITEMS.map((title, index) => {
           const isActive = title.name === ACTIVE_PAGE;

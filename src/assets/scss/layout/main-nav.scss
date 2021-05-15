@@ -1,7 +1,10 @@
 .main-nav {
   width: 100%;
-  margin-top: 48px;
-  animation: menu 1s;
+  margin-top: 42px;
+
+  &--animation {
+    animation: menu 1s;
+  }
 }
 
 .main-nav__list {
@@ -11,13 +14,13 @@
 .main-nav__item {
   position: relative;
 
-  &:first-child:not(.main-nav__item--user)::before,
+  &:first-child:not(&--user)::before,
   &::after {
     content: "";
     position: absolute;
     width: 100%;
     height: 1px;
-    bottom: 0;
+    bottom: -1px;
     background-color: $border-color;
   }
 
@@ -31,8 +34,13 @@
   font-size: 16px;
   line-height: 19px;
   margin-left: 15px;
-  padding: 24px 0;
+  padding-top: 21px;
+  padding-bottom: 20px;
   color: $main-text-color;
+
+  &:not(&--user) {
+    max-width: 240px;
+  }
 
   &--user {
     display: flex;
@@ -51,6 +59,7 @@
 
 .main-nav__link-title {
   @include reset-text;
+  max-width: 240px;
 }
 
 @media (min-width: $tablet-width) {
@@ -60,6 +69,7 @@
     align-items: center;
     flex-grow: 1;
     margin-top: 0;
+    padding-left: 66px;
   }
 
   .main-nav__list {
@@ -72,15 +82,48 @@
     display: none;
   }
 
+  .main-nav__item {
+    &:not(.main-nav__item--user) {
+      margin-right: 21px;
+    }
+  }
+
   .main-nav__link {
     display: block;
     font-size: 14px;
     line-height: 16px;
+    margin-left: 0;
     padding: 0;
+
+    &:not(&--user) {
+      max-width: 145px;
+    }
+  }
+
+  .main-nav__link-title {
+    max-width: 173px;
   }
 }
 
 @media (min-width: $desktop-width) {
+  .main-nav {
+    align-items: center;
+    padding-left: 10.5%;
+  }
+
+  .main-nav__item {
+    margin-top: 5px;
+
+    &:not(.main-nav__item--user) {
+      margin-right: 26px;
+    }
+
+    &--user {
+      width: 203px;
+      margin-right: 15px;
+    }
+  }
+
   .main-nav__link {
     font-size: 16px;
     line-height: 19px;
@@ -106,7 +149,7 @@
   }
 
   to {
-    margin-top: 48px;
+    margin-top: 42px;
     transform: scale(1);
   }
 }

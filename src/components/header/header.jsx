@@ -11,21 +11,28 @@ const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const {width} = useWindowDimensions();
 
-  const isMobile = width > 767;
+  const isTablet = width > 767;
 
   return (
     <header className="header">
       <MemoWrapper name={`header`}>
         <Logo block={`header`} />
         {
-          !isMobile &&
+          !isTablet &&
           <MenuButtons
             isMenuOpen={isMenuOpen}
             onMenuToggle={() => setMenuOpen((prevState) => !prevState)}
             onMenuClose={() => setMenuOpen(false)}
           />
         }
-        {(isMenuOpen || isMobile) && <MainNavigation/>}
+        {
+          (isMenuOpen || isTablet) &&
+            <div className="header__nav-wrapper">
+              <MainNavigation
+                modifierName={!isTablet ? `--animation` : ``}
+              />
+            </div>
+        }
       </MemoWrapper>
     </header>
   );

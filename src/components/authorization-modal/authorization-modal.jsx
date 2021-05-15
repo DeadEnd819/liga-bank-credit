@@ -17,7 +17,7 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
     inputLogin.current.focus();
 
     return () => {
-      document.body.style.overflow = `auto`
+      document.body.style.overflow = `auto`;
     };
   },[]);
 
