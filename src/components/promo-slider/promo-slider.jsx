@@ -32,6 +32,7 @@ const PromoSlider = () => {
   return (
     <section className="promo-slider">
       <Slider
+        selectedItem={0}
         showStatus={false}
         showArrows={false}
         showIndicators={false}

@@ -25,7 +25,7 @@
   padding-left: clamp(15px, 4%, 268px);
 
   &--credit {
-    background: no-repeat center right url("../../img/png/black-card-mobile@1x.png");
+    background: no-repeat 100% 61% url("../../img/png/black-card-mobile@1x.png");
 
     @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
       background-image: url("../../img/png/black-card-mobile@2x.png");
@@ -57,7 +57,7 @@
   @include base-font($bold);
   font-size: 38px;
   line-height: 45px;
-  margin-top: 38px;
+  margin-top: 39px;
   color: $main-text-color;
 
   &--credit {
@@ -68,7 +68,7 @@
 .promo__description {
   @include reset-text;
   line-height: 19px;
-  margin-top: 5px;
+  margin-top: 6px;
   color: $description-text-color;
 
   &--credit {
@@ -86,15 +86,16 @@
   font-size: 14px;
   line-height: 16px;
   display: inline-block;
-  vertical-align: center;
-  margin-top: 30px;
-  padding: 16px 31px;
+  vertical-align: middle;
+  margin-top: 26px;
+  padding: 14px 31px 13px 31px;
   background-color: $background-color;
   border-radius: 4px;
   box-sizing: border-box;
   color: $main-text-color;
 
   &--girl {
+    padding: 15px 37px 12px 37px;
     background-color: $button-color;
     color: $background-color;
   }
@@ -116,12 +117,11 @@
 
   .promo__wrapper {
     min-height: 300px;
-    //padding-left: 75px;
-    padding-left: clamp(15px, 9%, 268px);
+    padding-left: clamp(86px, 9%, 92px);
 
     &--credit {
       background:
-        no-repeat 85% 50% url("../../img/png/cards-tablet@1x.png"),
+        no-repeat 85% 56% url("../../img/png/cards-tablet@1x.png"),
         no-repeat center right url("../../img/svg/promo-background-tablet.svg");
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -153,7 +153,7 @@
   .promo__title {
     font-size: 46px;
     line-height: 54px;
-    margin-top: 70px;
+    margin-top: 66px;
   }
 
   .promo__description {
@@ -170,7 +170,11 @@
     font-size: 16px;
     line-height: 19px;
     margin-top: 30px;
-    padding: 14px 31px;
+    padding: 14px 31px 15px 31px;
+
+    &--girl {
+      padding: 14px 38px 15px 38px;
+    }
   }
 }
 
@@ -190,17 +194,16 @@
 
   .promo__wrapper {
     min-height: 400px;
-    //padding-left: 268px;
-    padding-left: clamp(15px, 18%, 268px);
+    padding-left: clamp(92px, 18%, 268px);
 
     &--credit {
       background:
-        no-repeat 75% 50% url("../../img/png/cards-desktop@1x.png"),
+        no-repeat 76% 54% url("../../img/png/cards-desktop@1x.png"),
         no-repeat center center url("../../img/svg/promo-background.svg");
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         background:
-          no-repeat 75% 50%/444px auto url("../../img/png/cards-desktop@2x.png"),
+          no-repeat 76% 54%/444px auto url("../../img/png/cards-desktop@2x.png"),
           no-repeat bottom right url("../../img/svg/promo-background.svg");
       }
     }
@@ -227,19 +230,23 @@
   .promo__title {
     font-size: 54px;
     line-height: 63px;
-    margin-top: 115px;
+    margin-top: 102px;
   }
 
   .promo__description {
     font-size: 22px;
     line-height: 26px;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 
   .promo__link {
     font-size: 18px;
     line-height: 21px;
-    margin-top: 30px;
-    padding: 16px 36px;
+    margin-top: 34px;
+    padding: 16px 37px 16px 36px;
+
+    &--girl {
+      padding: 16px 49px 16px 48px;
+    }
   }
 }
