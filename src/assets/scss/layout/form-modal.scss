@@ -1,0 +1,134 @@
+.form-modal__item,
+.form-modal__button-wrapper {
+  @include base-flex;
+}
+
+.form-modal__list {
+  @include reset-list;
+  margin-top: 24px;
+  margin-bottom: 31px;
+}
+
+.form-modal__item {
+  flex-direction: column;
+  position: relative;
+  margin-top: 20px;
+}
+
+.form-modal__label {
+  margin-bottom: 5px;
+  line-height: 22.4px;
+  color: $modal-text-color;
+}
+
+.form-modal__input {
+  @include reset-text;
+  height: 60px;
+  padding-left: 10px;
+  padding-right: 50px;
+  background-color: transparent;
+  border: 1px solid $main-text-color;
+  border-radius: 4px;
+  outline: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $global-background-color;
+    border-color: $button-color;
+  }
+}
+
+.form-modal__button-eye {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+
+.form-modal__button-wrapper {
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-modal__button-submit {
+  @include reset-text;
+  @include base-font($medium);
+  font-size: 14px;
+  line-height: 16px;
+  width: 100%;
+  padding: 20px 0 15px 0;
+  background-color: $button-color;
+  color: $background-color;
+  border-radius: 4px;
+  border: none;
+
+  &:hover,
+  &:focus {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
+}
+
+.form-modal__link {
+  font-size: 14px;
+  line-height: 19.6px;
+  margin-top: 10px;
+  color: $grey-text-color;
+
+  &:hover,
+  &:focus {
+    color: $button-color;
+  }
+
+  &:active {
+    color: $button-color;
+    opacity: 0.8;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .form-modal__list {
+    margin-top: 36px;
+    margin-bottom: 0;
+  }
+
+  .form-modal__item {
+    margin-top: 23px;
+  }
+
+  .form-modal__button-wrapper {
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }
+
+  .form-modal__button-submit {
+    font-size: 18px;
+    line-height: 21px;
+    margin-top: 22px;
+    padding: 20px 0;
+  }
+
+  .form-modal__link {
+    font-size: 12px;
+    line-height: 16.8px;
+    margin-top: 10px;
+  }
+
+  .form-modal__button-eye {
+    right: 24px;
+    bottom: 14px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .form-modal__button-submit {
+    margin-top: 24px;
+  }
+
+  .form-modal__link {
+    margin-top: 8px;
+  }
+}

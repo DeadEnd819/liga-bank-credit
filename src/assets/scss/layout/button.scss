@@ -5,6 +5,11 @@
   background-color: transparent;
   border: none;
 
+  &--close {
+    margin-top: -6px;
+    margin-right: -7px;
+  }
+
   &:focus,
   &:hover {
     color: $button-color;
@@ -30,5 +35,20 @@
   &--close {
     top: 5px;
     left: 5px;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .button {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    background-color: transparent;
+    border: none;
+
+    &--close {
+      margin-top: -4px;
+      margin-right: -6px;
+    }
   }
 }

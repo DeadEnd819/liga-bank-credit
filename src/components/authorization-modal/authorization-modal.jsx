@@ -62,15 +62,15 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
           </button>
         </div>
         <form
-          className="authorization-modal__form form"
+          className="authorization-modal__form form-modal"
           action="#"
           onSubmit={handleFormSubmit}
         >
-          <ul className="form__list">
-            <li className="form__item">
-              <label className="form__label" htmlFor="login">Логин</label>
+          <ul className="form-modal__list">
+            <li className="form-modal__item">
+              <label className="form-modal__label" htmlFor="login">Логин</label>
               <input
-                className="form__input"
+                className="form-modal__input"
                 ref={inputLogin}
                 type="text"
                 id="login"
@@ -80,10 +80,10 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
                 onChange={(evt) => handleFieldChange(evt.target)}
               />
             </li>
-            <li className="form__item">
-              <label className="form__label" htmlFor="password">Пароль</label>
+            <li className="form-modal__item">
+              <label className="form-modal__label" htmlFor="password">Пароль</label>
               <input
-                className="form__input"
+                className="form-modal__input"
                 type={isPasswordHidden ? `password` : `text`}
                 id="password"
                 name="password"
@@ -92,7 +92,7 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
                 onChange={(evt) => handleFieldChange(evt.target)}
               />
               <button
-                className="form__button-eye button"
+                className="form-modal__button-eye button"
                 type="button"
                 aria-label="Показать пароль"
                 onMouseDown={handlePasswordHidden}
@@ -105,10 +105,10 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
               </button>
             </li>
           </ul>
-          <div className="form__button-wrapper">
-            <button className="form__button-submit" type="submit" aria-label="Войти">Войти</button>
+          <div className="form-modal__button-wrapper">
+            <button className="form-modal__button-submit" type="submit" aria-label="Войти">Войти</button>
             {/*eslint-disable-next-line*/}
-            <a className="form__link" href="#"  aria-label="Восстановление пароля">Забыли пароль?</a>
+            <a className="form-modal__link" href="#"  aria-label="Восстановление пароля">Забыли пароль?</a>
           </div>
         </form>
       </div>
