@@ -1,6 +1,7 @@
 .container {
   position: relative;
-  max-width: 320px;
+  min-width: 320px;
+  max-width: 767px;
   padding: 0 15px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -9,12 +10,14 @@
 
 @media (min-width: $tablet-width) {
   .container {
-    max-width: $tablet-width;
+    min-width: $tablet-width;
+    max-width: 1023px;
   }
 }
 
 @media (min-width: $desktop-width) {
   .container {
-    max-width: $desktop-width;
+    min-width: $desktop-width;
+    max-width: 1366px;
   }
 }

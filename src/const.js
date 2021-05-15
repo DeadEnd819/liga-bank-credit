@@ -93,3 +93,27 @@ export const SOCIAL_LINKS = [
     icon: youtube
   },
 ];
+
+export const PROMOS = [
+  {
+    className: `--credit`,
+    description: `Кредиты на любой случай`,
+    link: {
+      title: `Рассчитать кредит`,
+      href: `#`
+    }
+  },
+  {
+    className: `--man`,
+    description: `Ваша уверенность в завтрашнем дне`,
+    link: null
+  },
+  {
+    className: `--girl`,
+    description: `Всегда рядом`,
+    link: {
+      title: `Найти отделение`,
+      href: `#`
+    }
+  },
+];

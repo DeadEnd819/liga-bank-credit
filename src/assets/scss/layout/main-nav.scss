@@ -1,6 +1,7 @@
 .main-nav {
   width: 100%;
   margin-top: 48px;
+  animation: menu 1s;
 }
 
 .main-nav__list {
@@ -93,5 +94,19 @@
 
   .main-nav__link-title {
     display: block;
+  }
+}
+
+@keyframes menu {
+  from {
+    margin-top: -100vh;
+  }
+  50% {
+    transform: scale(0);
+  }
+
+  to {
+    margin-top: 48px;
+    transform: scale(1);
   }
 }

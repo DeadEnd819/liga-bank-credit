@@ -10,7 +10,7 @@ const Logo = ({block}) => {
       {/*eslint-disable-next-line*/}
       <a href="#" aria-label="Перейти на главную страницу">
         <picture>
-          <source media="(min-width: 1150px)" srcSet={IconLogoDesktop} />
+          <source media="(min-width: 1124px)" srcSet={IconLogoDesktop} />
             <source media="(min-width: 768px)" srcSet={IconLogoTablet} />
               <img className="page-header__logo-image" src={IconLogoMobile}
                    alt="Лого Лига Банк" />

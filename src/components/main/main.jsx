@@ -1,18 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import PromoSlider from '../promo-slider/promo-slider';
 import AuthorizationModal from '../authorization-modal/authorization-modal';
 import {getModalFlag} from '../../store/selectors';
 
-const Main = ({isMenuOpen}) => {
+const Main = ({isModalOpen}) => {
   return (
     <main className="main">
-      {isMenuOpen && <AuthorizationModal />}
+      <PromoSlider />
+      {isModalOpen && <AuthorizationModal />}
     </main>
   );
 };
 
 const mapStateToProps = (store) => ({
-  isMenuOpen: getModalFlag(store)
+  isModalOpen: getModalFlag(store)
 });
 
 export {Main};
