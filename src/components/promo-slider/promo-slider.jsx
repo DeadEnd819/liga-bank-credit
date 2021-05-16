@@ -25,7 +25,7 @@ const getSlides = () => {
 const PromoSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const onChange = (indexSlide) => {
+  const handleSlideChange = (indexSlide) => {
     setActiveIndex(indexSlide);
   };
 
@@ -42,7 +42,7 @@ const PromoSlider = () => {
         infiniteLoop={true}
         swipeable={true}
         emulateTouch={true}
-        onChange={onChange}
+        onChange={handleSlideChange}
       >
         {getSlides()}
       </Slider>
