@@ -49,47 +49,45 @@
     background-color: $background-color;
   }
 
-  &--piggy::before {
+  &--piggy::before,
+  &--car::before,
+  &--lock::before,
+  &--mobile::before {
     content: "";
     position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+
+  &--piggy::before {
     width: 11%;
     height: 37%;
     top: 33%;
     left: calc(50% - 54px);
-    background: no-repeat url("../../img/svg/icon-vault.svg");
-    background-size: 100%;
+    background-image: url("../../img/svg/icon-vault.svg");
   }
 
   &--car::before {
-    content: "";
-    position: absolute;
     width: 11%;
     height: 37%;
     top: 33%;
     left: calc(50% - 59px);
-    background: no-repeat url("../../img/svg/icon-cards.svg");
-    background-size: 100%;
+    background-image: url("../../img/svg/icon-cards.svg");
   }
 
   &--lock::before {
-    content: "";
-    position: absolute;
     width: 10%;
     height: 39%;
     top: 31%;
     left: calc(50% - 73px);
-    background: no-repeat url("../../img/svg/icon-security.svg");
-    background-size: 100%;
+    background-image: url("../../img/svg/icon-security.svg");
   }
 
   &--mobile::before {
-    content: "";
-    position: absolute;
     width: 7%;
     height: 59%;
     top: 31%;
     left: calc(50% - 87px);
-    background: no-repeat url("../../img/svg/icon-mobile-blue.svg");
-    background-size: 100%;
+    background-image: url("../../img/svg/icon-mobile-blue.svg");
   }
 }

@@ -1,0 +1,38 @@
+.dots {
+  @include reset-list;
+  position: absolute;
+  display: flex;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.dots__dot {
+  width: 6px;
+  height: 6px;
+  margin: 0 3px;
+  border-radius: 50px;
+  background-color: $dot-background-color;
+
+  &--active {
+    background-color: $background-color;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .dots {
+    bottom: 15px;
+  }
+
+  .dots__dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .dots {
+    bottom: 40px;
+  }
+}

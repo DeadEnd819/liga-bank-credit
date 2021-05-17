@@ -4,6 +4,10 @@
   background-color: $background-color;
 }
 
+.services__dots .dots__dot--active {
+  background-color: $services-background-color;
+}
+
 @media (min-width: $tablet-width) {
   .services {
     max-height: 380px;

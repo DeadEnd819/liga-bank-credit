@@ -24,25 +24,35 @@
   &--close:active {
     transform: scale(0.8);
   }
+
+  &--eye:active {
+    opacity: $active-opacity;
+  }
 }
 
 .button-icon {
   position: absolute;
 
+  &--login,
+  &--close {
+    top: 5px;
+  }
+
+  &--toggle,
+  &--login {
+    left: 4px;
+  }
+
   &--toggle {
     top: 6px;
-    left: 4px;
   }
 
   &--login {
     width: 14px;
     height: 16px;
-    top: 5px;
-    left: 4px;
   }
 
   &--close {
-    top: 5px;
     left: 5px;
   }
 }

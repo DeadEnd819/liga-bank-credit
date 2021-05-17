@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
+import Dots from '../dots/dots';
 import {Carousel as Slider} from 'react-responsive-carousel';
 import {PROMOS} from '../../const';
 
 const getSlides = () => {
   return PROMOS.map((promo) => {
     return (
-      <article key={promo} className={`slide__promo promo promo${promo.className}`}>
+      <article key={promo} className={`promo-slider__promo promo promo${promo.className}`}>
         <div className={`promo__wrapper promo__wrapper${promo.className} container`}>
           <h2 className={`promo__title promo__title${promo.className}`}>Лига Банк</h2>
           <p className={`promo__description promo__description${promo.className}`}>{promo.description}</p>
@@ -23,6 +24,8 @@ const getSlides = () => {
 
 const PromoSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const slides = getSlides();
 
   const handleSlideChange = (indexSlide) => {
     setActiveIndex(indexSlide);
@@ -43,18 +46,14 @@ const PromoSlider = () => {
         emulateTouch={true}
         onChange={handleSlideChange}
       >
-        {getSlides()}
+        {slides}
       </Slider>
-      <ul className="promo-slider__list">
-        {getSlides().map((_, index) => {
-          return (
-            <li
-              className={`promo-slider__item ${index === activeIndex ? `promo-slider__item--active` : ``}`}
-              key={`sliderRadio${index}`}
-            />
-          );
-        })}
-      </ul>
+
+      <Dots
+        className={`promo-slider`}
+        slides={slides}
+        active={activeIndex}
+      />
     </section>
   );
 };

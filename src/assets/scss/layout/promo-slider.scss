@@ -3,50 +3,14 @@
   max-height: 226px;
 }
 
-.promo-slider__list {
-  @include reset-text;
-  position: absolute;
-  display: flex;
-  bottom: 10px;
-  left: 50%;
-  transform: translate(-50%, 0);
-  list-style: none;
-}
-
-.promo-slider__item {
-  width: 6px;
-  height: 6px;
-  margin: 0 3px;
-  border-radius: 50px;
-  background-color: $dot-background-color;
-
-  &--active {
-    background-color: $background-color;
-  }
-}
-
 @media (min-width: $tablet-width) {
   .promo-slider {
     max-height: 300px;
-  }
-
-  .promo-slider__list {
-    bottom: 15px;
-  }
-
-  .promo-slider__item {
-    width: 8px;
-    height: 8px;
-    margin: 0 4px;
   }
 }
 
 @media (min-width: $desktop-width) {
   .promo-slider {
     max-height: 400px;
-  }
-
-  .promo-slider__list {
-    bottom: 40px;
   }
 }

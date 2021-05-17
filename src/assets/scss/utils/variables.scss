@@ -4,7 +4,9 @@ $bold: 700;
 
 $global-background-color: #FFFFFF;
 $background-color: #F6F7FF;
+$modal-block-background-color: rgba(255, 255, 255, 0.6);
 $dot-background-color: #2028B6;
+$services-background-color: #E0E0E0;
 $main-text-color: #1F1E25;
 $description-text-color: #2B3C4F;
 $promo-text-color: #E0E1EA;
@@ -13,7 +15,18 @@ $input-text-color: #000000;
 $modal-text-color: #394959;
 $button-color: #2C36F2;
 $border-color: #C1C2CA;
-$shadow: rgba(0, 0, 0, 0.25);
+
+$man-mobile-background-color: #DDE2EC;
+$girl-mobile-background-color: #E6F1FE;
+$man-tablet-background-color: linear-gradient(to right, $man-mobile-background-color, #F5FBFF);
+$girl-tablet-background-color: linear-gradient(to right, $girl-mobile-background-color, #EFF4FD);
+$man-desktop-background-color: linear-gradient(to right, $man-mobile-background-color, #F6FBFF);
+$girl-tablet-background-color: linear-gradient(to right, $girl-mobile-background-color, #E6F1FE);
+
+$hover-opacity: 0.8;
+$active-opacity: 0.6;
 
 $tablet-width: 768px;
+$tablet-end-width: 1023px;
 $desktop-width: 1024px;
+$desktop-end-width: 1366px;

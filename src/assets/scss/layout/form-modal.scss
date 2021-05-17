@@ -3,6 +3,11 @@
   @include base-flex;
 }
 
+.form-modal__input,
+.form-modal__button-submit {
+  @include reset-text;
+}
+
 .form-modal__list {
   @include reset-list;
   margin-top: 24px;
@@ -22,7 +27,6 @@
 }
 
 .form-modal__input {
-  @include reset-text;
   height: 60px;
   padding-left: 10px;
   padding-right: 50px;
@@ -51,7 +55,6 @@
 }
 
 .form-modal__button-submit {
-  @include reset-text;
   @include base-font($medium);
   font-size: 14px;
   line-height: 16px;
@@ -64,12 +67,8 @@
 
   &:hover,
   &:focus {
-    opacity: 0.9;
+    opacity: $hover-opacity;
     cursor: pointer;
-  }
-
-  &:active {
-    opacity: 0.7;
   }
 }
 
@@ -86,7 +85,13 @@
 
   &:active {
     color: $button-color;
-    opacity: 0.8;
+  }
+}
+
+.form-modal__button-submit,
+.form-modal__link {
+  &:active {
+    opacity: $active-opacity;
   }
 }
 

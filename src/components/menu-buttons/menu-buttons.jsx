@@ -10,14 +10,19 @@ const MenuButtons = ({isMenuOpen, onMenuToggle, onMenuClose, openModal}) => {
     <div className="header__menu-buttons">
       <button
         className="header__menu-button button button--toggle"
+        type="button"
+        aria-label="Переключения меню"
         onClick={onMenuToggle}
       >
         <IconMenu className="button-icon button-icon--toggle" alt="Иконка меню" />
       </button>
+
       {
         !isMenuOpen ?
           <button
             className="header__menu-button button button--login"
+            type="button"
+            aria-label="Войти в учетную запись"
             onClick={openModal}
           >
             <IconLogin className="button-icon button-icon--login" alt="Иконка входа"/>
@@ -25,6 +30,8 @@ const MenuButtons = ({isMenuOpen, onMenuToggle, onMenuClose, openModal}) => {
           :
           <button
             className="header__menu-button button button--close"
+            type="button"
+            aria-label="Закрыть меню"
             onClick={onMenuClose}
           >
             <IconClose className="button-icon button-icon--close" alt="Иконка крестик" />

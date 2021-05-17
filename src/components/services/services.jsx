@@ -2,12 +2,13 @@ import React, {useState} from 'react';
 import {Carousel as Slider} from 'react-responsive-carousel';
 import useWindowDimensions from '../../hooks/useWindowDimensions';
 import TabsItem from '../tabs-item/tabs-item';
+import Dots from '../dots/dots';
 import {SERVICES, TabNames} from '../../const';
 
 const getServices = () => {
   return SERVICES.map((promo) => {
     return (
-      <article key={promo} className={`services__card-service card-service card-service${promo.className} container`}>
+      <div key={promo} className={`services__card-service card-service card-service${promo.className} container`}>
         <h2 className={`card-service__title card-service__title${promo.className}`}>{promo.title}</h2>
         <ul className={`card-service__list card-service__list${promo.className}`}>
           {
@@ -25,7 +26,7 @@ const getServices = () => {
             {promo.link.title}
           </a>
         }
-      </article>
+      </div>
     );
   });
 };
@@ -83,16 +84,12 @@ const Services = () => {
             >
               {services}
             </Slider>
-            <ul className="promo-slider__list">
-              {services.map((_, index) => {
-                return (
-                  <li
-                    className={`promo-slider__item ${index === activeTab ? `promo-slider__item--active` : ``}`}
-                    key={`sliderRadio${index}`}
-                  />
-                );
-              })}
-            </ul>
+
+            <Dots
+              className={`services`}
+              slides={services}
+              active={activeTab}
+            />
           </>
       }
     </section>

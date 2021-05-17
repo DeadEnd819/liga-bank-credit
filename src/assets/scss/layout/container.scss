@@ -11,13 +11,13 @@
 @media (min-width: $tablet-width) {
   .container {
     min-width: $tablet-width;
-    max-width: 1023px;
+    max-width: $tablet-end-width;
   }
 }
 
 @media (min-width: $desktop-width) {
   .container {
     min-width: $desktop-width;
-    max-width: 1366px;
+    max-width: $desktop-end-width;
   }
 }

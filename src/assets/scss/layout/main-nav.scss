@@ -143,14 +143,15 @@
 }
 
 @keyframes menu {
-  from {
+  0% {
     margin-top: -100vh;
   }
+
   50% {
     transform: scale(0);
   }
 
-  to {
+  100% {
     margin-top: 42px;
     transform: scale(1);
   }

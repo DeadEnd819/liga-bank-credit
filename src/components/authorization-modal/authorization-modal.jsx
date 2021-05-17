@@ -38,14 +38,8 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
     setPasswordHidden((prevState) => !prevState);
   };
 
-  const handleBlockClick = (evt) => {
-    if (evt.target === evt.currentTarget) {
-      closeModal();
-    }
-  };
-
   return (
-    <div className="authorization-modal" onClick={handleBlockClick}>
+    <div className="authorization-modal">
       <div className="authorization-modal__wrapper">
         <div className="authorization-modal__head-wrapper">
           <IconLogo className="authorization-modal__logo" alt="Иконка крестик" />
@@ -92,7 +86,7 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
                 onChange={(evt) => handleFieldChange(evt.target)}
               />
               <button
-                className="form-modal__button-eye button"
+                className="form-modal__button-eye button button--eye"
                 type="button"
                 aria-label="Показать пароль"
                 onMouseDown={handlePasswordHidden}
@@ -108,7 +102,7 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
           <div className="form-modal__button-wrapper">
             <button className="form-modal__button-submit" type="submit" aria-label="Войти">Войти</button>
             {/*eslint-disable-next-line*/}
-            <a className="form-modal__link" href="#"  aria-label="Восстановление пароля">Забыли пароль?</a>
+            <a className="form-modal__link" href="#" aria-label="Восстановление пароля">Забыли пароль?</a>
           </div>
         </form>
       </div>
