@@ -6,8 +6,9 @@
 
 .tabs__list {
   @include reset-list;
-  @include base-flex;
+  display: flex;
   justify-content: flex-start;
+  align-items: flex-end;
   width: 100%;
 }
 

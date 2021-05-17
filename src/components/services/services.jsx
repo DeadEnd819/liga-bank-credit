@@ -31,39 +31,19 @@ const getServices = () => {
 };
 
 const Services = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState(TabNames.DEPOSITS);
+  const [activeTab, setActiveTab] = useState(0);
 
   const {width} = useWindowDimensions();
 
   const isDesktop = width > 1023;
   const services = getServices();
 
-  const handleSlideChange = (indexSlide) => {
-    setActiveIndex(indexSlide);
-  };
-
-  const handleTabClick = (evt) => {
-    if (!evt.target.textContent) {
+  const handleTabChange = (tab) => {
+    if (tab.target) {
+      setActiveTab(+tab.target.id );
       return;
     }
-
-    setActiveTab(evt.target.textContent);
-  };
-
-  const getTabComponent = () => {
-    switch (activeTab) {
-      case TabNames.DEPOSITS:
-        return services[0];
-      case TabNames.CREDITS:
-        return services[1];
-      case TabNames.INSURANCE:
-        return services[2];
-      case TabNames.SERVICES:
-        return services[3];
-      default:
-        return null;
-    }
+    setActiveTab(tab);
   };
 
   return (
@@ -75,29 +55,31 @@ const Services = () => {
               {Object.values(TabNames).map((tab, i) =>
                 <TabsItem
                   key={`${i}-${tab}`}
+                  id={i}
                   tab={tab}
-                  activeTab={activeTab}
+                  activeIndex={activeTab}
                   className={SERVICES[i].className}
-                  onTabClick={handleTabClick} />
+                  onTabClick={handleTabChange} />
               )}
             </ul>
 
-            {getTabComponent()}
+            {services[activeTab]}
           </div>
           :
           <>
             <Slider
-              selectedItem={0}
+              selectedItem={activeTab}
               showStatus={false}
               showArrows={false}
               showIndicators={false}
+              autoFocus={false}
               autoPlay={false}
-              interval={4000}
+              interval={86400000}
               transitionTime={1500}
               infiniteLoop={true}
               swipeable={true}
               emulateTouch={true}
-              onChange={handleSlideChange}
+              onChange={handleTabChange}
             >
               {services}
             </Slider>
@@ -105,7 +87,7 @@ const Services = () => {
               {services.map((_, index) => {
                 return (
                   <li
-                    className={`promo-slider__item ${index === activeIndex ? `promo-slider__item--active` : ``}`}
+                    className={`promo-slider__item ${index === activeTab ? `promo-slider__item--active` : ``}`}
                     key={`sliderRadio${index}`}
                   />
                 );
