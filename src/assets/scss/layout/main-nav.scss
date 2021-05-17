@@ -1,6 +1,7 @@
 .main-nav {
   width: 100%;
   margin-top: 42px;
+  margin-bottom: 304px;
 
   &--animation {
     animation: menu 1s;
@@ -69,6 +70,7 @@
     align-items: center;
     flex-grow: 1;
     margin-top: 0;
+    margin-bottom: 0;
     padding-left: 66px;
   }
 

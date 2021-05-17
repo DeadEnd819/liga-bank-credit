@@ -1,0 +1,94 @@
+.tabs {
+  max-width: 1170px;
+  margin: 60px auto 0 auto;
+  box-sizing: border-box;
+}
+
+.tabs__list {
+  @include reset-list;
+  @include base-flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.tabs__item {
+  width: 25%;
+}
+
+.tabs__button {
+  position: relative;
+  font-size: 18px;
+  line-height: 21px;
+  padding: 37px 31% 35px 0;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  text-align: right;
+
+  &--car {
+    padding-right: 30%;
+  }
+
+  &--lock {
+    padding-right: 24%;
+  }
+
+  &--mobile {
+    padding-right: 20%;
+  }
+
+  &:not(.tabs__button--active):hover {
+    color: $button-color;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  &--active {
+    background-color: $background-color;
+  }
+
+  &--piggy::before {
+    content: "";
+    position: absolute;
+    width: 11%;
+    height: 37%;
+    top: 33%;
+    left: calc(50% - 54px);
+    background: no-repeat url("../../img/svg/icon-vault.svg");
+    background-size: 100%;
+  }
+
+  &--car::before {
+    content: "";
+    position: absolute;
+    width: 11%;
+    height: 37%;
+    top: 33%;
+    left: calc(50% - 59px);
+    background: no-repeat url("../../img/svg/icon-cards.svg");
+    background-size: 100%;
+  }
+
+  &--lock::before {
+    content: "";
+    position: absolute;
+    width: 10%;
+    height: 39%;
+    top: 31%;
+    left: calc(50% - 73px);
+    background: no-repeat url("../../img/svg/icon-security.svg");
+    background-size: 100%;
+  }
+
+  &--mobile::before {
+    content: "";
+    position: absolute;
+    width: 7%;
+    height: 59%;
+    top: 31%;
+    left: calc(50% - 87px);
+    background: no-repeat url("../../img/svg/icon-mobile-blue.svg");
+    background-size: 100%;
+  }
+}

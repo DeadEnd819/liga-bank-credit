@@ -1,13 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PromoSlider from '../promo-slider/promo-slider';
+import Services from '../services/services';
 import AuthorizationModal from '../authorization-modal/authorization-modal';
 import {getModalFlag} from '../../store/selectors';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 const Main = ({isModalOpen}) => {
   return (
     <main className="main">
       <PromoSlider />
+      <Services />
       {isModalOpen && <AuthorizationModal />}
     </main>
   );

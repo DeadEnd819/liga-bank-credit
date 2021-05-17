@@ -1,0 +1,366 @@
+.card-service {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  &--piggy {
+    background: no-repeat 100% 39% url("../../img/jpg/piggybank-mobile@1x.jpg");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/jpg/piggybank-mobile@2x.jpg");
+      background-size: 88px auto;
+    }
+  }
+
+  &--car {
+    background: no-repeat 100% 39% url("../../img/jpg/car-mobile@1.jpg");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/jpg/car-mobile@2x.jpg");
+      background-size: 88px auto;
+    }
+  }
+
+  &--lock {
+    background: no-repeat 100% 39% url("../../img/jpg/lock-mobile@1.jpg");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/jpg/lock-mobile@2x.jpg");
+      background-size: 88px auto;
+    }
+  }
+
+  &--mobile {
+    background: no-repeat 100% 39% url("../../img/jpg/smartphone-mobile@1.jpg");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/jpg/smartphone-mobile@2x.jpg");
+      background-size: 87px auto;
+    }
+  }
+}
+
+.card-service__title {
+  @include reset-text;
+  @include base-font($medium);
+  font-size: 16px;
+  line-height: 22px;
+  text-align: left;
+  margin-top: 56px;
+
+  &--car {
+    max-width: 208px;
+  }
+
+  &--lock {
+    max-width: 246px;
+  }
+
+  &--mobile {
+    max-width: 223px;
+  }
+}
+
+.card-service__list {
+  @include reset-list;
+  font-size: 14px;
+  line-height: 18px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  margin-left: 15px;
+}
+
+.card-service__item {
+  position: relative;
+  max-width: 212px;
+  text-align: left;
+
+  &:not(:first-child) {
+    margin-top: 12px;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 4px;
+    left: -17px;
+    background: no-repeat url("../../img/svg/icon-check.svg");
+  }
+}
+
+.card-service__link {
+  @include reset-text;
+  @include base-font($medium);
+  font-size: 14px;
+  line-height: 16px;
+  align-self: center;
+  width: 100%;
+  margin-bottom: 60px;
+  padding: 14px 0 13px 0;
+  background-color: $button-color;
+  color: $background-color;
+  border-radius: 4px;
+
+  &--lock {
+    margin-bottom: 96px;
+  }
+
+  &--mobile {
+    margin-bottom: 51px;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.card-service__description {
+  @include reset-text;
+  font-size: 14px;
+  line-height: 20px;
+  max-width: 268px;
+  margin-top: -3px;
+  margin-bottom: 83px;
+  text-align: left;
+}
+
+.card-service__description-link {
+  @include base-font($medium);
+  text-decoration: underline;
+  color: $main-text-color;
+
+  &:hover,
+  &:focus {
+    color: $button-color;
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
+.card-service__list--mobile .card-service__item:first-child {
+  max-width: 175px;
+}
+
+@media (min-width: $tablet-width) {
+  .card-service {
+    padding: 0 45px;
+
+    &--piggy {
+      border-radius: 0 4px 4px 4px;
+      background: no-repeat 90% 50% url("../../img/jpg/piggybank-tablet@1x.jpg");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/piggybank-tablet@2x.jpg");
+        background-size: 289px auto;
+      }
+    }
+
+    &--car {
+      border-radius: 4px;
+      background: no-repeat 90% 50% url("../../img/jpg/car-tablet@1x.jpg");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/car-tablet@2x.jpg");
+        background-size: 289px auto;
+      }
+    }
+
+    &--lock {
+      border-radius: 4px;
+      background: no-repeat 91% 44% url("../../img/jpg/lock-tablet@1x.jpg");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/lock-tablet@2x.jpg");
+        background-size: 289px auto;
+      }
+    }
+
+    &--mobile {
+      border-radius: 4px 0 4px 4px;
+      background: no-repeat 91% 62% url("../../img/jpg/smartphone-tablet@1x.jpg");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/smartphone-tablet@2x.jpg");
+        background-size: 289px auto;
+      }
+    }
+  }
+
+  .card-service__title {
+    font-size: 18px;
+    line-height: 25px;
+    max-width: 320px;
+
+    &--car {
+      max-width: 234px;
+    }
+
+    &--lock {
+      max-width: 276px;
+    }
+
+    &--mobile {
+      max-width: 333px;
+    }
+  }
+
+  .card-service__list {
+    margin-top: 22px;
+    margin-bottom: 30px;
+    margin-left: 21px;
+  }
+
+  .card-service__item {
+    font-size: 16px;
+    line-height: 21px;
+    max-width: 329px;
+
+    &:not(:first-child) {
+      margin-top: 15px;
+    }
+
+    &::after {
+      width: 13px;
+      height: 12px;
+      top: 6px;
+      left: -22px;
+      background-size: 100%;
+    }
+  }
+
+  .card-service__link {
+    align-self: flex-start;
+    font-size: 16px;
+    line-height: 19px;
+    width: 29.2%;
+    padding: 15px 0 14px 0;
+  }
+
+  .card-service__description {
+    font-size: 16px;
+    line-height: 22px;
+    max-width: 320px;
+    margin-top: 0;
+    margin-bottom: 63px;
+  }
+
+  .card-service__list--mobile .card-service__item {
+    max-width: 329px;
+  }
+
+  .card-service__list--mobile .card-service__item:first-child {
+    max-width: 200px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .card-service {
+    max-width: 1170px;
+    padding: 0 70px;
+
+    &--piggy {
+      background: no-repeat 81.5% 50% url("../../img/jpg/piggybank-desktop@1x.jpg") $background-color;
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/piggybank-desktop@2x.jpg");
+        background-size: 440px auto;
+      }
+    }
+
+    &--car {
+      background: no-repeat 81.5% 50% url("../../img/jpg/car-desktop@1x.jpg") $background-color;
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/car-desktop@2x.jpg");
+        background-size: 440px auto;
+      }
+    }
+
+    &--lock {
+      background: no-repeat 81.5% 49% url("../../img/jpg/lock-desktop@1x.jpg") $background-color;
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/lock-desktop@2x.jpg");
+        background-size: 440px auto;
+      }
+    }
+
+    &--mobile {
+      background: no-repeat 81.5% 50% url("../../img/jpg/smartphone-desktop@1x.jpg") $background-color;
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/jpg/smartphone-desktop@2x.jpg");
+        background-size: 440px auto;
+      }
+    }
+  }
+
+  .card-service__title {
+    font-size: 22px;
+    line-height: 31px;
+    max-width: 374px;
+    margin-top: 54px;
+
+    &--car {
+      max-width: 288px;
+    }
+
+    &--mobile {
+      max-width: 406px;
+    }
+  }
+
+  .card-service__list {
+    margin-top: 28px;
+    margin-bottom: 33px;
+
+    &--car {
+      margin-bottom: 28px;
+    }
+  }
+
+  .card-service__item {
+    font-size: 18px;
+    line-height: 23px;
+    max-width: 373px;
+  }
+
+  .card-service__link {
+    width: 19.2%;
+    padding: 17px 0 15px 0;
+    text-align: center;
+
+    &--lock {
+      margin-bottom: 60px;
+    }
+
+    &--mobile {
+      margin-bottom: 60px;
+    }
+  }
+
+  .card-service__description {
+    font-size: 18px;
+    line-height: 25px;
+    max-width: 338px;
+    margin-bottom: 53px;
+  }
+
+  .card-service__list--mobile .card-service__item {
+    max-width: 335px;
+  }
+
+  .card-service__list--mobile .card-service__item:first-child {
+    max-width: 225px;
+  }
+}

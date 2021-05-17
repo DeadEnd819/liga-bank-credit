@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Carousel as Slider} from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {PROMOS} from '../../const';
 
 const getSlides = () => {

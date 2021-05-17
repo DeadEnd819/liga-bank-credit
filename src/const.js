@@ -1,3 +1,4 @@
+import React from 'react';
 import facebook from './assets/img/svg/icon-facebook.svg';
 import instagram from './assets/img/svg/icon-instagram.svg';
 import twitter from './assets/img/svg/icon-twitter.svg';
@@ -5,7 +6,7 @@ import youtube from './assets/img/svg/icon-youtube.svg';
 import mobile from './assets/img/svg/icon-mobile.svg';
 import phone from './assets/img/svg/icon-phone.svg';
 
-export const ACTIVE_PAGE = `Рассчитать кредит`;
+export const ACTIVE_PAGE = ``;
 
 export const STORE_CREDIT_DATA_PREFIX = `liga-bank-localstorage-credit-data`;
 export const STORE_AUTHORIZED_DATA_PREFIX = `liga-bank-localstorage-authorization-data`;
@@ -14,9 +15,10 @@ export const STORE_CREDIT_DATA_NAME = `${STORE_CREDIT_DATA_PREFIX}-${STORE_VERSI
 export const STORE_AUTHORIZED_DATA_NAME = `${STORE_AUTHORIZED_DATA_PREFIX}-${STORE_VERSION}`;
 
 export const TabNames = {
-  FEATURE: `Характеристики`,
-  REVIEWS: `Отзывы`,
-  CONTACTS: `Контакты`
+  DEPOSITS: `Вклады`,
+  CREDITS: `Кредиты`,
+  INSURANCE: `Страхование`,
+  SERVICES: `Онлайн-сервисы`
 };
 
 export const ActionType = {
@@ -115,5 +117,65 @@ export const PROMOS = [
       title: `Найти отделение`,
       href: `#`
     }
+  },
+];
+
+export const SERVICES = [
+  {
+    className: `--piggy`,
+  title: `Вклады Лига Банка — это выгодная инвестиция в свое будущее`,
+    list: [
+      `Проценты по вкладам до 7%`,
+      `Разнообразные условия`,
+      `Возможность ежемесячной
+       капитализации или вывод
+       процентов на банковскую карту`,
+    ],
+    description: null,
+    link: {
+      title: `Узнать подробнее`,
+      href: `#`
+    },
+  },
+  {
+    className: `--car`,
+    title: `Лига Банк выдает кредиты под любые цели`,
+    list: [
+      `Ипотечный кредит`,
+      `Автокредит`,
+      `Потребительский кредит`,
+    ],
+    description: <p className="card-service__description">
+                    <>Рассчитайте ежемесячный платеж <br/>и ставку по кредиту воспользовавшись нашим </>
+                    <a className="card-service__description-link" href="#calculator">кредитным калькулятором</a>
+                 </p>,
+    link: null,
+  },
+  {
+    className: `--lock`,
+    title: `Лига Страхование — застрахуем все что захотите`,
+    list: [
+      `Автомобильное страхование`,
+      `Страхование жизни и здоровья`,
+      `Страхование недвижимости`,
+    ],
+    description: null,
+    link: {
+      title: `Узнать подробнее`,
+      href: `#`
+    },
+  },
+  {
+    className: `--mobile`,
+    title: `Лига Банк — это огромное количество онлайн-сервисов для вашего удобства`,
+    list: [
+      `Мобильный банк, который всегда под рукой`,
+      `Приложение Лига-проездной позволит вам оплачивать билеты по всему миру`,
+    ],
+    description: null,
+    link: {
+      title: `Узнать подробнее`,
+      href: `#`
+    },
   },
 ];

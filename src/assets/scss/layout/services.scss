@@ -1,0 +1,18 @@
+.services {
+  position: relative;
+  max-height: 362px;
+  background-color: $background-color;
+}
+
+@media (min-width: $tablet-width) {
+  .services {
+    max-height: 380px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .services {
+    max-height: inherit;
+    background-color: $global-background-color;
+  }
+}
