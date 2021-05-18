@@ -32,7 +32,7 @@ const PromoSlider = () => {
   };
 
   return (
-    <section className="promo-slider">
+    <section className="main__promo-slider promo-slider">
       <Slider
         selectedItem={0}
         showStatus={false}

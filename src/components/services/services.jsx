@@ -48,7 +48,7 @@ const Services = () => {
   };
 
   return (
-    <section className="services">
+    <section className="main__services services">
       {
         isDesktop ?
           <div className="services__tabs tabs">
