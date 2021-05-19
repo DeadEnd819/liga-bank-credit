@@ -10,14 +10,20 @@
     margin-right: 1px;
   }
 
+  &--minus,
+  &--plus {
+    width: 60px;
+    height: 55px;
+  }
+
   &--minus {
-    top: 42px;
-    left: 18px;
+    top: 33px;
+    left: 2px;
   }
 
   &--plus {
-    top: 49px;
-    right: 9px;
+    top: 34px;
+    right: 2px;
   }
 
   &:focus,
@@ -78,6 +84,21 @@
     &--close {
       margin-top: -4px;
       margin-right: -6px;
+    }
+
+    &--minus,
+    &--plus {
+      width: 45px;
+      height: 55px;
+    }
+
+    &--minus {
+      left: 10px;
+    }
+
+    &--plus {
+      top: 33px;
+      right: 7px;
     }
   }
 }

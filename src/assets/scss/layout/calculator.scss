@@ -9,6 +9,32 @@
   line-height: 31px;
 }
 
-.calculator__form {
-  //margin-top: 22px;
+@media (min-width: $tablet-width) {
+  .calculator {
+    margin-top: 67px;
+  }
+
+  .calculator__wrapper {
+    padding: 0 45px;
+  }
+
+  .calculator__title {
+    font-size: 32px;
+    line-height: 49px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .calculator {
+    margin-top: 96px;
+  }
+
+  .calculator__wrapper {
+    padding: 0 98px;
+  }
+
+  .calculator__title {
+    font-size: 41px;
+    line-height: 57px;
+  }
 }
