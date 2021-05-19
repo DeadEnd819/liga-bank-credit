@@ -1,0 +1,14 @@
+.calculator {
+  margin-top: 53px;
+}
+
+.calculator__title {
+  @include reset-text;
+  @include base-font($bold);
+  font-size: 22px;
+  line-height: 31px;
+}
+
+.calculator__form {
+  //margin-top: 22px;
+}

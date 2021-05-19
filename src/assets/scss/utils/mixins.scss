@@ -17,3 +17,11 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+@mixin thumb {
+  width: 14px;
+  height: 14px;
+  background: $button-color;
+  border-radius: 50px;
+  cursor: pointer;
+}

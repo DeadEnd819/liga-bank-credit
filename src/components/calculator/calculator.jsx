@@ -46,7 +46,7 @@ const Calculator = () => {
           <div className="form-calculator__wrapper">
             <h3 className="form-calculator__title">Шаг 2. Введите параметры кредита</h3>
 
-            <fieldset className="form-calculator__fieldset">
+            <fieldset className="form-calculator__fieldset form-calculator__fieldset--credit">
               <legend className="form-calculator__legend visually-hidden">Расчет стоимости</legend>
               <label className="form-calculator__label" htmlFor="credit">Стоимость недвижимости</label>
               <input
@@ -58,7 +58,7 @@ const Calculator = () => {
                 onChange={(evt) => setCredit(+evt.target.value)}
               />
               <button
-                className="form-calculator__button button button--plus"
+                className="form-calculator__button button button--minus"
                 type="button"
                 aria-label="Меньше"
               >
@@ -71,10 +71,10 @@ const Calculator = () => {
               >
                 <IconPlus className="form-calculator__icon form-calculator__icon--plus" />
               </button>
-              <span className="form-calculator__span">От 1 200 000 до 25 000 000 рублей</span>
+              <span className="form-calculator__span">От 1 200 000&nbsp;&nbsp;до 25 000 000 рублей</span>
             </fieldset>
 
-            <fieldset className="form-calculator__fieldset">
+            <fieldset className="form-calculator__fieldset form-calculator__fieldset--contribution">
               <legend className="form-calculator__legend visually-hidden">Расчет взноса</legend>
               <label className="form-calculator__label" htmlFor="contribution">Первоначальный взнос</label>
               <input
@@ -98,7 +98,7 @@ const Calculator = () => {
               <span className="form-calculator__span">{contribution / (credit / 100)}%</span>
             </fieldset>
 
-            <fieldset className="form-calculator__fieldset">
+            <fieldset className="form-calculator__fieldset form-calculator__fieldset--time">
               <legend className="form-calculator__legend visually-hidden">Расчет срока</legend>
               <label className="form-calculator__label" htmlFor="time">Срок кредитования</label>
               <input
@@ -125,7 +125,7 @@ const Calculator = () => {
               </div>
               <div className="form-calculator__checkbox-wrapper">
                 <input
-                  className="form-calculator__input"
+                  className="form-calculator__input visually-hidden"
                   type="checkbox"
                   id="checkbox"
                   name="maternal"

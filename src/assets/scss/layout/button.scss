@@ -10,6 +10,16 @@
     margin-right: 1px;
   }
 
+  &--minus {
+    top: 42px;
+    left: 18px;
+  }
+
+  &--plus {
+    top: 49px;
+    right: 9px;
+  }
+
   &:focus,
   &:hover {
     color: $button-color;
