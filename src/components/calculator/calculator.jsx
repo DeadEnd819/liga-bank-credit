@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Wrapper from '../wrapper/wrapper';
 import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
 import {ReactComponent as IconMinus} from '../../assets/img/svg/icon-minus.svg';
+import {useSelect} from 'downshift'
 
 const rangeOneState = {
   min: `10`,
@@ -15,12 +16,23 @@ const rangeTwoState = {
   step: `1`,
 };
 
+const itemsOption = [`Ипотечное кредитование`, `Автомобильное кредитование`];
+
 const Calculator = () => {
   const [type, setType] = useState(null);
   const [credit, setCredit] = useState(2000000);
   const [contribution, setContribution] = useState(200000);
   const [time, setTime] = useState(5);
   const [maternal, setMaternal] = useState(false);
+
+  const {
+    isOpen,
+    selectedItem,
+    getToggleButtonProps,
+    getMenuProps,
+    highlightedIndex,
+    getItemProps,
+  } = useSelect({items: itemsOption})
 
   return (
     <section className="main__calculator calculator" style={{marginBottom: "50px"}}>
@@ -31,17 +43,33 @@ const Calculator = () => {
             {/*===========================STEP ONE===============================*/}
             <div className="form-calculator__wrapper-step">
               <h3 className="form-calculator__title">Шаг 1. Цель кредита</h3>
-              <select
-                className="form-calculator__select"
-                name="type"
-                id="type"
-                defaultValue="null"
-                onChange={(evt) => setType(evt.target.value)}
-              >
-                <option className="form-calculator__option" value="null" disabled style={{display: "none"}}>Выберите цель кредита</option>
-                <option className="form-calculator__option" value="home">Ипотечное кредитование</option>
-                <option className="form-calculator__option" value="avto">Автомобильное кредитование</option>
-              </select>
+              <div className={`form-calculator__select-wrapper${isOpen ? ` form-calculator__select-wrapper--active` : ``}`}>
+                <button
+                  className="form-calculator__select"
+                  type="button"
+                  {...getToggleButtonProps()}
+                >
+                  {selectedItem || `Выберите цель кредита`}
+                </button>
+                <ul
+                  className="form-calculator__option-list"
+                  {...getMenuProps()}
+                >
+                  {isOpen &&
+                  itemsOption.map((item, index) => (
+                    <li
+                      className="form-calculator__option"
+                      key={`${item}${index}`}
+                      style={
+                        highlightedIndex === index ? {backgroundColor: '#bde4ff'} : {}
+                      }
+                      {...getItemProps({item, index})}
+                    >
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
             {/*===========================STEP TWO===============================*/}
             <div className="form-calculator__wrapper-step">
