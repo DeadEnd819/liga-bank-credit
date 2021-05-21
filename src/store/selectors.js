@@ -1,5 +1,5 @@
 export const getCredit = (state) => {
-  return state.CREDIT.credit;
+  return state.CREDIT.creditData;
 };
 
 export const getAuthorizationData = (state) => {

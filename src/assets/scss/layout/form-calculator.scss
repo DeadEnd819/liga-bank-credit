@@ -61,6 +61,7 @@
   &:active {
     color: $button-color;
     opacity: $hover-opacity;
+    cursor: pointer;
   }
 }
 
@@ -80,6 +81,12 @@
   &:not(:first-child) {
     border-top: 1px solid $border-color;
   }
+
+  &:hover,
+  &:focus,
+  &:active {
+    cursor: pointer;
+  }
 }
 
 
@@ -93,6 +100,21 @@
   &--contribution {
     margin-top: 11px;
   }
+
+  &--error::after {
+    content: "Некорректное значение";
+    position: absolute;
+    font-size: 14px;
+    width: 163px;
+    height: 20px;
+    top: 73px;
+    left: 37%;
+    color: red;
+  }
+}
+
+.form-calculator__fieldset--error .form-calculator__input {
+  border-color: red;
 }
 
 .form-calculator__label {

@@ -7,6 +7,8 @@ import mobile from './assets/img/svg/icon-mobile.svg';
 import phone from './assets/img/svg/icon-phone.svg';
 
 export const ACTIVE_PAGE = ``;
+export const SELECT_DEFAULT_TITLE = `Выберите цель кредита`;
+export const OPTION_ITEMS = [`Ипотечное кредитование`, `Автомобильное кредитование`];
 
 export const STORE_CREDIT_DATA_PREFIX = `liga-bank-localstorage-credit-data`;
 export const STORE_AUTHORIZED_DATA_PREFIX = `liga-bank-localstorage-authorization-data`;
@@ -23,6 +25,7 @@ export const TabNames = {
 
 export const ActionType = {
   ADD_CREDIT: `ADD_CREDIT`,
+  CLEAR_CREDIT: `CLEAR_CREDIT`,
   MODAL_OPEN: `MODAL_OPEN`,
   MODAL_CLOSE: `MODAL_CLOSE`,
   AUTHORIZED_SAVE_DATA: `AUTHORIZED_SAVE_DATA`,

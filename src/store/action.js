@@ -2,6 +2,7 @@ import {ActionType} from '../const';
 
 const {
   ADD_CREDIT,
+  CLEAR_CREDIT,
   MODAL_OPEN,
   MODAL_CLOSE,
   AUTHORIZED_SAVE_DATA,
@@ -9,9 +10,13 @@ const {
   REQUIRED_INPUT_CHANGE
 } = ActionType;
 
-export const setCredit = (review) => ({
+export const setCredit = (data) => ({
   type: ADD_CREDIT,
-  payload: review,
+  payload: data,
+});
+
+export const removeCredit = () => ({
+  type: CLEAR_CREDIT,
 });
 
 export const setModalOpen = () => ({
