@@ -1,24 +1,26 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {ReactComponent as IconMinus} from '../../assets/img/svg/icon-minus.svg';
 import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
-import {extend} from '../../utils';
+import {extend, splittingDigits} from '../../utils';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
 
-const initialValues = {
-  min: 1200000,
-  max: 25000000,
-  step: 100000
-};
+// const initialValues = {
+//   min: 1200000,
+//   max: 25000000,
+//   step: 100000,
+// };
 
 const IdButton = {
   INCREMENT: `increment`,
   DECREMENT: `decrement`
 };
 
-const Credit = ({creditData, setCredit}) => {
+const Credit = ({initialValues, creditData, setCredit}) => {
+  const [focus, setFocus] = useState(false);
+
   const {credit} = creditData;
   const {min, max, step} = initialValues;
 
@@ -54,16 +56,18 @@ const Credit = ({creditData, setCredit}) => {
   }, [creditData, setCredit]);
 
   return (
-    <CalculatorFieldset legend={`Расчет стоимости`} error={error} >
+    <CalculatorFieldset legend={`Расчет стоимости`} modifier={`--credit`} error={error}>
       <label className="form-calculator__label form-calculator__label--credit" htmlFor="credit">Стоимость недвижимости</label>
       <input
         className="form-calculator__input form-calculator__input"
         id="credit"
         name="credit"
-        type="text"
-        value={credit}
+        type={focus ? `number` : `text`}
+        value={focus ? credit : `${splittingDigits(credit)} рублей`}
         placeholder="0"
         autoComplete="off"
+        onFocus={() => setFocus(true)}
+        onBlur={() => setFocus(false)}
         onChange={(evt) => handleCreditChange(evt.target)}
       />
       <button
@@ -84,7 +88,9 @@ const Credit = ({creditData, setCredit}) => {
       >
         <IconPlus className="form-calculator__icon form-calculator__icon--plus" />
       </button>
-      <span className="form-calculator__span form-calculator__span--credit">От {min}&nbsp;&nbsp;до {max} рублей</span>
+      <span className="form-calculator__span form-calculator__span--credit">
+        От {splittingDigits(min)}&nbsp;&nbsp;до {splittingDigits(max)} рублей
+      </span>
     </CalculatorFieldset>
   );
 };

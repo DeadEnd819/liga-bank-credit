@@ -1,23 +1,25 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import Wrapper from '../wrapper/wrapper';
 import Select from '../select/select';
 import Parameters from '../parameters/parameters';
 import Offer from '../offer/offer';
-import {OPTION_ITEMS} from '../../const';
+import {OPTION_ITEMS, CreditTypes} from '../../const';
+import {getCredit} from '../../store/selectors';
+import {setCredit} from '../../store/action';
+import {extend} from '../../utils';
 
-const Calculator = () => {
-  const [type, setType] = useState(null);
+const Calculator = ({creditData, setCredit}) => {
+  const {type}= creditData;
 
   const handleTypeChange = ({selectedItem}) => {
-    setType(selectedItem);
-  }
-
-  const getTypeParameters = () => {
-    switch (type) {
+    switch (selectedItem) {
       case OPTION_ITEMS[0]:
-        return <Parameters type={OPTION_ITEMS[0]} />;
+        setCredit(extend(creditData, {type: CreditTypes.HOME}));
+        break;
       case OPTION_ITEMS[1]:
-        return <Parameters type={OPTION_ITEMS[1]} />;
+        setCredit(extend(creditData, {type: CreditTypes.CAR}));
+        break;
       default:
         return null;
     }
@@ -29,12 +31,9 @@ const Calculator = () => {
         <h2 className="calculator__title">Кредитный калькулятор</h2>
         <form action="#" className="calculator__form form-calculator" onSubmit={(evt) => console.log(evt)}>
           <div className="form-calculator__wrapper">
-            {/*===========================STEP ONE===============================*/}
             <Select onTypeChange={handleTypeChange} items={OPTION_ITEMS} />
-            {/*===========================STEP TWO===============================*/}
-            {getTypeParameters()}
+            {type && <Parameters />}
           </div>
-          {/*===========================BLOCK OFFER===============================*/}
           {type && <Offer />}
         </form>
       </Wrapper>
@@ -42,6 +41,16 @@ const Calculator = () => {
   );
 };
 
+const mapStateToProps = (store) => ({
+  creditData: getCredit(store)
+});
 
+const mapDispatchToProps = (dispatch) => ({
+  setCredit(data) {
+    dispatch(setCredit(data));
+  },
+});
 
-export default Calculator;
+export {Calculator};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator);

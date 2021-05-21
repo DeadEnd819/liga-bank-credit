@@ -37,6 +37,7 @@
   &:after {
     content: "";
     position: absolute;
+    pointer-events: none;
     top: 25px;
     right: 11px;
     width: 20px;
@@ -155,6 +156,7 @@
 
 .form-calculator__icon {
   position: absolute;
+  pointer-events: none;
 
   &--minus {
     top: 26px;

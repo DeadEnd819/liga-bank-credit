@@ -16,6 +16,8 @@ export const STORE_VERSION = `v1`;
 export const STORE_CREDIT_DATA_NAME = `${STORE_CREDIT_DATA_PREFIX}-${STORE_VERSION}`;
 export const STORE_AUTHORIZED_DATA_NAME = `${STORE_AUTHORIZED_DATA_PREFIX}-${STORE_VERSION}`;
 
+export const MATERNAL= 470000;
+
 export const TabNames = {
   DEPOSITS: `Вклады`,
   CREDITS: `Кредиты`,
@@ -32,6 +34,48 @@ export const ActionType = {
   AUTHORIZED_CLEAR_DATA: `AUTHORIZED_CLEAR_DATA`,
   REQUIRED_INPUT_CHANGE: `REQUIRED_INPUT_CHANGE`
 };
+
+export const CreditTypes = {
+  HOME: `HOME`,
+  CAR: `CAR`
+};
+
+export const InitialValues = {
+  HOME: {
+    CREDIT: {
+      min: 1200000,
+      max: 25000000,
+      step: 100000
+    },
+    CONTRIBUTION: {
+      min: 10,
+      max: 100,
+      step: 5,
+    },
+    TIME: {
+      min: 5,
+      max: 30,
+      step: 1,
+    }
+  },
+  CAR: {
+    CREDIT: {
+      min: 500000,
+      max: 5000000,
+      step: 50000
+    },
+    CONTRIBUTION: {
+      min: 20,
+      max: 80,
+      step: 5,
+    },
+    TIME: {
+      min: 1,
+      max: 5,
+      step: 1,
+    }
+  }
+}
 
 export const Key = {
   ESCAPE: `Escape`,
