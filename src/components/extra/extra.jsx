@@ -3,14 +3,13 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {extend} from '../../utils';
 
 const Extra = ({creditData, setCredit}) => {
   const {maternal} = creditData;
 
   const handleFieldChange = useCallback(() => {
-    setCredit(extend(creditData, {maternal: !maternal}));
-  }, [creditData, setCredit, maternal]);
+    setCredit({maternal: !maternal});
+  }, [setCredit, maternal]);
 
   return (
     <CalculatorFieldset legend={`Дополнительные параметры`} modifier={`--checkbox`} error={false}>

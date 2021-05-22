@@ -17,6 +17,9 @@ const Parameters = ({creditData, setCredit}) => {
       credit: InitialValues[type].CREDIT.min,
       contribution: Math.round(InitialValues[type].CREDIT.min / 100 * 10),
       time: InitialValues[type].TIME.min,
+      maternal: false,
+      casco: false,
+      insurance: false
     });
   }, [type, setCredit]);
 

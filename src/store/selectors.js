@@ -2,6 +2,10 @@ export const getCredit = (state) => {
   return state.CREDIT.creditData;
 };
 
+export const getOffer = (state) => {
+  return state.CREDIT.offer;
+};
+
 export const getAuthorizationData = (state) => {
   return state.AUTHORIZED.data;
 };

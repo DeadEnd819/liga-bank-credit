@@ -3,61 +3,58 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {ReactComponent as IconMinus} from '../../assets/img/svg/icon-minus.svg';
 import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
-import {extend, splittingDigits} from '../../utils';
+import {splittingDigits} from '../../utils';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-
-// const initialValues = {
-//   min: 1200000,
-//   max: 25000000,
-//   step: 100000,
-// };
-
-const IdButton = {
-  INCREMENT: `increment`,
-  DECREMENT: `decrement`
-};
+import {IdButton, CreditTypes, InitialValues as Values} from '../../const';
 
 const Credit = ({initialValues, creditData, setCredit}) => {
   const [focus, setFocus] = useState(false);
 
-  const {credit} = creditData;
+  const {credit, type} = creditData;
   const {min, max, step} = initialValues;
+  const contributionMin = Values[type].CONTRIBUTION.min;
 
   const error = !(credit >= min && credit <= max);
   const incrementCredit = (credit + step) > max ? credit : (credit + step);
   const decrementCredit = (credit - step) < min ? credit : (credit - step);
-  const incrementContribution = (credit + step) > max ? Math.round(max / 100 * 10) : Math.round((credit + step) / 100 * 10);
-  const decrementContribution = (credit - step) < min ? Math.round(min / 100 * 10) : Math.round((credit - step) / 100 * 10);
+  const incrementContribution = (credit + step) > max ?
+    Math.round(max / 100 * contributionMin) :
+    Math.round((credit + step) / 100 * contributionMin);
+  const decrementContribution = (credit - step) < min ?
+    Math.round(min / 100 * contributionMin) :
+    Math.round((credit - step) / 100 * contributionMin);
 
   const handleButtonClick = useCallback((id) => {
     if (id === IdButton.INCREMENT) {
-      setCredit(extend(creditData, {
+      setCredit({
         credit: incrementCredit,
         contribution: incrementContribution
-      }));
+      });
     }
 
     if (id === IdButton.DECREMENT) {
-      setCredit(extend(creditData, {
+      setCredit({
         credit: decrementCredit,
         contribution: decrementContribution
-      }));
+      });
     }
-  }, [creditData, setCredit, incrementContribution, decrementContribution, incrementCredit, decrementCredit]);
+  }, [setCredit, incrementContribution, decrementContribution, incrementCredit, decrementCredit]);
 
   const handleCreditChange = useCallback(({value}) => {
     if (Number.isInteger(+value)) {
-      setCredit(extend(creditData, {
+      setCredit({
         credit: +value,
         contribution: Math.round(+value / 100 * 10)
-      }));
+      });
     }
-  }, [creditData, setCredit]);
+  }, [setCredit]);
 
   return (
     <CalculatorFieldset legend={`Расчет стоимости`} modifier={`--credit`} error={error}>
-      <label className="form-calculator__label form-calculator__label--credit" htmlFor="credit">Стоимость недвижимости</label>
+      <label className="form-calculator__label form-calculator__label--credit" htmlFor="credit">
+        Стоимость {type === CreditTypes.HOME ? `недвижимости` : `автомобиля`}
+      </label>
       <input
         className="form-calculator__input form-calculator__input"
         id="credit"

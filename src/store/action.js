@@ -2,6 +2,7 @@ import {ActionType} from '../const';
 
 const {
   ADD_CREDIT,
+  ADD_OFFER,
   CLEAR_CREDIT,
   MODAL_OPEN,
   MODAL_CLOSE,
@@ -12,6 +13,11 @@ const {
 
 export const setCredit = (data) => ({
   type: ADD_CREDIT,
+  payload: data,
+});
+
+export const setOffer = (data) => ({
+  type: ADD_OFFER,
   payload: data,
 });
 

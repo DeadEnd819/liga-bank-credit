@@ -3,13 +3,6 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {extend} from '../../utils';
-
-// const initialValues = {
-//   min: 5,
-//   max: 30,
-//   step: 1,
-// };
 
 const Time = ({initialValues, creditData, setCredit}) => {
   const [focus, setFocus] = useState(false);
@@ -18,19 +11,19 @@ const Time = ({initialValues, creditData, setCredit}) => {
   const {min, max} = initialValues;
 
   const handleBlurChange = useCallback(() => {
-    (time < min) ? setCredit(extend(creditData, {time: min})) :
-      (time > max) ? setCredit(extend(creditData, {time: max})) :
-        setCredit(extend(creditData, {time: time}));
+    (time < min) ? setCredit({time: min}) :
+      (time > max) ? setCredit({time: max}) :
+        setCredit({time: time});
 
     setFocus(false);
-  }, [time, creditData, max, min, setCredit]);
+  }, [time, max, min, setCredit]);
 
 
   const handleFieldChange = useCallback(({value}) => {
     if (Number.isInteger(+value)) {
-      setCredit(extend(creditData, {time: +value}));
+      setCredit({time: +value});
     }
-  }, [creditData, setCredit]);
+  }, [setCredit]);
 
   return (
     <CalculatorFieldset legend={`Расчет срока`} modifier={`--time`} error={false}>
@@ -38,8 +31,8 @@ const Time = ({initialValues, creditData, setCredit}) => {
       <input
         className="form-calculator__input form-calculator__input--time"
         id="time"
-        name={focus ? `number` : `text`}
-        type="text"
+        name="time"
+        type={focus ? `number` : `text`}
         value={focus ? time : `${time} лет`}
         placeholder="1"
         autoComplete="off"

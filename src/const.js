@@ -11,12 +11,18 @@ export const SELECT_DEFAULT_TITLE = `Выберите цель кредита`;
 export const OPTION_ITEMS = [`Ипотечное кредитование`, `Автомобильное кредитование`];
 
 export const STORE_CREDIT_DATA_PREFIX = `liga-bank-localstorage-credit-data`;
+export const STORE_OFFER_PREFIX = `liga-bank-localstorage-offer`;
 export const STORE_AUTHORIZED_DATA_PREFIX = `liga-bank-localstorage-authorization-data`;
 export const STORE_VERSION = `v1`;
 export const STORE_CREDIT_DATA_NAME = `${STORE_CREDIT_DATA_PREFIX}-${STORE_VERSION}`;
 export const STORE_AUTHORIZED_DATA_NAME = `${STORE_AUTHORIZED_DATA_PREFIX}-${STORE_VERSION}`;
 
 export const MATERNAL= 470000;
+
+export const MinimumCredit = {
+  HOME: 500000,
+  CAR: 200000
+}
 
 export const TabNames = {
   DEPOSITS: `Вклады`,
@@ -27,12 +33,23 @@ export const TabNames = {
 
 export const ActionType = {
   ADD_CREDIT: `ADD_CREDIT`,
+  ADD_OFFER: `ADD_OFFER`,
   CLEAR_CREDIT: `CLEAR_CREDIT`,
   MODAL_OPEN: `MODAL_OPEN`,
   MODAL_CLOSE: `MODAL_CLOSE`,
   AUTHORIZED_SAVE_DATA: `AUTHORIZED_SAVE_DATA`,
   AUTHORIZED_CLEAR_DATA: `AUTHORIZED_CLEAR_DATA`,
   REQUIRED_INPUT_CHANGE: `REQUIRED_INPUT_CHANGE`
+};
+
+export const Key = {
+  ESCAPE: `Escape`,
+  ESC: `Esc`,
+}
+
+export const IdButton = {
+  INCREMENT: `increment`,
+  DECREMENT: `decrement`
 };
 
 export const CreditTypes = {
@@ -75,12 +92,7 @@ export const InitialValues = {
       step: 1,
     }
   }
-}
-
-export const Key = {
-  ESCAPE: `Escape`,
-  ESC: `Esc`,
-}
+};
 
 export const NAVIGATION_ITEMS = [
   {

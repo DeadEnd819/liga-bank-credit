@@ -7,7 +7,6 @@ import Offer from '../offer/offer';
 import {OPTION_ITEMS, CreditTypes} from '../../const';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {extend} from '../../utils';
 
 const Calculator = ({creditData, setCredit}) => {
   const {type}= creditData;
@@ -15,10 +14,10 @@ const Calculator = ({creditData, setCredit}) => {
   const handleTypeChange = ({selectedItem}) => {
     switch (selectedItem) {
       case OPTION_ITEMS[0]:
-        setCredit(extend(creditData, {type: CreditTypes.HOME}));
+        setCredit({type: CreditTypes.HOME});
         break;
       case OPTION_ITEMS[1]:
-        setCredit(extend(creditData, {type: CreditTypes.CAR}));
+        setCredit({type: CreditTypes.CAR});
         break;
       default:
         return null;
