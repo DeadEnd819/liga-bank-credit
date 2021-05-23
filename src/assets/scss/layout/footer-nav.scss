@@ -1,0 +1,40 @@
+.footer-nav {
+
+}
+
+.footer-nav__item {
+  padding: 5px 0;
+}
+
+.footer-nav__link {
+  @include base-font($medium);
+  display: block;
+  color: $main-text-color;
+  font-size: 14px;
+  line-height: 20px;
+
+  &--active,
+  &:focus,
+  &:hover {
+    color: $button-color;
+  }
+}
+
+@media (min-width: $tablet-width) {
+
+}
+
+@media (min-width: $desktop-width) {
+  .footer-nav {
+    padding-top: 2px;
+    padding-left: 1px;
+  }
+
+  .footer-nav__item {
+    padding: 4px 0;
+  }
+
+  .footer-nav__link {
+    line-height: 23px;
+  }
+}

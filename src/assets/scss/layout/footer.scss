@@ -1,0 +1,53 @@
+.footer {
+  padding: 32px 0 45px 0;
+  background: $background-color;
+}
+
+.footer__wrapper {
+
+}
+
+.footer__item {
+  @include reset-list;
+
+  &:last-child {
+
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .footer {
+    padding: 50px 0 45px 0;
+  }
+
+  .footer__wrapper {
+
+  }
+
+  .footer__item {
+
+    &:last-child {
+
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .footer {
+    padding: 48px 0 50px 0;
+  }
+
+  .footer__wrapper {
+    @include base-flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .footer__item {
+    margin-right: 80px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

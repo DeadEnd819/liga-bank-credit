@@ -1,10 +1,10 @@
 import React from 'react';
-import facebook from './assets/img/svg/icon-facebook.svg';
-import instagram from './assets/img/svg/icon-instagram.svg';
-import twitter from './assets/img/svg/icon-twitter.svg';
-import youtube from './assets/img/svg/icon-youtube.svg';
-import mobile from './assets/img/svg/icon-mobile.svg';
-import phone from './assets/img/svg/icon-phone.svg';
+import {ReactComponent as facebook} from './assets/img/svg/icon-facebook.svg';
+import {ReactComponent as instagram} from './assets/img/svg/icon-instagram.svg';
+import {ReactComponent as twitter} from './assets/img/svg/icon-twitter.svg';
+import {ReactComponent as youtube} from './assets/img/svg/icon-youtube.svg';
+import {ReactComponent as mobile} from './assets/img/svg/icon-mobile.svg';
+import {ReactComponent as phone} from './assets/img/svg/icon-phone.svg';
 import IconMark from './assets/img/svg/icon-map-mark.svg';
 
 export const ACTIVE_PAGE = ``;

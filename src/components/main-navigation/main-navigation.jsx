@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import NavigationItem from '../navigation-item/navigation-item';
 import {ReactComponent as IconLogin} from '../../assets/img/svg/icon-login.svg';
-import {NAVIGATION_ITEMS, ACTIVE_PAGE} from '../../const';
+import {NAVIGATION_ITEMS} from '../../const';
 import {setModalOpen} from "../../store/action";
 
 const MainNavigation = ({openModal, modifierName}) => {
@@ -15,7 +15,6 @@ const MainNavigation = ({openModal, modifierName}) => {
     <nav className={`header__nav main-nav${modifierName ? ` main-nav${modifierName}` : modifierName}`}>
       <ul className="main-nav__list main-nav__list--site">
         {NAVIGATION_ITEMS.map((title, index) => {
-          const isActive = title.name === ACTIVE_PAGE;
 
           if(title.name !== NAVIGATION_ITEMS[4].name) {
             return (
@@ -23,7 +22,6 @@ const MainNavigation = ({openModal, modifierName}) => {
                 key={title + index}
                 block={`main`}
                 title={title}
-                isActive={isActive}
               />
             );
           }

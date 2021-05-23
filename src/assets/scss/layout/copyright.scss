@@ -1,0 +1,37 @@
+.copyright__logo {
+  margin-left: -2px;
+  margin-bottom: 12px;
+}
+
+.copyright__text {
+  @include reset-text;
+  display: none;
+}
+
+.copyright__icon {
+
+}
+
+@media (min-width: $tablet-width) {
+  .copyright__text {
+    display: block;
+    font-size: 12px;
+    line-height: 17px;
+    color: $grey-text-color;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .copyright__logo {
+    margin-bottom: 12px;
+  }
+
+  .copyright__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .copyright__icon {
+    font-size: 14px;
+  }
+}
