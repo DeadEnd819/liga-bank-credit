@@ -4,7 +4,7 @@ import {
   FULL_PERCENTAGE,
   InterestRates,
   CAR_PRICE_BAR,
-  HOME_PERCENTAGE_BAR, InitialValues
+  HOME_PERCENTAGE_BAR
 } from './const';
 
 const {

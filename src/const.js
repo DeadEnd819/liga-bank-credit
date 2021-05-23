@@ -5,6 +5,7 @@ import twitter from './assets/img/svg/icon-twitter.svg';
 import youtube from './assets/img/svg/icon-youtube.svg';
 import mobile from './assets/img/svg/icon-mobile.svg';
 import phone from './assets/img/svg/icon-phone.svg';
+import IconMark from './assets/img/svg/icon-map-mark.svg';
 
 export const ACTIVE_PAGE = ``;
 export const SELECT_DEFAULT_TITLE = `Выберите цель кредита`;
@@ -23,6 +24,17 @@ export const HOME_PERCENTAGE_BAR = 15;
 export const MONTHS  = 12;
 export const PERCENTAGE_OF_SALARY = 45;
 export const FULL_PERCENTAGE = 100;
+
+export const MARK_COORDINATES = [
+  [55.753, 37.595],
+  [51.533, 46.000],
+  [55.810, 49.100],
+  [57.165, 65.540],
+  [54.989, 73.350],
+  [55.000, 82.880],
+  [61.250, 73.390],
+  [57.900, 56.250]
+]
 
 export const DefaultCredit = {
   HOME: 2000000,
@@ -121,6 +133,19 @@ export const InitialValues = {
       max: 5,
       step: 1,
     }
+  }
+};
+
+export const MapData = {
+  STATE:{
+    center: [56.123, 59.540],
+    zoom: 5,
+  },
+  OPTIONS: {
+    iconLayout: "default#image",
+    iconImageHref: IconMark,
+    iconImageSize: [35, 40],
+    iconImageOffset: [-17, -40],
   }
 };
 

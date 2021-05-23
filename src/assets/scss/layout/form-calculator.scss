@@ -116,6 +116,10 @@
     left: 37%;
     color: red;
   }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .form-calculator__fieldset--error .form-calculator__input {
@@ -139,6 +143,10 @@
     margin-top: 6px;
     margin-left: 24px;
     cursor: pointer;
+  }
+
+  &--checkbox:last-child {
+    margin-bottom: 0;
   }
 }
 
