@@ -8,8 +8,7 @@ const {
   MODAL_OPEN,
   MODAL_CLOSE,
   AUTHORIZED_SAVE_DATA,
-  AUTHORIZED_CLEAR_DATA,
-  REQUIRED_INPUT_CHANGE
+  AUTHORIZED_CLEAR_DATA
 } = ActionType;
 
 const initialState = {
@@ -17,7 +16,6 @@ const initialState = {
     login: ``,
     password: ``
   },
-  requiredInput: {},
   isModalOpen: false
 };
 
@@ -30,10 +28,6 @@ const authorization = (state = initialState, action) => {
     case MODAL_CLOSE:
       return extend(state, {
         isModalOpen: false
-      });
-    case REQUIRED_INPUT_CHANGE:
-      return extend(state, {
-        requiredInput: action.payload
       });
     case AUTHORIZED_SAVE_DATA:
       localStorage[STORE_AUTHORIZED_DATA_NAME] = JSON.stringify(action.payload);

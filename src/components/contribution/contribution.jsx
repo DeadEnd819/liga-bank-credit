@@ -1,9 +1,9 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {splittingDigits, getPercent} from '../../utils';
+import {splittingDigits, getPercent, getContribution} from '../../utils';
 
 const Contribution = ({initialValues, creditData, setCredit}) => {
   const [focus, setFocus] = useState(false);
@@ -11,9 +11,13 @@ const Contribution = ({initialValues, creditData, setCredit}) => {
   const {credit, contribution} = creditData;
   const {min, max} = initialValues;
 
-  const minValue = Math.round(credit / 100 * min);
-  const maxValue = Math.round(credit / 100 * max);
-  const isCorrect = contribution >= minValue && contribution <= maxValue;
+  useEffect(() => {
+    setCredit({contribution: getContribution(credit, min)});
+  }, [credit, min, setCredit]);
+
+  const minValue = getContribution(credit, min);
+  const maxValue = getContribution(credit, max);
+  const isCorrect = contribution && contribution >= minValue && contribution <= maxValue;
   const rangePercent = isCorrect ? getPercent(contribution, credit) : min;
 
   const handleFieldChange = useCallback(({value}) => {
@@ -44,7 +48,7 @@ const Contribution = ({initialValues, creditData, setCredit}) => {
         name="contribution"
         type="range"
         value={rangePercent}
-        onChange={(evt) => handleFieldChange({value: (credit / 100) * evt.target.value})}
+        onChange={(evt) => handleFieldChange({value: getContribution(credit, evt.target.value)})}
       />
       <span className="form-calculator__span form-calculator__span--credit--contribution">
         {rangePercent}%

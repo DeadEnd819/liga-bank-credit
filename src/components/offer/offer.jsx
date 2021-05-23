@@ -1,20 +1,39 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getCredit, getOffer} from '../../store/selectors';
-import {setCredit, setOffer} from '../../store/action';
+import {setOffer} from '../../store/action';
 import {CreditTypes, MinimumCredit, MATERNAL} from '../../const';
-import {splittingDigits, getPercent} from '../../utils';
+import {
+  splittingDigits,
+  getComma,
+  getAnnuityPayment,
+  getIncome,
+  getMonthlyRate,
+  getCarRate,
+  getHomeRate
+} from '../../utils';
 
-const Offer = ({creditData, offerData, setCredit, setOffer}) => {
+const Offer = ({creditData, offerData, setOffer}) => {
   const {type, credit, contribution, time, maternal, casco, insurance} = creditData;
   const {total, rate, payment, income} = offerData;
 
+  const getRateValue = () => {
+    switch (type) {
+      case CreditTypes.HOME:
+        return getHomeRate(contribution, credit);
+      case CreditTypes.CAR:
+        return getCarRate(credit, casco, insurance);
+      default:
+        return null;
+    }
+  };
+
   const maternalValue = maternal ? MATERNAL : 0;
-  const totalValue = credit - contribution - maternalValue
-  const rateValue = getPercent(contribution, credit) < 15 ? 9.40 : 8.50;
-  const monthlyRate = rateValue / 100 / 12;
-  const paymentValue = Math.round(totalValue * (monthlyRate + (monthlyRate / ((1 + monthlyRate) ** (12 * time) - 1))));
-  const incomeValue = Math.round(paymentValue / 45 * 100);
+  const totalValue = credit - contribution - maternalValue;
+  const rateValue = getRateValue();
+  const monthlyRate = getMonthlyRate(rateValue);
+  const paymentValue = getAnnuityPayment(totalValue, monthlyRate, time);
+  const incomeValue = getIncome(paymentValue);
 
   useEffect(() => {
     setOffer({
@@ -40,7 +59,7 @@ const Offer = ({creditData, offerData, setCredit, setOffer}) => {
                   </dd>
                 </div>
                 <div className="offer__item">
-                  <dt className="offer__value">{rate}%</dt>
+                  <dt className="offer__value">{getComma(rate)}%</dt>
                   <dd className="offer__name">Процентная ставка</dd>
                 </div>
                 <div className="offer__item">
@@ -62,7 +81,16 @@ const Offer = ({creditData, offerData, setCredit, setOffer}) => {
             </div>
           </>
           :
-          <p>Сумма мала</p>
+          <>
+            <h3 className="offer__title offer__title--failure">
+              {
+                `Наш банк не выдаёт
+                ${type === CreditTypes.HOME ? `ипотечные` : `автокредиты`}
+                кредиты меньше ${splittingDigits(MinimumCredit[type])} рублей.`
+              }
+            </h3>
+            <p className="offer__description">Попробуйте использовать другие параметры для расчёта.</p>
+          </>
       }
     </div>
   );
@@ -74,9 +102,6 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCredit(data) {
-    dispatch(setCredit(data));
-  },
   setOffer(data) {
     dispatch(setOffer(data));
   },

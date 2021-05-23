@@ -18,10 +18,29 @@ export const STORE_CREDIT_DATA_NAME = `${STORE_CREDIT_DATA_PREFIX}-${STORE_VERSI
 export const STORE_AUTHORIZED_DATA_NAME = `${STORE_AUTHORIZED_DATA_PREFIX}-${STORE_VERSION}`;
 
 export const MATERNAL= 470000;
+export const CAR_PRICE_BAR = 2000000;
+export const HOME_PERCENTAGE_BAR = 15;
+export const MONTHS  = 12;
+export const PERCENTAGE_OF_SALARY = 45;
+export const FULL_PERCENTAGE = 100;
+
+export const DefaultCredit = {
+  HOME: 2000000,
+  CAR: 1000000
+};
 
 export const MinimumCredit = {
   HOME: 500000,
   CAR: 200000
+}
+
+export const InterestRates = {
+  HOME_MINIMUM: `8.50`,
+  HOME_MAXIMUM: `9.40`,
+  CAR_MINIMUM: `15`,
+  CAR_MAXIMUM: `16`,
+  CASCO_AND_INSURANCE: `3.50`,
+  CASCO_OR_INSURANCE: `8.50`,
 }
 
 export const TabNames = {
@@ -38,8 +57,7 @@ export const ActionType = {
   MODAL_OPEN: `MODAL_OPEN`,
   MODAL_CLOSE: `MODAL_CLOSE`,
   AUTHORIZED_SAVE_DATA: `AUTHORIZED_SAVE_DATA`,
-  AUTHORIZED_CLEAR_DATA: `AUTHORIZED_CLEAR_DATA`,
-  REQUIRED_INPUT_CHANGE: `REQUIRED_INPUT_CHANGE`
+  AUTHORIZED_CLEAR_DATA: `AUTHORIZED_CLEAR_DATA`
 };
 
 export const Key = {
@@ -51,6 +69,18 @@ export const IdButton = {
   INCREMENT: `increment`,
   DECREMENT: `decrement`
 };
+
+export const CheckboxType = {
+  MATERNAL: `maternal`,
+  CASCO: `casco`,
+  INSURANCE: `insurance`
+}
+
+export const CheckboxLabels = {
+  MATERNAL: `Использовать материнский капитал`,
+  CASCO: `Оформить КАСКО в нашем банке`,
+  INSURANCE: `Оформить Страхование жизни в нашем банке`
+}
 
 export const CreditTypes = {
   HOME: `HOME`,
@@ -83,7 +113,7 @@ export const InitialValues = {
     },
     CONTRIBUTION: {
       min: 20,
-      max: 80,
+      max: 100,
       step: 5,
     },
     TIME: {

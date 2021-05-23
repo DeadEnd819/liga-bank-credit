@@ -46,6 +46,16 @@
   }
 }
 
+.button--minus,
+.button--plus {
+  &:hover:disabled,
+  &:focus:disabled {
+    color: $grey-text-color;
+    opacity: $active-opacity;
+    cursor: initial;
+  }
+}
+
 .button-icon {
   position: absolute;
 

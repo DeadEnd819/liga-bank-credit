@@ -6,7 +6,7 @@ import Time from '../time/time';
 import Extra from '../extra/extra';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {InitialValues} from '../../const';
+import {InitialValues, DefaultCredit} from '../../const';
 
 const Parameters = ({creditData, setCredit}) => {
   const {type} = creditData;
@@ -14,8 +14,7 @@ const Parameters = ({creditData, setCredit}) => {
 
   useEffect(() => {
     setCredit({
-      credit: InitialValues[type].CREDIT.min,
-      contribution: Math.round(InitialValues[type].CREDIT.min / 100 * 10),
+      credit: DefaultCredit[type],
       time: InitialValues[type].TIME.min,
       maternal: false,
       casco: false,

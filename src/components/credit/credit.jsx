@@ -6,47 +6,29 @@ import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
 import {splittingDigits} from '../../utils';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {IdButton, CreditTypes, InitialValues as Values} from '../../const';
+import {IdButton, CreditTypes} from '../../const';
 
 const Credit = ({initialValues, creditData, setCredit}) => {
   const [focus, setFocus] = useState(false);
 
   const {credit, type} = creditData;
   const {min, max, step} = initialValues;
-  const contributionMin = Values[type].CONTRIBUTION.min;
 
   const error = !(credit >= min && credit <= max);
-  const incrementCredit = (credit + step) > max ? credit : (credit + step);
-  const decrementCredit = (credit - step) < min ? credit : (credit - step);
-  const incrementContribution = (credit + step) > max ?
-    Math.round(max / 100 * contributionMin) :
-    Math.round((credit + step) / 100 * contributionMin);
-  const decrementContribution = (credit - step) < min ?
-    Math.round(min / 100 * contributionMin) :
-    Math.round((credit - step) / 100 * contributionMin);
 
   const handleButtonClick = useCallback((id) => {
     if (id === IdButton.INCREMENT) {
-      setCredit({
-        credit: incrementCredit,
-        contribution: incrementContribution
-      });
+      setCredit({credit: (credit + step)});
     }
 
     if (id === IdButton.DECREMENT) {
-      setCredit({
-        credit: decrementCredit,
-        contribution: decrementContribution
-      });
+      setCredit({credit: (credit - step),});
     }
-  }, [setCredit, incrementContribution, decrementContribution, incrementCredit, decrementCredit]);
+  }, [setCredit, credit, step]);
 
   const handleCreditChange = useCallback(({value}) => {
     if (Number.isInteger(+value)) {
-      setCredit({
-        credit: +value,
-        contribution: Math.round(+value / 100 * 10)
-      });
+      setCredit({credit: +value});
     }
   }, [setCredit]);
 
@@ -72,6 +54,7 @@ const Credit = ({initialValues, creditData, setCredit}) => {
         id={IdButton.DECREMENT}
         type="button"
         aria-label="Меньше"
+        disabled={(credit - step) < min}
         onClick={(evt) => handleButtonClick(evt.target.id)}
       >
         <IconMinus className="form-calculator__icon form-calculator__icon--minus" />
@@ -81,6 +64,7 @@ const Credit = ({initialValues, creditData, setCredit}) => {
         id={IdButton.INCREMENT}
         type="button"
         aria-label="Больше"
+        disabled={(credit + step) > max}
         onClick={(evt) => handleButtonClick(evt.target.id)}
       >
         <IconPlus className="form-calculator__icon form-calculator__icon--plus" />

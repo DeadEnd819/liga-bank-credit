@@ -7,8 +7,7 @@ const {
   MODAL_OPEN,
   MODAL_CLOSE,
   AUTHORIZED_SAVE_DATA,
-  AUTHORIZED_CLEAR_DATA,
-  REQUIRED_INPUT_CHANGE
+  AUTHORIZED_CLEAR_DATA
 } = ActionType;
 
 export const setCredit = (data) => ({
@@ -40,9 +39,4 @@ export const setAuthorizationData = (data) => ({
 
 export const clearAuthorizationData = () => ({
   type: AUTHORIZED_CLEAR_DATA,
-});
-
-export const setRequiredInput = (flags) => ({
-  type: REQUIRED_INPUT_CHANGE,
-  payload: flags,
 });

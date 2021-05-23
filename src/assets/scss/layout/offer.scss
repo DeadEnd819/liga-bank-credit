@@ -21,6 +21,17 @@
 
 .offer__title {
   margin-bottom: 23px;
+
+  &--failure {
+    max-width: 93%;
+    margin-bottom: 13px;
+  }
+}
+
+.offer__description {
+  @include reset-text;
+  line-height: 22px;
+  margin-bottom: -6px;
 }
 
 .offer__value {
@@ -48,6 +59,7 @@
   border-radius: 4px;
   box-sizing: border-box;
   color: $background-color;
+  cursor: pointer;
 
   &:hover,
   &:focus {
@@ -69,6 +81,17 @@
   .offer__value {
     font-size: 22px;
     line-height: 31px;
+  }
+
+  .offer__title {
+    &--failure {
+      max-width: 76%;
+    }
+  }
+
+  .offer__description {
+    max-width: 61%;
+    margin-bottom: -7px;
   }
 
   .offer__list {
@@ -102,6 +125,16 @@
     margin-top: 56px;
     margin-left: 30px;
     padding: 53px 30px 60px 58px;
+  }
+
+  .offer__title {
+    &--failure {
+      max-width: 87%;
+    }
+  }
+
+  .offer__description {
+    max-width: 62%;
   }
 
   .offer__wrapper,
