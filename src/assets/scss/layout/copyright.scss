@@ -13,6 +13,10 @@
 }
 
 @media (min-width: $tablet-width) {
+  .copyright {
+    order: 2;
+  }
+
   .copyright__logo {
     position: absolute;
     top: 0;
@@ -27,7 +31,14 @@
 }
 
 @media (min-width: $desktop-width) {
+  .copyright {
+    width: 279px;
+    margin-right: 0;
+    order: 1;
+  }
+
   .copyright__logo {
+    position: inherit;
     margin-bottom: 12px;
   }
 

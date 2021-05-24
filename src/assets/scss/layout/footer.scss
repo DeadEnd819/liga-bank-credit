@@ -29,7 +29,6 @@
 
   .footer__item {
     margin-top: 26px;
-    order: 2;
 
     &:last-child {
 
@@ -39,13 +38,16 @@
 
 @media (min-width: $desktop-width) {
   .footer {
-    padding: 48px 0 50px 0;
+    padding: 23px 0 50px 0;
   }
 
   .footer__wrapper {
-    @include base-flex;
+    flex-wrap: inherit;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    height: auto;
+    padding: 0 98px;
   }
 
   .footer__item {

@@ -77,22 +77,28 @@
 
 @media (min-width: $desktop-width) {
   .contacts {
-    @include base-flex;
+    display: flex;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 537px;
+    margin-left: 59px;
+    margin-right: 0;
   }
 
   .contacts__item {
     &--mobile {
-      width: 197px;
-      padding-top: 10px;
-      padding-left: 29px;
+      width: 196px;
+      margin-right: 0;
+      margin-left: 0;
+      padding-top: 28px;
+      padding-left: 5.7%;
     }
 
     &--phone {
-      width: 154px;
-      padding-top: 9px;
-      padding-left: 32px;
+      width: 235px;
+      margin-left: 0;
+      padding-top: 20px;
+      padding-left: 22%;
     }
 
     &:last-child {
@@ -105,7 +111,7 @@
   }
 
   .contacts__text {
-
+    width: 100%;
   }
 
   .contacts__icon {

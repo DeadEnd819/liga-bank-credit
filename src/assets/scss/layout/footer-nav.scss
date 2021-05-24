@@ -42,8 +42,11 @@
 
 @media (min-width: $desktop-width) {
   .footer-nav {
+    width: 172px;
+    height: auto;
+    margin: 26px 0 0 66px;
     padding-top: 2px;
-    padding-left: 1px;
+    order: 2;
   }
 
   .footer-nav__item {
