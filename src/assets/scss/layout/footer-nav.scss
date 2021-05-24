@@ -21,7 +21,23 @@
 }
 
 @media (min-width: $tablet-width) {
+  .footer-nav {
+    @include base-flex;
+    flex-direction: column;
+    width: 35%;
+    height: 120px;
+    margin-top: 50px;
+    order: 1;
+  }
 
+  .footer-nav__item {
+    padding: 4px 0;
+  }
+
+  .footer-nav__link {
+    font-size: 16px;
+    line-height: 22px;
+  }
 }
 
 @media (min-width: $desktop-width) {
@@ -31,7 +47,7 @@
   }
 
   .footer-nav__item {
-    padding: 4px 0;
+
   }
 
   .footer-nav__link {

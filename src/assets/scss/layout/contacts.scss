@@ -55,7 +55,24 @@
 }
 
 @media (min-width: $tablet-width) {
+  .contacts {
+    width: 75%;
+    margin-top: -6px;
+    margin-left: 103px;
+    order: 3;
+  }
 
+  .contacts__item {
+    width: 100%;
+
+    &--phone {
+      margin-top: 23px;
+    }
+  }
+
+  .contacts__text {
+    width: 33%;
+  }
 }
 
 @media (min-width: $desktop-width) {

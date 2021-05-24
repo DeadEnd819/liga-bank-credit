@@ -13,6 +13,11 @@
 }
 
 @media (min-width: $tablet-width) {
+  .copyright__logo {
+    position: absolute;
+    top: 0;
+  }
+
   .copyright__text {
     display: block;
     font-size: 12px;

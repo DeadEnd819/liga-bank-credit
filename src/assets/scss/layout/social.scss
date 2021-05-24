@@ -22,7 +22,11 @@
 }
 
 @media (min-width: $tablet-width) {
-
+  .social {
+    margin-left: 103px;
+    padding-top: 0;
+    order: 4;
+  }
 }
 
 @media (min-width: $desktop-width) {

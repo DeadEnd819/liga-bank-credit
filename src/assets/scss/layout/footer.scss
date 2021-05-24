@@ -21,10 +21,15 @@
   }
 
   .footer__wrapper {
-
+    @include base-flex;
+    flex-direction: column;
+    height: 255px;
+    padding: 0 46px;
   }
 
   .footer__item {
+    margin-top: 26px;
+    order: 2;
 
     &:last-child {
 
