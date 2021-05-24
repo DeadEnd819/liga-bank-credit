@@ -1,22 +1,10 @@
-.contacts {
-
-}
-
 .contacts__item {
   box-sizing: border-box;
   margin-top: 14px;
   margin-left: 28px;
 
-  &--mobile {
-
-  }
-
   &--phone {
     margin-left: 33px;
-  }
-
-  &:last-child {
-
   }
 }
 
@@ -104,10 +92,6 @@
     &:last-child {
       margin-right: 0;
     }
-  }
-
-  .contacts__link {
-
   }
 
   .contacts__text {
