@@ -7,7 +7,6 @@ import {ReactComponent as mobile} from './assets/img/svg/icon-mobile.svg';
 import {ReactComponent as phone} from './assets/img/svg/icon-phone.svg';
 import IconMark from './assets/img/svg/icon-map-mark.svg';
 
-export const ACTIVE_PAGE = ``;
 export const SELECT_DEFAULT_TITLE = `Выберите цель кредита`;
 export const OPTION_ITEMS = [`Ипотечное кредитование`, `Автомобильное кредитование`];
 

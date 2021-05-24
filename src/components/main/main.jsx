@@ -4,6 +4,7 @@ import PromoSlider from '../promo-slider/promo-slider';
 import Services from '../services/services';
 import Calculator from '../calculator/calculator';
 import Branches from '../branches/branches';
+import FeedbackForm from '../feedback-form/feedback-form';
 import AuthorizationModal from '../authorization-modal/authorization-modal';
 import {getModalFlag} from '../../store/selectors';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -15,6 +16,7 @@ const Main = ({isModalOpen}) => {
       <PromoSlider />
       <Services />
       <Calculator />
+      <FeedbackForm />
       <Branches />
       {isModalOpen && <AuthorizationModal />}
     </main>
