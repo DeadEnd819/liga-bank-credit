@@ -13,7 +13,31 @@ export const getAuthorizationData = (state) => {
 export const getModalFlag = (state) => {
   return state.AUTHORIZED.isModalOpen;
 };
+//========================= REQUEST==================================//
+export const getRequestNumber = (state) => {
+  return state.REQUEST.requestNumber;
+};
 
-export const getRequiredInput = (state) => {
-  return state.AUTHORIZED.requiredInput;
+export const getRequestData = (state) => {
+  return state.REQUEST.data;
+};
+
+export const getName = (state) => {
+  return state.REQUEST.data.name;
+};
+
+export const getPhone = (state) => {
+  return state.REQUEST.data.phone;
+};
+
+export const getEmail = (state) => {
+  return state.REQUEST.data.email;
+};
+
+export const getFeedbackFlag = (state) => {
+  return state.REQUEST.isFeedbackOpen;
+};
+
+export const getFeedbackModalFlag = (state) => {
+  return state.REQUEST.isModalOpen;
 };

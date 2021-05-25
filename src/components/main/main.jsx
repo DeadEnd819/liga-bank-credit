@@ -7,26 +7,28 @@ import Branches from '../branches/branches';
 import FeedbackForm from '../feedback-form/feedback-form';
 import AuthorizationModal from '../authorization-modal/authorization-modal';
 import FeedbackModal from '../feedback-modal/feedback-modal';
-import {getModalFlag} from '../../store/selectors';
+import {getFeedbackFlag, getModalFlag, getFeedbackModalFlag} from '../../store/selectors';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-const Main = ({isModalOpen}) => {
+const Main = ({isFeedbackOpen, isModalOpen, isFeedbackModalOpen}) => {
   return (
     <main className="main">
       <h1 className="visually-hidden">Лига Банк - Кредитный калькулятор</h1>
       <PromoSlider />
       <Services />
       <Calculator />
-      <FeedbackForm />
+      {isFeedbackOpen && <FeedbackForm />}
       <Branches />
-      {/*<FeedbackModal />*/}
+      {isFeedbackModalOpen && <FeedbackModal />}
       {isModalOpen && <AuthorizationModal />}
     </main>
   );
 };
 
 const mapStateToProps = (store) => ({
-  isModalOpen: getModalFlag(store)
+  isFeedbackOpen: getFeedbackFlag(store),
+  isModalOpen: getModalFlag(store),
+  isFeedbackModalOpen: getFeedbackModalFlag(store)
 });
 
 export {Main};

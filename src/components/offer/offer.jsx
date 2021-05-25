@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getCredit, getOffer} from '../../store/selectors';
-import {setOffer} from '../../store/action';
+import {setOffer, setFeedbackOpen} from '../../store/action';
 import {CreditTypes, MinimumCredit, MATERNAL} from '../../const';
 import {
   splittingDigits,
@@ -13,7 +13,7 @@ import {
   getHomeRate
 } from '../../utils';
 
-const Offer = ({creditData, offerData, setOffer}) => {
+const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
   const {type, credit, contribution, time, maternal, casco, insurance} = creditData;
   const {total, rate, payment, income} = offerData;
 
@@ -73,8 +73,9 @@ const Offer = ({creditData, offerData, setOffer}) => {
               </dl>
               <button
                 className="offer__button"
-                type="submit"
+                type="button"
                 aria-label="Открыть форму заявки"
+                onClick={() => feedbackOpen()}
               >
                 Оформить заявку
               </button>
@@ -104,6 +105,9 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   setOffer(data) {
     dispatch(setOffer(data));
+  },
+  feedbackOpen() {
+    dispatch(setFeedbackOpen());
   },
 });
 

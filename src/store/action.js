@@ -7,7 +7,10 @@ const {
   MODAL_OPEN,
   MODAL_CLOSE,
   AUTHORIZED_SAVE_DATA,
-  AUTHORIZED_CLEAR_DATA
+  AUTHORIZED_CLEAR_DATA,
+  FEEDBACK_OPEN,
+  REQUEST_ADD,
+  DATA_CHANGE
 } = ActionType;
 
 export const setCredit = (data) => ({
@@ -39,4 +42,24 @@ export const setAuthorizationData = (data) => ({
 
 export const clearAuthorizationData = () => ({
   type: AUTHORIZED_CLEAR_DATA,
+});
+
+//========================= REQUEST==================================//
+
+export const setRequestData = (data) => ({
+  type: DATA_CHANGE,
+  payload: data,
+});
+
+export const setRequestModalClose = () => ({
+  type: MODAL_CLOSE,
+});
+
+export const setFeedbackOpen = () => ({
+  type: FEEDBACK_OPEN,
+});
+
+export const setAddRequest = (data) => ({
+  type: REQUEST_ADD,
+  payload: data,
 });
