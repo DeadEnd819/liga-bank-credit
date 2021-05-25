@@ -6,6 +6,7 @@ import Calculator from '../calculator/calculator';
 import Branches from '../branches/branches';
 import FeedbackForm from '../feedback-form/feedback-form';
 import AuthorizationModal from '../authorization-modal/authorization-modal';
+import FeedbackModal from '../feedback-modal/feedback-modal';
 import {getModalFlag} from '../../store/selectors';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
@@ -18,6 +19,7 @@ const Main = ({isModalOpen}) => {
       <Calculator />
       <FeedbackForm />
       <Branches />
+      {/*<FeedbackModal />*/}
       {isModalOpen && <AuthorizationModal />}
     </main>
   );

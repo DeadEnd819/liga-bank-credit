@@ -1,0 +1,90 @@
+.feedback-modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: $modal-block-background-color;
+  z-index: 3;
+}
+
+.feedback-modal__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 290px;
+  left: 50%;
+  top: 50%;
+  padding: 34px 16px 34px 16px;
+  background-color: $background-color;
+  border-radius: 4px;
+  text-align: center;
+  box-sizing: border-box;
+  transform: translate(-50%, -50%);
+  animation: scale .6s;
+}
+
+.feedback-modal__button-close {
+  position: absolute;
+  top: 11px;
+  right: 6px;
+}
+
+.feedback-modal__title,
+.feedback-modal__description {
+  @include reset-text;
+}
+
+.feedback-modal__title {
+  @include base-font($medium);
+  font-size: 18px;
+  line-height: 25px;
+  width: 196px;
+}
+
+.feedback-modal__description {
+  width: 238px;
+  line-height: 22px;
+  color: $modal-text-color;
+}
+
+@media (min-width: $tablet-width) {
+  .feedback-modal__wrapper {
+    width: 678px;
+    padding: 53px 16px 52px 16px;
+  }
+
+  .feedback-modal__button-close {
+    top: 30px;
+    right: 33px;
+  }
+
+  .feedback-modal__title {
+    font-size: 22px;
+    line-height: 31px;
+    width: 100%;
+    margin-bottom: 13px;
+  }
+
+  .feedback-modal__description {
+    width: 293px;
+  }
+
+  .feedback-modal__button-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .feedback-modal__wrapper {
+    width: 500px;
+  }
+
+  .feedback-modal__button-close {
+    top: 26px;
+    right: 27px;
+  }
+}
