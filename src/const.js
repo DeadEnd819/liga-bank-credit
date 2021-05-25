@@ -12,10 +12,15 @@ export const OPTION_ITEMS = [`Ипотечное кредитование`, `А�
 
 export const STORE_CREDIT_DATA_PREFIX = `liga-bank-localstorage-credit-data`;
 export const STORE_OFFER_PREFIX = `liga-bank-localstorage-offer`;
+export const STORE_REQUEST_PREFIX = `liga-bank-localstorage-request`;
+export const STORE_REQUEST_LIST_PREFIX = `liga-bank-localstorage-request-list`;
 export const STORE_AUTHORIZED_DATA_PREFIX = `liga-bank-localstorage-authorization-data`;
 export const STORE_VERSION = `v1`;
 export const STORE_CREDIT_DATA_NAME = `${STORE_CREDIT_DATA_PREFIX}-${STORE_VERSION}`;
 export const STORE_AUTHORIZED_DATA_NAME = `${STORE_AUTHORIZED_DATA_PREFIX}-${STORE_VERSION}`;
+export const STORE_REQUEST_DATA_NAME = `${STORE_REQUEST_PREFIX}-${STORE_VERSION}`;
+export const STORE_REQUEST_LIST_DATA_NAME = `${STORE_REQUEST_LIST_PREFIX}-${STORE_VERSION}`;
+export const STORE_OFFER_DATA_NAME = `${STORE_OFFER_PREFIX}-${STORE_VERSION}`;
 
 export const MATERNAL= 470000;
 export const CAR_PRICE_BAR = 2000000;

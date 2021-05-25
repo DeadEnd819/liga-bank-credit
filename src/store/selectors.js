@@ -13,7 +13,7 @@ export const getAuthorizationData = (state) => {
 export const getModalFlag = (state) => {
   return state.AUTHORIZED.isModalOpen;
 };
-//========================= REQUEST==================================//
+
 export const getRequestNumber = (state) => {
   return state.REQUEST.requestNumber;
 };

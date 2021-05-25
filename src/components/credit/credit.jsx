@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {ReactComponent as IconMinus} from '../../assets/img/svg/icon-minus.svg';
 import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
-import {splittingDigits} from '../../utils';
+import {splittingDigits, extend} from '../../utils';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
 import {IdButton, CreditTypes} from '../../const';
@@ -18,19 +18,19 @@ const Credit = ({initialValues, creditData, setCredit}) => {
 
   const handleButtonClick = useCallback((id) => {
     if (id === IdButton.INCREMENT) {
-      setCredit({credit: (credit + step)});
+      setCredit(extend(creditData, {credit: (credit + step)}));
     }
 
     if (id === IdButton.DECREMENT) {
-      setCredit({credit: (credit - step),});
+      setCredit(extend(creditData, {credit: (credit - step)}));
     }
-  }, [setCredit, credit, step]);
+  }, [creditData, setCredit, credit, step]);
 
   const handleCreditChange = useCallback(({value}) => {
     if (Number.isInteger(+value)) {
-      setCredit({credit: +value});
+      setCredit(extend(creditData,{credit: +value}));
     }
-  }, [setCredit]);
+  }, [creditData, setCredit]);
 
   return (
     <CalculatorFieldset legend={`Расчет стоимости`} modifier={`--credit`} error={error}>

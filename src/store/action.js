@@ -44,8 +44,6 @@ export const clearAuthorizationData = () => ({
   type: AUTHORIZED_CLEAR_DATA,
 });
 
-//========================= REQUEST==================================//
-
 export const setRequestData = (data) => ({
   type: DATA_CHANGE,
   payload: data,

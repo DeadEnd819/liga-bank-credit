@@ -1,12 +1,9 @@
 import {extend} from '../../../utils';
-import {ActionType, STORE_CREDIT_DATA_NAME, STORE_OFFER_PREFIX} from '../../../const';
+import {ActionType, STORE_CREDIT_DATA_NAME, STORE_OFFER_DATA_NAME} from '../../../const';
 
 const {ADD_CREDIT, CLEAR_CREDIT, ADD_OFFER} = ActionType;
 
 const initialState = {
-  // credit: localStorage[STORE_CREDIT_DATA_NAME] ?
-  //   JSON.parse(localStorage[STORE_CREDIT_DATA_NAME]) :
-  //   {}
   offer: {
     total: 0,
     rate: 0,
@@ -33,7 +30,7 @@ const credit = (state = initialState, action) => {
         creditData: extend(state.creditData, action.payload)
       };
     case ADD_OFFER:
-      localStorage[STORE_OFFER_PREFIX] = JSON.stringify(action.payload);
+      localStorage[STORE_OFFER_DATA_NAME] = JSON.stringify(action.payload);
       return {
         ...state,
         offer: extend(state.offer, action.payload)

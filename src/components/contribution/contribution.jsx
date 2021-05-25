@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {splittingDigits, getPercent, getContribution} from '../../utils';
+import {splittingDigits, getPercent, getContribution, extend} from '../../utils';
 
 const Contribution = ({initialValues, creditData, setCredit}) => {
   const [focus, setFocus] = useState(false);
@@ -12,7 +12,12 @@ const Contribution = ({initialValues, creditData, setCredit}) => {
   const {min, max} = initialValues;
 
   useEffect(() => {
-    setCredit({contribution: getContribution(credit, min)});
+    setCredit(extend(
+      creditData,
+      {
+        contribution: getContribution(credit, min)
+      }));
+    // eslint-disable-next-line
   }, [credit, min, setCredit]);
 
   const minValue = getContribution(credit, min);
@@ -22,9 +27,9 @@ const Contribution = ({initialValues, creditData, setCredit}) => {
 
   const handleFieldChange = useCallback(({value}) => {
     if (Number.isInteger(+value)) {
-      setCredit({contribution: +value});
+      setCredit(extend(creditData, {contribution: +value}));
     }
-  }, [setCredit]);
+  }, [setCredit, creditData]);
 
   return (
     <CalculatorFieldset legend={`Расчет взноса`} modifier={`--contribution`} error={false}>

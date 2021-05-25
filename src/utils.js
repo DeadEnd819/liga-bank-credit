@@ -4,7 +4,8 @@ import {
   FULL_PERCENTAGE,
   InterestRates,
   CAR_PRICE_BAR,
-  HOME_PERCENTAGE_BAR
+  HOME_PERCENTAGE_BAR,
+  CreditTypes
 } from './const';
 
 const {
@@ -15,6 +16,8 @@ const {
   CASCO_AND_INSURANCE,
   CASCO_OR_INSURANCE
 } = InterestRates;
+
+const {HOME} = CreditTypes;
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
@@ -58,9 +61,37 @@ export const getContribution = (credit, percentage) => {
   return Math.round(credit / FULL_PERCENTAGE * percentage);
 };
 
-export const checksEmail = (email) => {
-  // eslint-disable-next-line
-  const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+export const addZero = (number, length = 4) => {
+  let text = String(number);
 
-  return !regex.test(email);
+  while (text.length < length) {
+    text = `0` + text;
+  }
+
+  return text;
+};
+
+export const getFeedbackList = (requestNumber, type, credit, contribution, time) => {
+  return [
+    {
+      value: `№ ${addZero(requestNumber)}`,
+      name: `Номер заявки`,
+    },
+    {
+      value: `${type === HOME ? `Ипотека` :`Автокредит`}`,
+      name: `Цель кредита`,
+    },
+    {
+      value: `${splittingDigits(credit)} рублей`,
+      name: `Стоимость ${type === HOME ? `недвижимости` : `автомобиля`}`,
+    },
+    {
+      value: `${splittingDigits(contribution)} рублей`,
+      name: `Первоначальный взнос`,
+    },
+    {
+      value: `${time} лет`,
+      name: `Срок кредитования`,
+    },
+  ];
 };

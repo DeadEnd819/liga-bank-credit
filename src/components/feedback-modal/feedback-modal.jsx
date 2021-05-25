@@ -1,7 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import {ReactComponent as IconClose} from '../../assets/img/svg/icon-close.svg';
+import {setRequestModalClose} from '../../store/action';
 
-const FeedbackModal = () => {
+const FeedbackModal = ({closeModal}) => {
   return (
     <div className="feedback-modal">
       <div className="feedback-modal__wrapper">
@@ -14,6 +16,7 @@ const FeedbackModal = () => {
           <IconClose
             className="feedback-modal__button-icon feedback-modal__button-icon--close"
             alt="Иконка крестик"
+            onClick={closeModal}
           />
         </button>
         <p className="feedback-modal__description">
@@ -24,4 +27,12 @@ const FeedbackModal = () => {
   );
 };
 
-export default FeedbackModal;
+const mapDispatchToProps = (dispatch) => ({
+  closeModal() {
+    dispatch(setRequestModalClose());
+  },
+});
+
+export {FeedbackModal};
+
+export default connect(null, mapDispatchToProps)(FeedbackModal);

@@ -4,6 +4,7 @@ import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
 import {CheckboxType, CheckboxLabels, CreditTypes} from '../../const';
+import {extend} from '../../utils';
 
 const Checkbox = ({callback, checked, name, label}) => {
   return (
@@ -33,8 +34,8 @@ const Extra = ({creditData, setCredit}) => {
   const {type, maternal, casco, insurance} = creditData;
 
   const handleFieldChange = useCallback(({name, value}) => {
-    setCredit({[name]: value});
-  }, [setCredit]);
+    setCredit(extend(creditData,{[name]: value}));
+  }, [creditData, setCredit]);
 
   return (
     <CalculatorFieldset legend={`Дополнительные параметры`} modifier={`--checkbox`} error={false}>
