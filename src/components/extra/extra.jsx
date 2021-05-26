@@ -1,10 +1,8 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
-import {setCredit} from '../../store/action';
 import {CheckboxType, CheckboxLabels, CreditTypes} from '../../const';
-import {extend} from '../../utils';
 
 const Checkbox = ({callback, checked, name, label}) => {
   return (
@@ -30,19 +28,15 @@ const Checkbox = ({callback, checked, name, label}) => {
   );
 };
 
-const Extra = ({creditData, setCredit}) => {
+const Extra = ({creditData, onFieldChang}) => {
   const {type, maternal, casco, insurance} = creditData;
-
-  const handleFieldChange = useCallback(({name, value}) => {
-    setCredit(extend(creditData,{[name]: value}));
-  }, [creditData, setCredit]);
 
   return (
     <CalculatorFieldset legend={`Дополнительные параметры`} modifier={`--checkbox`} error={false}>
       {
         type === CreditTypes.HOME ?
           <Checkbox
-            callback={handleFieldChange}
+            callback={onFieldChang}
             checked={maternal}
             name={CheckboxType.MATERNAL}
             label={CheckboxLabels.MATERNAL}
@@ -50,13 +44,13 @@ const Extra = ({creditData, setCredit}) => {
           :
           <>
             <Checkbox
-              callback={handleFieldChange}
+              callback={onFieldChang}
               checked={casco}
               name={CheckboxType.CASCO}
               label={CheckboxLabels.CASCO}
             />
             <Checkbox
-              callback={handleFieldChange}
+              callback={onFieldChang}
               checked={insurance}
               name={CheckboxType.INSURANCE}
               label={CheckboxLabels.INSURANCE}
@@ -71,12 +65,4 @@ const mapStateToProps = (store) => ({
   creditData: getCredit(store)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCredit(data) {
-    dispatch(setCredit(data));
-  },
-});
-
-export {Extra};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Extra);
+export default connect(mapStateToProps)(Extra);

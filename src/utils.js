@@ -5,7 +5,8 @@ import {
   InterestRates,
   CAR_PRICE_BAR,
   HOME_PERCENTAGE_BAR,
-  CreditTypes
+  CreditTypes,
+  MATERNAL
 } from './const';
 
 const {
@@ -71,6 +72,21 @@ export const addZero = (number, length = 4) => {
   return text;
 };
 
+export const getOfferValues = (maternal, credit, contribution, time, rate) => {
+  const maternalValue = maternal ? MATERNAL : 0;
+  const monthlyRate = getMonthlyRate(rate);
+  const totalValue = credit - contribution - maternalValue;
+  const paymentValue = getAnnuityPayment(totalValue, monthlyRate, time);
+  const incomeValue = getIncome(paymentValue)
+
+  return {
+    totalValue,
+    rateValue: rate,
+    paymentValue,
+    incomeValue
+  }
+};
+
 export const getFeedbackList = (requestNumber, type, credit, contribution, time) => {
   return [
     {
@@ -95,3 +111,11 @@ export const getFeedbackList = (requestNumber, type, credit, contribution, time)
     },
   ];
 };
+
+export const canUseWebp = () => {
+  let elem = document.createElement('canvas');
+  let isItFirefox = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./);
+  let firefoxVer = isItFirefox ? parseInt(isItFirefox[1]) : 0;
+
+  return (elem.toDataURL('image/webp').indexOf('data:image/webp') === 0) || firefoxVer >= 65;
+}

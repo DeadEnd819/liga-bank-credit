@@ -17,7 +17,7 @@ SocialItem.propTypes = {
   link: PropTypes.shape({
     name: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired,
-    icon: PropTypes.string.isRequired,
+    icon: PropTypes.object.isRequired,
   }).isRequired,
 };
 

@@ -2,16 +2,35 @@ import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {getCredit, getOffer} from '../../store/selectors';
 import {setOffer, setFeedbackOpen} from '../../store/action';
-import {CreditTypes, MinimumCredit, MATERNAL} from '../../const';
+import {CreditTypes, MinimumCredit} from '../../const';
 import {
   splittingDigits,
   getComma,
-  getAnnuityPayment,
-  getIncome,
-  getMonthlyRate,
   getCarRate,
-  getHomeRate
+  getHomeRate,
+  getOfferValues
 } from '../../utils';
+
+const getOfferList = (total, type, rate, payment, income) => {
+  return [
+    {
+      value: `${splittingDigits(total)} рублей`,
+      name: `Сумма ${type === CreditTypes.HOME ? `ипотеки` : `автокредита`}`,
+    },
+    {
+      value: `${getComma(rate)}%`,
+      name: `Процентная ставка`,
+    },
+    {
+      value: `${splittingDigits(payment)} рублей`,
+      name: `Ежемесячный платеж`,
+    },
+    {
+      value: `${splittingDigits(income)} рублей`,
+      name: `Необходимый доход`,
+    },
+  ];
+};
 
 const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
   const {type, credit, contribution, time, maternal, casco, insurance} = creditData;
@@ -28,12 +47,12 @@ const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
     }
   };
 
-  const maternalValue = maternal ? MATERNAL : 0;
-  const totalValue = credit - contribution - maternalValue;
-  const rateValue = getRateValue();
-  const monthlyRate = getMonthlyRate(rateValue);
-  const paymentValue = getAnnuityPayment(totalValue, monthlyRate, time);
-  const incomeValue = getIncome(paymentValue);
+  const {
+    totalValue,
+    rateValue,
+    paymentValue,
+    incomeValue
+  } = getOfferValues(maternal, credit, contribution, time, getRateValue());
 
   useEffect(() => {
     setOffer({
@@ -44,6 +63,8 @@ const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
     });
   }, [incomeValue, rateValue, paymentValue, totalValue, setOffer]);
 
+  const offerList = getOfferList(total, type, rate, payment, income);
+
   return (
     <div className="form-calculator__offer offer">
       {
@@ -52,24 +73,12 @@ const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
             <h3 className="offer__title">Наше предложение</h3>
             <div className="offer__wrapper">
               <dl className="offer__list">
-                <div className="offer__item">
-                  <dt className="offer__value">{splittingDigits(total)} рублей</dt>
-                  <dd className="offer__name">
-                    Сумма {type === CreditTypes.HOME ? `ипотеки` : `автокредита`}
-                  </dd>
-                </div>
-                <div className="offer__item">
-                  <dt className="offer__value">{getComma(rate)}%</dt>
-                  <dd className="offer__name">Процентная ставка</dd>
-                </div>
-                <div className="offer__item">
-                  <dt className="offer__value">{splittingDigits(payment)} рублей</dt>
-                  <dd className="offer__name">Ежемесячный платеж</dd>
-                </div>
-                <div className="offer__item">
-                  <dt className="offer__value">{splittingDigits(income)} рублей</dt>
-                  <dd className="offer__name">Необходимый доход</dd>
-                </div>
+                {offerList.map((item, index) => (
+                  <div className="offer__item" key={item + index}>
+                    <dt className="offer__value">{item.value}</dt>
+                    <dd className="offer__name">{item.name}</dd>
+                  </div>
+                ))}
               </dl>
               <button
                 className="offer__button"
@@ -95,7 +104,7 @@ const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
       }
     </div>
   );
-};
+}
 
 const mapStateToProps = (store) => ({
   creditData: getCredit(store),
@@ -110,7 +119,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setFeedbackOpen());
   },
 });
-
-export {Offer};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Offer);

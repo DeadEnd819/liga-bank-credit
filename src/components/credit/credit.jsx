@@ -3,12 +3,13 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {ReactComponent as IconMinus} from '../../assets/img/svg/icon-minus.svg';
 import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
-import {splittingDigits, extend} from '../../utils';
+import {splittingDigits} from '../../utils';
 import {getCredit} from '../../store/selectors';
-import {setCredit} from '../../store/action';
-import {IdButton, CreditTypes} from '../../const';
+import {IdButton, CreditTypes, ParametersNames} from '../../const';
 
-const Credit = ({initialValues, creditData, setCredit}) => {
+const {CREDIT} = ParametersNames;
+
+const Credit = ({initialValues, creditData, onFieldChang}) => {
   const [focus, setFocus] = useState(false);
 
   const {credit, type} = creditData;
@@ -18,19 +19,18 @@ const Credit = ({initialValues, creditData, setCredit}) => {
 
   const handleButtonClick = useCallback((id) => {
     if (id === IdButton.INCREMENT) {
-      setCredit(extend(creditData, {credit: (credit + step)}));
+      onFieldChang({
+        name: CREDIT,
+        value: (credit + step)
+      });
+      return;
     }
 
-    if (id === IdButton.DECREMENT) {
-      setCredit(extend(creditData, {credit: (credit - step)}));
-    }
-  }, [creditData, setCredit, credit, step]);
-
-  const handleCreditChange = useCallback(({value}) => {
-    if (Number.isInteger(+value)) {
-      setCredit(extend(creditData,{credit: +value}));
-    }
-  }, [creditData, setCredit]);
+    onFieldChang({
+      name: CREDIT,
+      value: (credit - step)
+    });
+  }, [onFieldChang, credit, step]);
 
   return (
     <CalculatorFieldset legend={`Расчет стоимости`} modifier={`--credit`} error={error}>
@@ -47,7 +47,7 @@ const Credit = ({initialValues, creditData, setCredit}) => {
         autoComplete="off"
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
-        onChange={(evt) => handleCreditChange(evt.target)}
+        onChange={(evt) => onFieldChang(evt.target)}
       />
       <button
         className="form-calculator__button button button--minus"
@@ -80,12 +80,4 @@ const mapStateToProps = (store) => ({
   creditData: getCredit(store)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCredit(data) {
-    dispatch(setCredit(data));
-  },
-});
-
-export {Credit};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Credit);
+export default connect(mapStateToProps)(Credit);

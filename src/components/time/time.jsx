@@ -2,29 +2,20 @@ import React, {useCallback, useState} from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
-import {setCredit} from '../../store/action';
-import {extend} from '../../utils';
 
-const Time = ({initialValues, creditData, setCredit}) => {
+const Time = ({initialValues, creditData, onFieldChang}) => {
   const [focus, setFocus] = useState(false);
 
   const {time} = creditData;
   const {min, max} = initialValues;
 
-  const handleBlurChange = useCallback(() => {
-    (time < min) ? setCredit(extend(creditData,{time: min})) :
-      (time > max) ? setCredit(extend(creditData,{time: max})) :
-        setCredit(extend(creditData,{time: time}));
+  const handleBlurChange = useCallback((name) => {
+    (time < min) ? onFieldChang({name, value: min}) :
+      (time > max) ? onFieldChang({name, value: max}) :
+        onFieldChang({name, value: time});
 
     setFocus(false);
-  }, [time, max, min, creditData, setCredit]);
-
-
-  const handleFieldChange = useCallback(({value}) => {
-    if (Number.isInteger(+value)) {
-      setCredit(extend(creditData, {time: +value}));
-    }
-  }, [setCredit, creditData]);
+  }, [time, max, min, onFieldChang]);
 
   return (
     <CalculatorFieldset legend={`Расчет срока`} modifier={`--time`} error={false}>
@@ -38,8 +29,8 @@ const Time = ({initialValues, creditData, setCredit}) => {
         placeholder="1"
         autoComplete="off"
         onFocus={() => setFocus(true)}
-        onBlur={handleBlurChange}
-        onChange={(evt) => handleFieldChange(evt.target)}
+        onBlur={(evt) => handleBlurChange(evt.target.name)}
+        onChange={(evt) => onFieldChang(evt.target)}
       />
       <input
         {...initialValues}
@@ -48,7 +39,7 @@ const Time = ({initialValues, creditData, setCredit}) => {
         name="time"
         type="range"
         value={time}
-        onChange={(evt) => handleFieldChange(evt.target)}
+        onChange={(evt) => onFieldChang(evt.target)}
       />
       <div className="form-calculator__span-wrapper">
         <span className="form-calculator__span form-calculator__span--time">{min} лет</span>
@@ -62,12 +53,4 @@ const mapStateToProps = (store) => ({
   creditData: getCredit(store)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCredit(data) {
-    dispatch(setCredit(data));
-  },
-});
-
-export {Time};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Time);
+export default connect(mapStateToProps)(Time);

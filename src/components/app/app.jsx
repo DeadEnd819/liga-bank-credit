@@ -1,14 +1,23 @@
-import React, {memo} from 'react';
-import Header from '../header/header';
+import React from 'react';
 import Main from '../main/main';
-import Footer from '../footer/footer';
+import loadable from '@loadable/component';
 
-const MemoHeader = memo(Header);
+const Header = loadable(() => import(
+  /* webpackPrefetch: true */
+  /* webpackChunkName: "header" */
+  '../header/header'
+  ));
+
+const Footer = loadable(() => import(
+  /* webpackPrefetch: true */
+  /* webpackChunkName: "footer" */
+  '../footer/footer'
+  ));
 
 const App = () => {
   return (
     <>
-      <MemoHeader />
+      <Header />
       <Main />
       <Footer />
     </>

@@ -59,6 +59,15 @@ export const InterestRates = {
   CASCO_OR_INSURANCE: `8.50`,
 }
 
+export const ParametersNames = {
+  CREDIT: `credit`,
+  CONTRIBUTION: `contribution`,
+  TIME: `time`,
+  MATERNAL: `maternal`,
+  CASCO: `casco`,
+  INSURANCE: `insurance`
+}
+
 export const TabNames = {
   DEPOSITS: `Вклады`,
   CREDITS: `Кредиты`,

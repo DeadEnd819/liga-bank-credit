@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {connect} from 'react-redux';
 import Credit from '../credit/credit';
 import Contribution from '../contribution/contribution';
@@ -7,6 +7,7 @@ import Extra from '../extra/extra';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
 import {InitialValues, DefaultCredit} from '../../const';
+import {extend} from '../../utils';
 
 const Parameters = ({creditData, setCredit}) => {
   const {type} = creditData;
@@ -22,13 +23,17 @@ const Parameters = ({creditData, setCredit}) => {
     });
   }, [type, setCredit]);
 
+  const handleFieldChange = useCallback(({name, value}) => {
+    setCredit(extend(creditData,{[name]: +value}));
+  }, [creditData, setCredit]);
+
   return (
     <div className="form-calculator__wrapper-step">
       <h3 className="form-calculator__title form-calculator__title--parameters">Шаг 2. Введите параметры кредита</h3>
-      <Credit initialValues={CREDIT} />
-      <Contribution initialValues={CONTRIBUTION} />
-      <Time initialValues={TIME} />
-      <Extra />
+      <Credit initialValues={CREDIT} onFieldChang={handleFieldChange} />
+      <Contribution initialValues={CONTRIBUTION} onFieldChang={handleFieldChange} />
+      <Time initialValues={TIME} onFieldChang={handleFieldChange} />
+      <Extra onFieldChang={handleFieldChange} />
     </div>
   );
 };
@@ -42,7 +47,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(setCredit(data));
   },
 });
-
-export {Parameters};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Parameters);

@@ -1,22 +1,25 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
-import {splittingDigits, getPercent, getContribution, extend} from '../../utils';
+import {ParametersNames} from '../../const';
+import {splittingDigits, getPercent, getContribution} from '../../utils';
 
-const Contribution = ({initialValues, creditData, setCredit}) => {
+const {CONTRIBUTION} = ParametersNames;
+
+const Contribution = ({initialValues, creditData, onFieldChang}) => {
   const [focus, setFocus] = useState(false);
 
   const {credit, contribution} = creditData;
   const {min, max} = initialValues;
 
   useEffect(() => {
-    setCredit(extend(
-      creditData,
-      {
-        contribution: getContribution(credit, min)
-      }));
+    onFieldChang({
+      name: CONTRIBUTION,
+      value: getContribution(credit, min)
+    });
+
     // eslint-disable-next-line
   }, [credit, min, setCredit]);
 
@@ -24,12 +27,6 @@ const Contribution = ({initialValues, creditData, setCredit}) => {
   const maxValue = getContribution(credit, max);
   const isCorrect = contribution && contribution >= minValue && contribution <= maxValue;
   const rangePercent = isCorrect ? getPercent(contribution, credit) : min;
-
-  const handleFieldChange = useCallback(({value}) => {
-    if (Number.isInteger(+value)) {
-      setCredit(extend(creditData, {contribution: +value}));
-    }
-  }, [setCredit, creditData]);
 
   return (
     <CalculatorFieldset legend={`Расчет взноса`} modifier={`--contribution`} error={false}>
@@ -44,7 +41,7 @@ const Contribution = ({initialValues, creditData, setCredit}) => {
         autoComplete="off"
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
-        onChange={(evt) => handleFieldChange(evt.target)}
+        onChange={(evt) => onFieldChang(evt.target)}
       />
       <input
         {...initialValues}
@@ -53,7 +50,10 @@ const Contribution = ({initialValues, creditData, setCredit}) => {
         name="contribution"
         type="range"
         value={rangePercent}
-        onChange={(evt) => handleFieldChange({value: getContribution(credit, evt.target.value)})}
+        onChange={(evt) => onFieldChang({
+          name: evt.target.name,
+          value: getContribution(credit, evt.target.value)
+        })}
       />
       <span className="form-calculator__span form-calculator__span--credit--contribution">
         {rangePercent}%
@@ -66,12 +66,4 @@ const mapStateToProps = (store) => ({
   creditData: getCredit(store)
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  setCredit(data) {
-    dispatch(setCredit(data));
-  },
-});
-
-export {Contribution};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Contribution);
+export default connect(mapStateToProps)(Contribution);
