@@ -5,10 +5,11 @@ import TabsItem from '../tabs-item/tabs-item';
 import Dots from '../dots/dots';
 import {SERVICES, TabNames} from '../../const';
 
-const getServices = () => {
+const getServices = (webP) => {
+  console.log()
   return SERVICES.map((promo) => {
     return (
-      <div key={promo} className={`services__card-service card-service card-service${promo.className} container`}>
+      <div key={promo} className={`services__card-service card-service card-service${promo.className}${webP ? `-webp` : ``} container`}>
         <h2 className={`card-service__title card-service__title${promo.className}`}>{promo.title}</h2>
         <ul className={`card-service__list card-service__list${promo.className}`}>
           {
@@ -31,13 +32,13 @@ const getServices = () => {
   });
 };
 
-const Services = () => {
+const Services = ({webP}) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const {width} = useWindowDimensions();
 
   const isDesktop = width > 1023;
-  const services = getServices();
+  const services = getServices(webP);
 
   const handleTabChange = (tab) => {
     if (tab.target) {

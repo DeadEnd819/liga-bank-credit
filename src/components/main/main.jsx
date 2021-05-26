@@ -26,13 +26,13 @@ const FeedbackModal = loadable(() => import('../feedback-modal/feedback-modal'))
 const AuthorizationModal = loadable(() => import('../authorization-modal/authorization-modal'));
 
 const Main = ({isFeedbackOpen, isModalOpen, isFeedbackModalOpen}) => {
-  // const webP = canUseWebp();
-  // console.log(webP);
+  const webP = canUseWebp();
+
   return (
     <main className="main">
       <h1 className="visually-hidden">Лига Банк - Кредитный калькулятор</h1>
-      <PromoSlider />
-      <Services />
+      <PromoSlider webP={webP} />
+      <Services webP={webP} />
       <Calculator />
       {isFeedbackOpen && <FeedbackForm />}
       <Branches />

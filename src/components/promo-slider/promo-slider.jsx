@@ -3,11 +3,11 @@ import Dots from '../dots/dots';
 import {Carousel as Slider} from 'react-responsive-carousel';
 import {PROMOS} from '../../const';
 
-const getSlides = () => {
+const getSlides = (webP) => {
   return PROMOS.map((promo) => {
     return (
       <article key={promo} className={`promo-slider__promo promo promo${promo.className}`}>
-        <div className={`promo__wrapper promo__wrapper${promo.className} container`}>
+        <div className={`promo__wrapper promo__wrapper${promo.className}${webP ? `-webp` : ``} container`}>
           <h2 className={`promo__title promo__title${promo.className}`}>Лига Банк</h2>
           <p className={`promo__description promo__description${promo.className}`}>{promo.description}</p>
           {
@@ -22,10 +22,10 @@ const getSlides = () => {
   });
 };
 
-const PromoSlider = () => {
+const PromoSlider = ({webP}) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const slides = getSlides();
+  const slides = getSlides(webP);
 
   const handleSlideChange = (indexSlide) => {
     setActiveIndex(indexSlide);

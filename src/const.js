@@ -5,7 +5,6 @@ import {ReactComponent as twitter} from './assets/img/svg/icon-twitter.svg';
 import {ReactComponent as youtube} from './assets/img/svg/icon-youtube.svg';
 import {ReactComponent as mobile} from './assets/img/svg/icon-mobile.svg';
 import {ReactComponent as phone} from './assets/img/svg/icon-phone.svg';
-import IconMark from './assets/img/svg/icon-map-mark.svg';
 
 export const SELECT_DEFAULT_TITLE = `Выберите цель кредита`;
 export const OPTION_ITEMS = [`Ипотечное кредитование`, `Автомобильное кредитование`];
@@ -28,17 +27,6 @@ export const HOME_PERCENTAGE_BAR = 15;
 export const MONTHS  = 12;
 export const PERCENTAGE_OF_SALARY = 45;
 export const FULL_PERCENTAGE = 100;
-
-export const MARK_COORDINATES = [
-  [55.753, 37.595],
-  [51.533, 46.000],
-  [55.810, 49.100],
-  [57.165, 65.540],
-  [54.989, 73.350],
-  [55.000, 82.880],
-  [61.250, 73.390],
-  [57.900, 56.250]
-]
 
 export const DefaultCredit = {
   HOME: 2000000,
@@ -149,19 +137,6 @@ export const InitialValues = {
       max: 5,
       step: 1,
     }
-  }
-};
-
-export const MapData = {
-  STATE:{
-    center: [56.123, 59.540],
-    zoom: 5,
-  },
-  OPTIONS: {
-    iconLayout: "default#image",
-    iconImageHref: IconMark,
-    iconImageSize: [35, 40],
-    iconImageOffset: [-17, -40],
   }
 };
 
@@ -308,4 +283,53 @@ export const SERVICES = [
       href: `#`
     },
   },
+];
+
+export const mapData = {
+  lat: 56.123,
+  lng: 59.540,
+  zoom: 5
+};
+
+export const mapPoints = [
+  {
+    lat: 56.203,
+    lng: 37.595,
+    title: `Москва`
+  },
+  {
+    lat: 51.533,
+    lng: 46.000,
+    title: `Саратов`
+  },
+  {
+    lat: 56.210,
+    lng: 49.100,
+    title: `Казань`
+  },
+  {
+    lat: 57.165,
+    lng: 65.540,
+    title: `Тюмень`
+  },
+  {
+    lat: 54.989,
+    lng: 73.350,
+    title: `Омск`
+  },
+  {
+    lat: 55.541,
+    lng: 82.880,
+    title: `Новосибирск`
+  },
+  {
+    lat: 61.650,
+    lng: 73.390,
+    title: `Сургут`
+  },
+  {
+    lat: 58.350,
+    lng: 56.250,
+    title: `Пермь`
+  }
 ];

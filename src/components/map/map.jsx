@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import IconMark from '../../assets/img/svg/icon-map-mark.svg';
 import 'leaflet/dist/leaflet.css';
 
-const Map = ({city, points}) => {
+const Map = ({data, points}) => {
   const mapRef = useRef();
 
   useEffect(() => {
     mapRef.current = leaflet.map(`map`, {
       center: {
-        lat: city.lat,
-        lng: city.lng
+        lat: data.lat,
+        lng: data.lng
       },
-      zoom: city.zoom
+      zoom: data.zoom
     });
 
     leaflet
@@ -42,6 +42,7 @@ const Map = ({city, points}) => {
     return () => {
       mapRef.current.remove();
     };
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -50,7 +51,7 @@ const Map = ({city, points}) => {
 }
 
 Map.propTypes = {
-  city: PropTypes.shape({
+  data: PropTypes.shape({
     lat: PropTypes.number.isRequired,
     lng: PropTypes.number.isRequired,
     zoom: PropTypes.number.isRequired,

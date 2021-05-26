@@ -7,7 +7,11 @@
   &--piggy,
   &--car,
   &--lock,
-  &--mobile {
+  &--mobile,
+  &--piggy-webp,
+  &--car-webp,
+  &--lock-webp,
+  &--mobile-webp {
     background: no-repeat 100% 39%;
 
     @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -44,6 +48,40 @@
 
     @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
       background-image: url("../../img/jpg/smartphone-mobile@2x.jpg");
+    }
+  }
+
+  // ------------------------------------
+
+  &--piggy-webp {
+    background-image: url("../../img/webp/piggybank-mobile@1x.webp");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/webp/piggybank-mobile@2x.webp");
+    }
+  }
+
+  &--car-webp {
+    background-image: url("../../img/webp/car-mobile@1.webp");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/webp/car-mobile@2x.webp");
+    }
+  }
+
+  &--lock-webp {
+    background-image: url("../../img/webp/lock-mobile@1.webp");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/webp/lock-mobile@2x.webp");
+    }
+  }
+
+  &--mobile-webp {
+    background-image: url("../../img/webp/smartphone-mobile@1.webp");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/webp/smartphone-mobile@2x.webp");
     }
   }
 }
@@ -202,15 +240,55 @@
       }
     }
 
+    //-------------------------------------
+    &--piggy-webp {
+      background-image: url("../../img/webp/piggybank-tablet@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/piggybank-tablet@2x.webp");
+      }
+    }
+
+    &--car-webp {
+      background-image: url("../../img/webp/car-tablet@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/car-tablet@2x.webp");
+      }
+    }
+
+    &--lock-webp {
+      background: 91% 44% url("../../img/webp/lock-tablet@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/lock-tablet@2x.webp");
+      }
+    }
+
+    &--mobile-webp {
+      background: 91% 62% url("../../img/webp/smartphone-tablet@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/smartphone-tablet@2x.webp");
+      }
+    }
+    //-------------------------------------
+
     &--piggy,
-    &--car {
+    &--car,
+    &--piggy-webp,
+    &--car-webp {
       background-position: 90% 50%;
     }
 
     &--piggy,
     &--car,
     &--lock ,
-    &--mobile{
+    &--mobile,
+    &--piggy-webp,
+    &--car-webp,
+    &--lock-webp,
+    &--mobile-webp {
       background-repeat: no-repeat;
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -326,20 +404,64 @@
       }
     }
 
+    //------------------------------------------
+    &--piggy-webp {
+      border-radius: 0 4px 4px 4px;
+      background-image:  url("../../img/webp/piggybank-desktop@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/piggybank-desktop@2x.webp");
+      }
+    }
+
+    &--car-webp {
+      background-image:  url("../../img/webp/car-desktop@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/car-desktop@2x.webp");
+      }
+    }
+
+    &--lock-webp {
+      background: 81.5% 49% url("../../img/webp/lock-desktop@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/lock-desktop@2x.webp");
+      }
+    }
+
+    &--mobile-webp {
+      border-radius: 4px 0 4px 4px;
+      background: 81.5% 50% url("../../img/webp/smartphone-desktop@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/smartphone-desktop@2x.webp");
+      }
+    }
+    //------------------------------------------
+
     &--car,
-    &--lock {
+    &--lock,
+    &--car-webp,
+    &--lock-webp {
       border-radius: 4px;
     }
 
     &--piggy,
-    &--car {
+    &--car,
+    &--piggy-webp,
+    &--car-webp {
       background-position: 81.5% 50%;
     }
 
     &--piggy,
     &--car,
     &--lock ,
-    &--mobile{
+    &--mobile,
+    &--piggy-webp,
+    &--car-webp,
+    &--lock-webp,
+    &--mobile-webp {
       background-color: $background-color;
       background-repeat: no-repeat;
 

@@ -25,7 +25,9 @@
   padding-left: clamp(15px, 4%, 268px);
 
   &--girl,
-  &--man {
+  &--man,
+  &--girl-webp,
+  &--man-webp {
     background: no-repeat center right;
 
     @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -55,6 +57,31 @@
 
     @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
       background-image: url("../../img/jpg/girl-mobile@2x.jpg");
+    }
+  }
+
+  &--credit-webp {
+    background: no-repeat 100% 61% url("../../img/webp/black-card-mobile@1x.webp");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/webp/black-card-mobile@2x.webp");
+      background-size: 105px auto;
+    }
+  }
+
+  &--man-webp {
+    background-image: url("../../img/webp/man-mobile@1x.webp");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/webp/man-mobile@2x.webp");
+    }
+  }
+
+  &--girl-webp {
+    background-image: url("../../img/webp/girl-mobile@1x.webp");
+
+    @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+      background-image: url("../../img/webp/girl-mobile@2x.webp");
     }
   }
 }
@@ -135,8 +162,10 @@
     min-height: 300px;
     padding-left: clamp(86px, 9%, 92px);
 
+    &--girl,
     &--man,
-    &--girl {
+    &--girl-webp,
+    &--man-webp {
       background: no-repeat center center;
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -169,6 +198,34 @@
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         background-image: url("../../img/jpg/girl-tablet@2x.jpg");
+      }
+    }
+
+    &--credit-webp {
+      background:
+        no-repeat 85% 56% url("../../img/webp/cards-tablet@1x.webp"),
+        no-repeat center right url("../../img/svg/promo-background-tablet.svg");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background:
+          no-repeat 85% 50%/357px auto url("../../img/webp/cards-tablet@2x.webp"),
+          no-repeat bottom right/312px auto url("../../img/svg/promo-background-tablet.svg");
+      }
+    }
+
+    &--man-webp {
+      background-image: url("../../img/webp/man-tablet@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/man-tablet@2x.webp");
+      }
+    }
+
+    &--girl-webp {
+      background-image: url("../../img/webp/girl-tablet@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/girl-tablet@2x.webp");
       }
     }
   }
@@ -220,7 +277,9 @@
     padding-left: clamp(92px, 18%, 268px);
 
     &--man,
-    &--girl {
+    &--girl,
+    &--man-webp,
+    &--girl-webp {
       background: no-repeat center center;
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -253,6 +312,34 @@
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         background-image: url("../../img/jpg/girl-desktop@2x.jpg");
+      }
+    }
+
+    &--credit-webp {
+      background:
+        no-repeat 76% 54% url("../../img/webp/cards-desktop@1x.webp"),
+        no-repeat center center url("../../img/svg/promo-background.svg");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background:
+          no-repeat 76% 54%/444px auto url("../../img/webp/cards-desktop@2x.webp"),
+          no-repeat bottom right url("../../img/svg/promo-background.svg");
+      }
+    }
+
+    &--man-webp {
+      background-image: url("../../img/webp/man-desktop@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/man-desktop@2x.webp");
+      }
+    }
+
+    &--girl-webp {
+      background-image: url("../../img/webp/girl-desktop@1x.webp");
+
+      @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
+        background-image: url("../../img/webp/girl-desktop@2x.webp");
       }
     }
   }
