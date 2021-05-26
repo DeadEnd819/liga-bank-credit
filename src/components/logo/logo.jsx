@@ -12,8 +12,13 @@ const Logo = ({block}) => {
         <picture>
           <source media="(min-width: 1024px)" srcSet={IconLogoDesktop} />
             <source media="(min-width: 768px)" srcSet={IconLogoTablet} />
-              <img className="page-header__logo-image" src={IconLogoMobile}
-                   alt="Лого Лига Банк" />
+              <img
+                className="header__logo-image"
+                src={IconLogoMobile}
+                alt="Лого Лига Банк"
+                width="150"
+                height="27"
+              />
         </picture>
       </a>
     </div>

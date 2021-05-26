@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import loadable from '@loadable/component';
+import {useWebPSupportCheck} from "react-use-webp-support-check";
 import Branches from '../branches/branches';
 import {getFeedbackFlag, getModalFlag, getFeedbackModalFlag} from '../../store/selectors';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import {canUseWebp} from '../../utils';
 
 const PromoSlider = loadable(() => import(
   /* webpackPrefetch: true */
@@ -26,13 +26,13 @@ const FeedbackModal = loadable(() => import('../feedback-modal/feedback-modal'))
 const AuthorizationModal = loadable(() => import('../authorization-modal/authorization-modal'));
 
 const Main = ({isFeedbackOpen, isModalOpen, isFeedbackModalOpen}) => {
-  const webP = canUseWebp();
+  const supportsWebP = useWebPSupportCheck();
 
   return (
     <main className="main">
       <h1 className="visually-hidden">Лига Банк - Кредитный калькулятор</h1>
-      <PromoSlider webP={webP} />
-      <Services webP={webP} />
+      <PromoSlider webP={supportsWebP} />
+      <Services webP={supportsWebP} />
       <Calculator />
       {isFeedbackOpen && <FeedbackForm />}
       <Branches />

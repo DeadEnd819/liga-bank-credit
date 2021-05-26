@@ -111,11 +111,3 @@ export const getFeedbackList = (requestNumber, type, credit, contribution, time)
     },
   ];
 };
-
-export const canUseWebp = () => {
-  let elem = document.createElement('canvas');
-  let isItFirefox = window.navigator.userAgent.match(/Firefox\/([0-9]+)\./);
-  let firefoxVer = isItFirefox ? parseInt(isItFirefox[1]) : 0;
-
-  return (elem.toDataURL('image/webp').indexOf('data:image/webp') === 0) || firefoxVer >= 65;
-}

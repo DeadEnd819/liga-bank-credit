@@ -33,6 +33,11 @@
   width: 100%;
 }
 
+.header__logo-image {
+  width: 116px;
+  height: 19px;
+}
+
 @media (min-width: $tablet-width) {
   .header {
     padding: 22px 0 19px 0;
@@ -45,6 +50,11 @@
 
   .header__nav-wrapper {
     width: calc(100% - 183px);
+  }
+
+  .header__logo-image {
+    width: 134px;
+    height: 24px;
   }
 }
 
@@ -59,5 +69,10 @@
 
   .header__nav-wrapper {
     width: calc(100% - 301px);
+  }
+
+  .header__logo-image {
+    width: 150px;
+    height: 27px;
   }
 }
