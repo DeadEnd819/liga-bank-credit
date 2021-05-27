@@ -35,7 +35,7 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
     closeModal();
   };
 
-  const handlePasswordHidden = () => {
+  const handleButtonHiddenToggle = () => {
     setPasswordHidden((prevState) => !prevState);
   };
 
@@ -90,8 +90,10 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
                 className="form-modal__button-eye button button--eye"
                 type="button"
                 aria-label="Показать пароль"
-                onMouseDown={handlePasswordHidden}
-                onMouseUp={handlePasswordHidden}
+                onMouseDown={handleButtonHiddenToggle}
+                onMouseUp={handleButtonHiddenToggle}
+                onTouchStart={handleButtonHiddenToggle}
+                onTouchEnd={handleButtonHiddenToggle}
               >
                 <IconEye
                   className="authorization-modal__button-icon authorization-modal__button-icon--eye"

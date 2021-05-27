@@ -28,7 +28,7 @@ const Calculator = ({creditData, setCredit}) => {
   }
 
   return (
-    <section className="main__calculator calculator">
+    <section className="main__calculator calculator" id="calculator">
       <Wrapper name={`calculator`}>
         <h2 className="calculator__title">Кредитный калькулятор</h2>
         <form action="#" className="calculator__form form-calculator" onSubmit={(evt) => console.log(evt)}>

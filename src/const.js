@@ -207,7 +207,7 @@ export const PROMOS = [
     description: `Кредиты на любой случай`,
     link: {
       title: `Рассчитать кредит`,
-      href: `#`
+      href: `#calculator`
     }
   },
   {
@@ -220,7 +220,7 @@ export const PROMOS = [
     description: `Всегда рядом`,
     link: {
       title: `Найти отделение`,
-      href: `#`
+      href: `#branches`
     }
   },
 ];

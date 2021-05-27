@@ -11,7 +11,7 @@ const Branches = () => {
   });
 
   return (
-    <section className="main__branches branches"  ref={ref}>
+    <section className="main__branches branches" id="branches" ref={ref}>
       <div className="branches__wrapper container">
         <h2 className="branches__title">Отделения Лига Банка</h2>
         {inView && <Map
