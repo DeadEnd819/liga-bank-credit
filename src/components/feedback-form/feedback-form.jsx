@@ -72,6 +72,7 @@ const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, na
               id="name"
               value={name}
               required
+              autoFocus={true}
               onChange={(evt) => setRequestData(extend(data, {
                 name: evt.target.value
               }))}

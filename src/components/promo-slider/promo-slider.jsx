@@ -4,11 +4,11 @@ import {Carousel as Slider} from 'react-responsive-carousel';
 import {PROMOS} from '../../const';
 import PropTypes from 'prop-types';
 
-const getSlides = (webP) => {
+const getSlides = (isWebp) => {
   return PROMOS.map((promo) => {
     return (
       <article key={promo} className={`promo-slider__promo promo promo${promo.className}`}>
-        <div className={`promo__wrapper promo__wrapper${promo.className}${webP ? `-webp` : ``} container`}>
+        <div className={`promo__wrapper promo__wrapper${promo.className}${isWebp ? `-webp` : ``} container`}>
           <h2 className={`promo__title promo__title${promo.className}`}>Лига Банк</h2>
           <p className={`promo__description promo__description${promo.className}`}>{promo.description}</p>
           {
@@ -23,10 +23,10 @@ const getSlides = (webP) => {
   });
 };
 
-const PromoSlider = ({webP}) => {
+const PromoSlider = ({isWebp}) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const slides = getSlides(webP);
+  const slides = getSlides(isWebp);
 
   const handleSlideChange = (indexSlide) => {
     setActiveIndex(indexSlide);
@@ -34,6 +34,7 @@ const PromoSlider = ({webP}) => {
 
   return (
     <section className="main__promo-slider promo-slider">
+      <h2 className="visually-hidden">Промо предложения</h2>
       <Slider
         selectedItem={0}
         showStatus={false}
@@ -60,7 +61,7 @@ const PromoSlider = ({webP}) => {
 };
 
 PromoSlider.propTypes = {
-  webP: PropTypes.bool.isRequired,
+  isWebp: PropTypes.bool.isRequired,
 };
 
 export default PromoSlider;

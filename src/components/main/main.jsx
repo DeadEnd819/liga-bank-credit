@@ -32,8 +32,8 @@ const Main = ({isFeedbackOpen, isModalOpen, isFeedbackModalOpen}) => {
   return (
     <main className="main">
       <h1 className="visually-hidden">Лига Банк - Кредитный калькулятор</h1>
-      <PromoSlider webP={supportsWebP} />
-      <Services webP={supportsWebP} />
+      <PromoSlider isWebp={supportsWebP} />
+      <Services isWebp={supportsWebP} />
       <Calculator />
       {isFeedbackOpen && <FeedbackForm />}
       <Branches />

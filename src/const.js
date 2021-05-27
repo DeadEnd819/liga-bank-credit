@@ -28,6 +28,11 @@ export const MONTHS  = 12;
 export const PERCENTAGE_OF_SALARY = 45;
 export const FULL_PERCENTAGE = 100;
 
+export  const WindowWidth = {
+  TABLET: 767,
+  DESKTOP: 1023
+};
+
 export const DefaultCredit = {
   HOME: 2000000,
   CAR: 1000000

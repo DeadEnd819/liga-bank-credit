@@ -80,7 +80,12 @@
     color: $grey-text-color;
   }
 
-  &:-moz-placeholder,
+  &:-moz-placeholder {
+    line-height: 22px;
+    letter-spacing: 0.03em;
+    color: $grey-text-color;
+  }
+
   &::-webkit-input-placeholder {
     line-height: 22px;
     letter-spacing: 0.03em;
@@ -174,7 +179,10 @@
       font-size: 18px;
     }
 
-    &:-moz-placeholder,
+    &:-moz-placeholder {
+      font-size: 18px;
+    }
+
     &::-webkit-input-placeholder {
       font-size: 18px;
     }

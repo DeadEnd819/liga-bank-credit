@@ -16,7 +16,6 @@ const MainNavigation = ({openModal, modifierName}) => {
     <nav className={`header__nav main-nav${modifierName ? ` main-nav${modifierName}` : modifierName}`}>
       <ul className="main-nav__list main-nav__list--site">
         {NAVIGATION_ITEMS.map((title, index) => {
-
           if(title.name !== NAVIGATION_ITEMS[4].name) {
             return (
               <NavigationItem

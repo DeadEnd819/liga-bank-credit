@@ -3,14 +3,13 @@ import {Carousel as Slider} from 'react-responsive-carousel';
 import useWindowDimensions from '../../hooks/use-window-dimensions';
 import TabsItem from '../tabs-item/tabs-item';
 import Dots from '../dots/dots';
-import {SERVICES, TabNames} from '../../const';
+import {SERVICES, TabNames, WindowWidth} from '../../const';
 import PropTypes from 'prop-types';
 
-const getServices = (webP) => {
-  console.log()
+const getServices = (isWebp) => {
   return SERVICES.map((promo) => {
     return (
-      <div key={promo} className={`services__card-service card-service card-service${promo.className}${webP ? `-webp` : ``} container`}>
+      <div key={promo} className={`services__card-service card-service card-service${promo.className}${isWebp ? `-webp` : ``} container`}>
         <h2 className={`card-service__title card-service__title${promo.className}`}>{promo.title}</h2>
         <ul className={`card-service__list card-service__list${promo.className}`}>
           {
@@ -33,24 +32,26 @@ const getServices = (webP) => {
   });
 };
 
-const Services = ({webP}) => {
+const Services = ({isWebp}) => {
   const [activeTab, setActiveTab] = useState(0);
 
   const {width} = useWindowDimensions();
 
-  const isDesktop = width > 1023;
-  const services = getServices(webP);
+  const isDesktop = width > WindowWidth.DESKTOP;
+  const services = getServices(isWebp);
 
   const handleTabChange = (tab) => {
     if (tab.target) {
       setActiveTab(+tab.target.id );
       return;
     }
+
     setActiveTab(tab);
   };
 
   return (
     <section className="main__services services">
+      <h2 className="visually-hidden">Предоставляемые услуги</h2>
       {
         isDesktop ?
           <div className="services__tabs tabs">
@@ -99,7 +100,7 @@ const Services = ({webP}) => {
 };
 
 Services.propTypes = {
-  webP: PropTypes.bool.isRequired,
+  isWebp: PropTypes.bool.isRequired,
 };
 
 export default Services;
