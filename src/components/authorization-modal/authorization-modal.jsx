@@ -1,6 +1,7 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 import {connect} from 'react-redux';
 import {useEscapeButton} from '../../hooks/use-escape-button';
+import {useOverflowHidden} from '../../hooks/use-owerflow-hidden';
 import {ReactComponent as IconClose} from '../../assets/img/svg/icon-close.svg';
 import {ReactComponent as IconLogo} from '../../assets/img/svg/logo-modal.svg';
 import {ReactComponent as IconEye} from '../../assets/img/svg/icon-eye.svg';
@@ -11,18 +12,6 @@ import PropTypes from 'prop-types';
 
 const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAuthorizationData, closeModal}) => {
   const [isPasswordHidden, setPasswordHidden] = useState(true);
-  const inputLogin = useRef(null);
-
-  useEffect(() => {
-    document.body.style.overflow = `hidden`;
-    inputLogin.current.focus();
-
-    return () => {
-      document.body.style.overflow = `auto`;
-    };
-  },[]);
-
-  useEscapeButton(closeModal);
 
   const handleFieldChange = useCallback(({name, value}) => {
     setAuthorizationData(extend(authorizationData, {[name]: value}));
@@ -38,6 +27,9 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
   const handleButtonHiddenToggle = () => {
     setPasswordHidden((prevState) => !prevState);
   };
+
+  useOverflowHidden();
+  useEscapeButton(closeModal);
 
   return (
     <div className="authorization-modal">
@@ -66,7 +58,7 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
               <label className="form-modal__label" htmlFor="login">Логин</label>
               <input
                 className="form-modal__input"
-                ref={inputLogin}
+                autoFocus={true}
                 type="text"
                 id="login"
                 name="login"

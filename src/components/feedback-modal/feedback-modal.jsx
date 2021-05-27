@@ -13,11 +13,11 @@ const FeedbackModal = ({closeModal}) => {
           className="feedback-modal__button-close button button--close"
           type="button"
           aria-label="Закрыть окно"
+          onClick={closeModal}
         >
           <IconClose
             className="feedback-modal__button-icon feedback-modal__button-icon--close"
             alt="Иконка крестик"
-            onClick={closeModal}
           />
         </button>
         <p className="feedback-modal__description">

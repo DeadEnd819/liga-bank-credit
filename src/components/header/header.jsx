@@ -1,5 +1,5 @@
 import React, {useState, memo} from 'react';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useWindowDimensions from '../../hooks/use-window-dimensions';
 import MainNavigation from '../main-navigation/main-navigation';
 import Logo from '../logo/logo';
 import Wrapper from '../wrapper/wrapper';

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Carousel as Slider} from 'react-responsive-carousel';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
+import useWindowDimensions from '../../hooks/use-window-dimensions';
 import TabsItem from '../tabs-item/tabs-item';
 import Dots from '../dots/dots';
 import {SERVICES, TabNames} from '../../const';
