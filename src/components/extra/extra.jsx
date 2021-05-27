@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import {CheckboxType, CheckboxLabels, CreditTypes} from '../../const';
+import PropTypes from 'prop-types';
 
 const Checkbox = ({callback, checked, name, label}) => {
   return (
@@ -59,6 +60,19 @@ const Extra = ({creditData, onFieldChang}) => {
       }
     </CalculatorFieldset>
   );
+};
+
+Extra.propTypes = {
+  creditData: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+    maternal: PropTypes.bool.isRequired,
+    casco: PropTypes.bool.isRequired,
+    insurance: PropTypes.bool.isRequired,
+  }).isRequired,
+  onFieldChang: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

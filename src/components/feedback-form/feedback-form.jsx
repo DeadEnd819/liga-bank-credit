@@ -5,6 +5,7 @@ import {CreditTypes} from '../../const';
 import {extend, getFeedbackList} from '../../utils';
 import {getRequestNumber, getCredit, getName, getPhone, getEmail, getRequestData} from '../../store/selectors';
 import {setAddRequest, setRequestData} from '../../store/action';
+import PropTypes from 'prop-types';
 
 const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, name, phone, email, data}) => {
 
@@ -49,8 +50,8 @@ const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, na
       <div className="feedback__wrapper container">
         <h3 className="feedback__title">Шаг 3. Оформление заявки</h3>
         <dl className="feedback__list">
-          {feedbackList.map((item) => (
-            <div className="feedback__item" key={item}>
+          {feedbackList.map((item, index) => (
+            <div className="feedback__item" key={item + index}>
               <dd className="feedback__value">{item.value}</dd>
               <dt className="feedback__name">{item.name}</dt>
             </div>
@@ -107,6 +108,31 @@ const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, na
       </div>
     </section>
   );
+};
+
+//requestNumber, creditData, addRequest, setRequestData, name, phone, email, data
+
+FeedbackForm.propTypes = {
+  requestNumber: PropTypes.number.isRequired,
+  creditData: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+    maternal: PropTypes.bool.isRequired,
+    casco: PropTypes.bool.isRequired,
+    insurance: PropTypes.bool.isRequired,
+  }).isRequired,
+  addRequest: PropTypes.func.isRequired,
+  setRequestData: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  data: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = (store) => ({

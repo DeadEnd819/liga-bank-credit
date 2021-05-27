@@ -4,6 +4,7 @@ import useWindowDimensions from '../../hooks/useWindowDimensions';
 import TabsItem from '../tabs-item/tabs-item';
 import Dots from '../dots/dots';
 import {SERVICES, TabNames} from '../../const';
+import PropTypes from 'prop-types';
 
 const getServices = (webP) => {
   console.log()
@@ -95,6 +96,10 @@ const Services = ({webP}) => {
       }
     </section>
   );
+};
+
+Services.propTypes = {
+  webP: PropTypes.bool.isRequired,
 };
 
 export default Services;

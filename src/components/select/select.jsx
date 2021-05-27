@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelect} from 'downshift';
 import {SELECT_DEFAULT_TITLE} from '../../const';
+import PropTypes from 'prop-types';
 
 const Select = ({onTypeChange, items}) => {
   const {
@@ -47,6 +48,11 @@ const Select = ({onTypeChange, items}) => {
       </div>
     </div>
   );
+};
+
+Select.propTypes = {
+  items: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  onTypeChange: PropTypes.func.isRequired,
 };
 
 export default Select;

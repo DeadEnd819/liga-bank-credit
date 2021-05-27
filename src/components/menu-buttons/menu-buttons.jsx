@@ -4,6 +4,7 @@ import {ReactComponent as IconMenu} from '../../assets/img/svg/icon-menu.svg';
 import {ReactComponent as IconClose} from '../../assets/img/svg/icon-close.svg';
 import {ReactComponent as IconLogin} from '../../assets/img/svg/icon-login.svg';
 import {setModalOpen} from '../../store/action';
+import PropTypes from 'prop-types';
 
 const MenuButtons = ({isMenuOpen, onMenuToggle, onMenuClose, openModal}) => {
   return (
@@ -41,12 +42,17 @@ const MenuButtons = ({isMenuOpen, onMenuToggle, onMenuClose, openModal}) => {
   );
 };
 
+MenuButtons.propTypes = {
+  isMenuOpen: PropTypes.bool.isRequired,
+  onMenuToggle: PropTypes.func.isRequired,
+  onMenuClose: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+};
+
 const mapDispatchToProps = (dispatch) => ({
   openModal() {
     dispatch(setModalOpen());
   },
 });
-
-export {MenuButtons};
 
 export default connect(null, mapDispatchToProps)(MenuButtons);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Dots = ({className, slides, active}) => {
   return (
@@ -13,6 +14,12 @@ const Dots = ({className, slides, active}) => {
       })}
     </ul>
   );
+};
+
+Dots.propTypes = {
+  className: PropTypes.string.isRequired,
+  slides: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  active: PropTypes.number.isRequired,
 };
 
 export default Dots;

@@ -4,6 +4,7 @@ import NavigationItem from '../navigation-item/navigation-item';
 import {ReactComponent as IconLogin} from '../../assets/img/svg/icon-login.svg';
 import {NAVIGATION_ITEMS} from '../../const';
 import {setModalOpen} from "../../store/action";
+import PropTypes from 'prop-types';
 
 const MainNavigation = ({openModal, modifierName}) => {
   const handleModalOpen = (evt) => {
@@ -46,12 +47,20 @@ const MainNavigation = ({openModal, modifierName}) => {
   );
 };
 
+MainNavigation.propTypes = {
+  openModal: PropTypes.func.isRequired,
+  modifierName: PropTypes.string.isRequired,
+};
+
+MainNavigation.propTypes = {
+  openModal: PropTypes.func.isRequired,
+  modifierName: PropTypes.string.isRequired,
+};
+
 const mapDispatchToProps = (dispatch) => ({
   openModal() {
     dispatch(setModalOpen());
   },
 });
-
-export {MainNavigation};
 
 export default connect(null, mapDispatchToProps)(MainNavigation);

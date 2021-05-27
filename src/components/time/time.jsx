@@ -2,6 +2,7 @@ import React, {useCallback, useState} from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
+import PropTypes from 'prop-types';
 
 const Time = ({initialValues, creditData, onFieldChang}) => {
   const [focus, setFocus] = useState(false);
@@ -47,6 +48,24 @@ const Time = ({initialValues, creditData, onFieldChang}) => {
       </div>
     </CalculatorFieldset>
   );
+};
+
+Time.propTypes = {
+  initialValues: PropTypes.shape({
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    step: PropTypes.number.isRequired,
+  }).isRequired,
+  creditData: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+    maternal: PropTypes.bool.isRequired,
+    casco: PropTypes.bool.isRequired,
+    insurance: PropTypes.bool.isRequired,
+  }).isRequired,
+  onFieldChang: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

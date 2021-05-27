@@ -6,6 +6,7 @@ import Select from '../select/select';
 import {OPTION_ITEMS, CreditTypes} from '../../const';
 import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
+import PropTypes from 'prop-types';
 
 const Parameters = loadable(() => import('../parameters/parameters'));
 const Offer = loadable(() => import('../offer/offer'));
@@ -40,6 +41,19 @@ const Calculator = ({creditData, setCredit}) => {
       </Wrapper>
     </section>
   );
+};
+
+Calculator.propTypes = {
+  creditData: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+    maternal: PropTypes.bool.isRequired,
+    casco: PropTypes.bool.isRequired,
+    insurance: PropTypes.bool.isRequired,
+  }).isRequired,
+  setCredit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

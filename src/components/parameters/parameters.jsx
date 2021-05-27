@@ -8,6 +8,7 @@ import {getCredit} from '../../store/selectors';
 import {setCredit} from '../../store/action';
 import {InitialValues, DefaultCredit} from '../../const';
 import {extend} from '../../utils';
+import PropTypes from 'prop-types';
 
 const Parameters = ({creditData, setCredit}) => {
   const {type} = creditData;
@@ -24,6 +25,11 @@ const Parameters = ({creditData, setCredit}) => {
   }, [type, setCredit]);
 
   const handleFieldChange = useCallback(({name, value}) => {
+    if (typeof value === `boolean`) {
+      setCredit(extend(creditData,{[name]: value}));
+      return;
+    }
+
     setCredit(extend(creditData,{[name]: +value}));
   }, [creditData, setCredit]);
 
@@ -36,6 +42,19 @@ const Parameters = ({creditData, setCredit}) => {
       <Extra onFieldChang={handleFieldChange} />
     </div>
   );
+};
+
+Parameters.propTypes = {
+  creditData: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+    maternal: PropTypes.bool.isRequired,
+    casco: PropTypes.bool.isRequired,
+    insurance: PropTypes.bool.isRequired,
+  }).isRequired,
+  setCredit: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

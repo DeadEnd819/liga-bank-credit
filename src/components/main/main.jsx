@@ -5,6 +5,7 @@ import {useWebPSupportCheck} from "react-use-webp-support-check";
 import Branches from '../branches/branches';
 import {getFeedbackFlag, getModalFlag, getFeedbackModalFlag} from '../../store/selectors';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import PropTypes from 'prop-types';
 
 const PromoSlider = loadable(() => import(
   /* webpackPrefetch: true */
@@ -42,12 +43,16 @@ const Main = ({isFeedbackOpen, isModalOpen, isFeedbackModalOpen}) => {
   );
 };
 
+Main.propTypes = {
+  isFeedbackOpen: PropTypes.bool.isRequired,
+  isModalOpen: PropTypes.bool.isRequired,
+  isFeedbackModalOpen: PropTypes.bool.isRequired,
+};
+
 const mapStateToProps = (store) => ({
   isFeedbackOpen: getFeedbackFlag(store),
   isModalOpen: getModalFlag(store),
   isFeedbackModalOpen: getFeedbackModalFlag(store)
 });
-
-export {Main};
 
 export default connect(mapStateToProps)(Main);

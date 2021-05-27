@@ -6,6 +6,7 @@ import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
 import {splittingDigits} from '../../utils';
 import {getCredit} from '../../store/selectors';
 import {IdButton, CreditTypes, ParametersNames} from '../../const';
+import PropTypes from 'prop-types';
 
 const {CREDIT} = ParametersNames;
 
@@ -74,6 +75,24 @@ const Credit = ({initialValues, creditData, onFieldChang}) => {
       </span>
     </CalculatorFieldset>
   );
+};
+
+Credit.propTypes = {
+  initialValues: PropTypes.shape({
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+    step: PropTypes.number.isRequired,
+  }).isRequired,
+  creditData: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+    maternal: PropTypes.bool.isRequired,
+    casco: PropTypes.bool.isRequired,
+    insurance: PropTypes.bool.isRequired,
+  }).isRequired,
+  onFieldChang: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

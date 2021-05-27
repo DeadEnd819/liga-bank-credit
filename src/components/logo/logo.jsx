@@ -29,4 +29,8 @@ Logo.propTypes = {
   block: PropTypes.string.isRequired,
 };
 
+Logo.propTypes = {
+  block: PropTypes.string.isRequired,
+};
+
 export default Logo;

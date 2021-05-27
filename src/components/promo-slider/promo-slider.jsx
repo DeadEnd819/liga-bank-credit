@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Dots from '../dots/dots';
 import {Carousel as Slider} from 'react-responsive-carousel';
 import {PROMOS} from '../../const';
+import PropTypes from 'prop-types';
 
 const getSlides = (webP) => {
   return PROMOS.map((promo) => {
@@ -56,6 +57,10 @@ const PromoSlider = ({webP}) => {
       />
     </section>
   );
+};
+
+PromoSlider.propTypes = {
+  webP: PropTypes.bool.isRequired,
 };
 
 export default PromoSlider;

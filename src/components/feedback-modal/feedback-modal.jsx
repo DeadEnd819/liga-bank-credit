@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {ReactComponent as IconClose} from '../../assets/img/svg/icon-close.svg';
 import {setRequestModalClose} from '../../store/action';
+import PropTypes from 'prop-types';
 
 const FeedbackModal = ({closeModal}) => {
   return (
@@ -25,6 +26,10 @@ const FeedbackModal = ({closeModal}) => {
       </div>
     </div>
   );
+};
+
+FeedbackModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

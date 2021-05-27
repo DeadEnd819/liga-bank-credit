@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getCredit, getOffer} from '../../store/selectors';
 import {setOffer, setFeedbackOpen} from '../../store/action';
@@ -10,6 +11,7 @@ import {
   getHomeRate,
   getOfferValues
 } from '../../utils';
+
 
 const getOfferList = (total, type, rate, payment, income) => {
   return [
@@ -57,7 +59,7 @@ const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
   useEffect(() => {
     setOffer({
       total: totalValue,
-      rate: rateValue,
+      rate: +rateValue,
       payment: paymentValue,
       income: incomeValue,
     });
@@ -105,6 +107,26 @@ const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
     </div>
   );
 }
+
+Offer.propTypes = {
+  creditData: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.number.isRequired,
+    maternal: PropTypes.bool.isRequired,
+    casco: PropTypes.bool.isRequired,
+    insurance: PropTypes.bool.isRequired,
+  }).isRequired,
+  offerData: PropTypes.shape({
+    total: PropTypes.number.isRequired,
+    rate: PropTypes.number.isRequired,
+    payment: PropTypes.number.isRequired,
+    income: PropTypes.number.isRequired,
+  }).isRequired,
+  setOffer: PropTypes.func.isRequired,
+  feedbackOpen: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (store) => ({
   creditData: getCredit(store),

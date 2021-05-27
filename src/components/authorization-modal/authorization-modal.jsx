@@ -7,6 +7,7 @@ import {ReactComponent as IconEye} from '../../assets/img/svg/icon-eye.svg';
 import {setPopupClose, setAuthorizationData, clearAuthorizationData} from '../../store/action';
 import {getAuthorizationData} from '../../store/selectors';
 import {extend} from '../../utils';
+import PropTypes from 'prop-types';
 
 const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAuthorizationData, closeModal}) => {
   const [isPasswordHidden, setPasswordHidden] = useState(true);
@@ -110,6 +111,16 @@ const AuthorizationModal = ({authorizationData, setAuthorizationData, clearAutho
   );
 };
 
+AuthorizationModal.propTypes = {
+  authorizationData: PropTypes.shape({
+    login: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired
+  }).isRequired,
+  closeModal: PropTypes.func.isRequired,
+  setAuthorizationData: PropTypes.func.isRequired,
+  clearAuthorizationData: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (store) => ({
   authorizationData: getAuthorizationData(store)
 });
@@ -125,7 +136,5 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(clearAuthorizationData());
   }
 });
-
-export {AuthorizationModal};
 
 export default connect(mapStateToProps, mapDispatchToProps)(AuthorizationModal);
