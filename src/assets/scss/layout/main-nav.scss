@@ -3,7 +3,11 @@
   margin-top: 42px;
   margin-bottom: 304px;
 
-  &--animation {
+  &--mobile {
+    position: absolute;
+    height: 100vh;
+    max-height: calc(100vh - 77px);
+    overflow-y: auto;
     animation: menu 1s;
   }
 }
@@ -148,7 +152,7 @@
   }
 
   50% {
-    transform: scale(0);
+    transform: scale(0.5);
   }
 
   100% {

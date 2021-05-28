@@ -28,123 +28,6 @@ export const MONTHS  = 12;
 export const PERCENTAGE_OF_SALARY = 45;
 export const FULL_PERCENTAGE = 100;
 
-export  const WindowWidth = {
-  TABLET: 767,
-  DESKTOP: 1023
-};
-
-export const DefaultCredit = {
-  HOME: 2000000,
-  CAR: 1000000
-};
-
-export const MinimumCredit = {
-  HOME: 500000,
-  CAR: 200000
-}
-
-export const InterestRates = {
-  HOME_MINIMUM: `8.50`,
-  HOME_MAXIMUM: `9.40`,
-  CAR_MINIMUM: `15`,
-  CAR_MAXIMUM: `16`,
-  CASCO_AND_INSURANCE: `3.50`,
-  CASCO_OR_INSURANCE: `8.50`,
-}
-
-export const ParametersNames = {
-  CREDIT: `credit`,
-  CONTRIBUTION: `contribution`,
-  TIME: `time`,
-  MATERNAL: `maternal`,
-  CASCO: `casco`,
-  INSURANCE: `insurance`
-}
-
-export const TabNames = {
-  DEPOSITS: `Вклады`,
-  CREDITS: `Кредиты`,
-  INSURANCE: `Страхование`,
-  SERVICES: `Онлайн-сервисы`
-};
-
-export const ActionType = {
-  ADD_CREDIT: `ADD_CREDIT`,
-  ADD_OFFER: `ADD_OFFER`,
-  CLEAR_CREDIT: `CLEAR_CREDIT`,
-  MODAL_OPEN: `MODAL_OPEN`,
-  MODAL_CLOSE: `MODAL_CLOSE`,
-  AUTHORIZED_SAVE_DATA: `AUTHORIZED_SAVE_DATA`,
-  AUTHORIZED_CLEAR_DATA: `AUTHORIZED_CLEAR_DATA`,
-  FEEDBACK_OPEN: `FEEDBACK_OPEN`,
-  REQUEST_ADD: `REQUEST_ADD`,
-  DATA_CHANGE: `DATA_CHANGE`,
-};
-
-export const Key = {
-  ESCAPE: `Escape`,
-  ESC: `Esc`,
-}
-
-export const IdButton = {
-  INCREMENT: `increment`,
-  DECREMENT: `decrement`
-};
-
-export const CheckboxType = {
-  MATERNAL: `maternal`,
-  CASCO: `casco`,
-  INSURANCE: `insurance`
-}
-
-export const CheckboxLabels = {
-  MATERNAL: `Использовать материнский капитал`,
-  CASCO: `Оформить КАСКО в нашем банке`,
-  INSURANCE: `Оформить Страхование жизни в нашем банке`
-}
-
-export const CreditTypes = {
-  HOME: `HOME`,
-  CAR: `CAR`
-};
-
-export const InitialValues = {
-  HOME: {
-    CREDIT: {
-      min: 1200000,
-      max: 25000000,
-      step: 100000
-    },
-    CONTRIBUTION: {
-      min: 10,
-      max: 100,
-      step: 5,
-    },
-    TIME: {
-      min: 5,
-      max: 30,
-      step: 1,
-    }
-  },
-  CAR: {
-    CREDIT: {
-      min: 500000,
-      max: 5000000,
-      step: 50000
-    },
-    CONTRIBUTION: {
-      min: 20,
-      max: 100,
-      step: 5,
-    },
-    TIME: {
-      min: 1,
-      max: 5,
-      step: 1,
-    }
-  }
-};
-
 export const NAVIGATION_ITEMS = [
   {
     name: `Услуги`,
@@ -338,3 +221,132 @@ export const mapPoints = [
     title: `Пермь`
   }
 ];
+
+export  const WindowWidth = {
+  TABLET: 767,
+  DESKTOP: 1023
+};
+
+export const DefaultCredit = {
+  HOME: 2000000,
+  CAR: 1000000
+};
+
+export const MinimumCredit = {
+  HOME: 500000,
+  CAR: 200000
+};
+
+export const InterestRates = {
+  HOME_MINIMUM: `8.50`,
+  HOME_MAXIMUM: `9.40`,
+  CAR_MINIMUM: `15`,
+  CAR_MAXIMUM: `16`,
+  CASCO_AND_INSURANCE: `3.50`,
+  CASCO_OR_INSURANCE: `8.50`,
+};
+
+export const ParametersNames = {
+  CREDIT: `credit`,
+  CONTRIBUTION: `contribution`,
+  TIME: `time`,
+  MATERNAL: `maternal`,
+  CASCO: `casco`,
+  INSURANCE: `insurance`
+};
+
+export const TabNames = {
+  DEPOSITS: `Вклады`,
+  CREDITS: `Кредиты`,
+  INSURANCE: `Страхование`,
+  SERVICES: `Онлайн-сервисы`
+};
+
+export const ActionType = {
+  ADD_CREDIT: `ADD_CREDIT`,
+  ADD_OFFER: `ADD_OFFER`,
+  CLEAR_CREDIT: `CLEAR_CREDIT`,
+  MODAL_OPEN: `MODAL_OPEN`,
+  MODAL_CLOSE: `MODAL_CLOSE`,
+  AUTHORIZED_SAVE_DATA: `AUTHORIZED_SAVE_DATA`,
+  AUTHORIZED_CLEAR_DATA: `AUTHORIZED_CLEAR_DATA`,
+  FEEDBACK_OPEN: `FEEDBACK_OPEN`,
+  REQUEST_ADD: `REQUEST_ADD`,
+  DATA_CHANGE: `DATA_CHANGE`,
+};
+
+export const Key = {
+  ESCAPE: `Escape`,
+  ESC: `Esc`,
+};
+
+export const IdButton = {
+  INCREMENT: `increment`,
+  DECREMENT: `decrement`
+};
+
+export const CheckboxType = {
+  MATERNAL: `maternal`,
+  CASCO: `casco`,
+  INSURANCE: `insurance`
+};
+
+export const CheckboxLabels = {
+  MATERNAL: `Использовать материнский капитал`,
+  CASCO: `Оформить КАСКО в нашем банке`,
+  INSURANCE: `Оформить Страхование жизни в нашем банке`
+};
+
+export const CreditTypes = {
+  HOME: `HOME`,
+  CAR: `CAR`
+};
+
+export const InitialValues = {
+  HOME: {
+    CREDIT: {
+      min: 1200000,
+      max: 25000000,
+      step: 100000
+    },
+    CONTRIBUTION: {
+      min: 10,
+      max: 100,
+      step: 5,
+    },
+    TIME: {
+      min: 5,
+      max: 30,
+      step: 1,
+    }
+  },
+  CAR: {
+    CREDIT: {
+      min: 500000,
+      max: 5000000,
+      step: 50000
+    },
+    CONTRIBUTION: {
+      min: 20,
+      max: 100,
+      step: 5,
+    },
+    TIME: {
+      min: 1,
+      max: 5,
+      step: 1,
+    }
+  }
+};
+
+export const promoSliderOptions = {
+  autoPlay: true,
+  interval: 4000,
+  transitionTime: 1000,
+};
+
+export  const servicesSliderOptions = {
+  autoPlay: false,
+  interval: 86400000,
+  transitionTime: 800,
+};

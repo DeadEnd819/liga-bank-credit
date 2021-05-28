@@ -31,7 +31,7 @@ const Calculator = ({creditData, setCredit}) => {
     <section className="main__calculator calculator" id="calculator">
       <Wrapper name={`calculator`}>
         <h2 className="calculator__title">Кредитный калькулятор</h2>
-        <form action="#" className="calculator__form form-calculator" onSubmit={(evt) => console.log(evt)}>
+        <form action="#" className="calculator__form form-calculator">
           <div className="form-calculator__wrapper">
             <Select onTypeChange={handleTypeChange} items={OPTION_ITEMS} />
             {type && <Parameters />}

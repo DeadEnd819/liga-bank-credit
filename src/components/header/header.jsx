@@ -30,7 +30,7 @@ const Header = () => {
           (isMenuOpen || isTablet) &&
             <div className="header__nav-wrapper">
               <MainNavigation
-                modifierName={!isTablet ? `--animation` : ``}
+                isTablet={isTablet}
               />
             </div>
         }

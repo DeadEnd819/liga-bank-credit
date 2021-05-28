@@ -51,8 +51,6 @@
     }
   }
 
-  // ------------------------------------
-
   &--piggy-webp {
     background-image: url("../../img/webp/piggybank-mobile@1x.webp");
 
@@ -240,7 +238,6 @@
       }
     }
 
-    //-------------------------------------
     &--piggy-webp {
       background-image: url("../../img/webp/piggybank-tablet@1x.webp");
 
@@ -272,7 +269,6 @@
         background-image: url("../../img/webp/smartphone-tablet@2x.webp");
       }
     }
-    //-------------------------------------
 
     &--piggy,
     &--car,
@@ -370,8 +366,17 @@
     max-width: 1170px;
     padding: 0 70px;
 
-    &--piggy {
+    &--piggy,
+    &--piggy-webp {
       border-radius: 0 4px 4px 4px;
+    }
+
+    &--mobile,
+    &--mobile-webp {
+      border-radius: 4px 0 4px 4px;
+    }
+
+    &--piggy {
       background-image:  url("../../img/jpg/piggybank-desktop@1x.jpg");
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -396,7 +401,6 @@
     }
 
     &--mobile {
-      border-radius: 4px 0 4px 4px;
       background: 81.5% 50% url("../../img/jpg/smartphone-desktop@1x.jpg");
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -404,9 +408,7 @@
       }
     }
 
-    //------------------------------------------
     &--piggy-webp {
-      border-radius: 0 4px 4px 4px;
       background-image:  url("../../img/webp/piggybank-desktop@1x.webp");
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
@@ -431,14 +433,12 @@
     }
 
     &--mobile-webp {
-      border-radius: 4px 0 4px 4px;
       background: 81.5% 50% url("../../img/webp/smartphone-desktop@1x.webp");
 
       @media (min-resolution: 144dpi), (min-resolution: 1.5dppx) {
         background-image: url("../../img/webp/smartphone-desktop@2x.webp");
       }
     }
-    //------------------------------------------
 
     &--car,
     &--lock,

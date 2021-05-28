@@ -1,11 +1,13 @@
 import {useEffect} from 'react';
 
-export const useOverflowHidden = () => {
+export const useOverflowHidden = (flag = true) => {
   useEffect(() => {
-    document.body.style.overflow = `hidden`;
+    if (flag) {
+      document.body.style.overflow = `hidden`;
 
-    return () => {
-      document.body.style.overflow = `auto`;
-    };
-  },[]);
+      return () => {
+        document.body.style.overflow = `auto`;
+      };
+    }
+  },[flag]);
 };

@@ -16,8 +16,8 @@
 }
 
 .header__logo-image {
-  width: 115px;
-  height: 17px;
+  width: 116px;
+  height: 19px;
 }
 
 .header__menu-buttons {
@@ -30,7 +30,9 @@
 }
 
 .header__nav-wrapper {
+  position: relative;
   width: 100%;
+  height: 100vh;
 }
 
 @media (min-width: $tablet-width) {
@@ -45,6 +47,7 @@
 
   .header__nav-wrapper {
     width: calc(100% - 183px);
+    height: auto;
   }
 
   .header__logo-image {

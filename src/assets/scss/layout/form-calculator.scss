@@ -1,6 +1,16 @@
-.form-calculator__title {
-  @include reset-text;
+.form-calculator__title,
+.form-calculator__select,
+.form-calculator__input {
   @include base-font($medium);
+}
+
+.form-calculator__title,
+.form-calculator__option-list,
+.form-calculator__fieldset {
+  @include reset-text;
+}
+
+.form-calculator__title {
   font-size: 16px;
   line-height: 22px;
   margin-top: 24px;
@@ -9,7 +19,6 @@
 
 .form-calculator__select,
 .form-calculator__input {
-  @include base-font($medium);
   display: block;
   box-sizing: border-box;
   font-size: 16px;
@@ -65,10 +74,6 @@
   }
 }
 
-.form-calculator__option-list {
-  @include reset-text;
-}
-
 .form-calculator__option {
   @include reset-list;
   height: 60px;
@@ -91,7 +96,6 @@
 
 
 .form-calculator__fieldset {
-  @include reset-text;
   position: relative;
   margin-top: 1px;
   margin-bottom: 8px;

@@ -4,7 +4,6 @@ import loadable from '@loadable/component';
 import {useWebPSupportCheck} from "react-use-webp-support-check";
 import Branches from '../branches/branches';
 import {getFeedbackFlag, getModalFlag, getFeedbackModalFlag} from '../../store/selectors';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import PropTypes from 'prop-types';
 
 const PromoSlider = loadable(() => import(

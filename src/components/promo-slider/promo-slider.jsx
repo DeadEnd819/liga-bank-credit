@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import Dots from '../dots/dots';
-import {Carousel as Slider} from 'react-responsive-carousel';
-import {PROMOS} from '../../const';
 import PropTypes from 'prop-types';
+import Slider from '../slider/slider';
+import {PROMOS, promoSliderOptions} from '../../const';
 
 const getSlides = (isWebp) => {
   return PROMOS.map((promo) => {
@@ -36,25 +35,11 @@ const PromoSlider = ({isWebp}) => {
     <section className="main__promo-slider promo-slider">
       <h2 className="visually-hidden">Промо предложения</h2>
       <Slider
-        selectedItem={0}
-        showStatus={false}
-        showArrows={false}
-        showIndicators={false}
-        autoPlay={true}
-        interval={4000}
-        transitionTime={1500}
-        infiniteLoop={true}
-        swipeable={true}
-        emulateTouch={true}
-        onChange={handleSlideChange}
-      >
-        {slides}
-      </Slider>
-
-      <Dots
-        className={`promo-slider`}
+        option={promoSliderOptions}
         slides={slides}
-        active={activeIndex}
+        onChange={handleSlideChange}
+        activeItem={activeIndex}
+        dotClassName={`promo-slider`}
       />
     </section>
   );

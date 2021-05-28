@@ -99,13 +99,16 @@
   }
 
   .contacts__icon {
-    &--mobile {
+    &--mobile,
+    &--phone {
       top: 1px;
+    }
+
+    &--mobile {
       left: -29px;
     }
 
     &--phone {
-      top: 1px;
       left: -33px;
     }
   }

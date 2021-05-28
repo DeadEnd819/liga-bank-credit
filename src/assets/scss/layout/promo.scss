@@ -86,8 +86,13 @@
   }
 }
 
-.promo__title {
+.promo__title,
+.promo__description,
+.promo__link {
   @include reset-text;
+}
+
+.promo__title {
   @include base-font($bold);
   font-size: 38px;
   line-height: 45px;
@@ -100,7 +105,6 @@
 }
 
 .promo__description {
-  @include reset-text;
   line-height: 19px;
   margin-top: 6px;
   color: $description-text-color;
@@ -115,7 +119,6 @@
 }
 
 .promo__link {
-  @include reset-text;
   @include base-font($medium);
   font-size: 14px;
   line-height: 16px;

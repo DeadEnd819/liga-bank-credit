@@ -5,15 +5,18 @@ import {ReactComponent as IconLogin} from '../../assets/img/svg/icon-login.svg';
 import {NAVIGATION_ITEMS} from '../../const';
 import {setModalOpen} from "../../store/action";
 import PropTypes from 'prop-types';
+import {useOverflowHidden} from '../../hooks/use-owerflow-hidden';
 
-const MainNavigation = ({openModal, modifierName}) => {
+const MainNavigation = ({openModal, isTablet}) => {
+  useOverflowHidden(!isTablet);
+
   const handleModalOpen = (evt) => {
     evt.preventDefault();
     openModal()
   };
 
   return (
-    <nav className={`header__nav main-nav${modifierName ? ` main-nav${modifierName}` : modifierName}`}>
+    <nav className={`header__nav main-nav${!isTablet ? ` main-nav--mobile` : ``}`}>
       <ul className="main-nav__list main-nav__list--site">
         {NAVIGATION_ITEMS.map((title, index) => {
           if(title.name !== NAVIGATION_ITEMS[4].name) {
@@ -48,12 +51,7 @@ const MainNavigation = ({openModal, modifierName}) => {
 
 MainNavigation.propTypes = {
   openModal: PropTypes.func.isRequired,
-  modifierName: PropTypes.string.isRequired,
-};
-
-MainNavigation.propTypes = {
-  openModal: PropTypes.func.isRequired,
-  modifierName: PropTypes.string.isRequired,
+  isTablet: PropTypes.bool.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

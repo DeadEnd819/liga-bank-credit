@@ -1,10 +1,9 @@
 import React, {useState} from 'react';
-import {Carousel as Slider} from 'react-responsive-carousel';
+import PropTypes from 'prop-types';
 import useWindowDimensions from '../../hooks/use-window-dimensions';
 import TabsItem from '../tabs-item/tabs-item';
-import Dots from '../dots/dots';
-import {SERVICES, TabNames, WindowWidth} from '../../const';
-import PropTypes from 'prop-types';
+import Slider from '../slider/slider';
+import {SERVICES, TabNames, WindowWidth, servicesSliderOptions} from '../../const';
 
 const getServices = (isWebp) => {
   return SERVICES.map((promo) => {
@@ -70,30 +69,13 @@ const Services = ({isWebp}) => {
             {services[activeTab]}
           </div>
           :
-          <>
-            <Slider
-              selectedItem={activeTab}
-              showStatus={false}
-              showArrows={false}
-              showIndicators={false}
-              autoFocus={false}
-              autoPlay={false}
-              interval={86400000}
-              transitionTime={1500}
-              infiniteLoop={true}
-              swipeable={true}
-              emulateTouch={true}
-              onChange={handleTabChange}
-            >
-              {services}
-            </Slider>
-
-            <Dots
-              className={`services`}
-              slides={services}
-              active={activeTab}
-            />
-          </>
+          <Slider
+            option={servicesSliderOptions}
+            slides={services}
+            onChange={handleTabChange}
+            activeItem={activeTab}
+            dotClassName={`services`}
+          />
       }
     </section>
   );

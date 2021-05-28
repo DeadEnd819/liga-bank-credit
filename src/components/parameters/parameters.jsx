@@ -1,4 +1,4 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, memo} from 'react';
 import {connect} from 'react-redux';
 import Credit from '../credit/credit';
 import Contribution from '../contribution/contribution';
@@ -9,6 +9,11 @@ import {setCredit} from '../../store/action';
 import {InitialValues, DefaultCredit} from '../../const';
 import {extend} from '../../utils';
 import PropTypes from 'prop-types';
+
+const MemoCredit = memo(Credit);
+const MemoContribution = memo(Contribution);
+const MemoTime = memo(Time);
+const MemoExtra = memo(Extra);
 
 const Parameters = ({creditData, setCredit}) => {
   const {type} = creditData;
@@ -36,10 +41,10 @@ const Parameters = ({creditData, setCredit}) => {
   return (
     <div className="form-calculator__wrapper-step">
       <h3 className="form-calculator__title form-calculator__title--parameters">Шаг 2. Введите параметры кредита</h3>
-      <Credit initialValues={CREDIT} onFieldChang={handleFieldChange} />
-      <Contribution initialValues={CONTRIBUTION} onFieldChang={handleFieldChange} />
-      <Time initialValues={TIME} onFieldChang={handleFieldChange} />
-      <Extra onFieldChang={handleFieldChange} />
+      <MemoCredit initialValues={CREDIT} onFieldChang={handleFieldChange} />
+      <MemoContribution initialValues={CONTRIBUTION} onFieldChang={handleFieldChange} />
+      <MemoTime initialValues={TIME} onFieldChang={handleFieldChange} />
+      <MemoExtra onFieldChang={handleFieldChange} />
     </div>
   );
 };
