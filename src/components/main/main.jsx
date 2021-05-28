@@ -1,29 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import loadable from '@loadable/component';
 import {useWebPSupportCheck} from "react-use-webp-support-check";
+import PromoSlider from '../promo-slider/promo-slider';
+import Services from '../services/services';
+import Calculator from '../calculator/calculator';
+import FeedbackForm from '../feedback-form/feedback-form';
+import FeedbackModal from '../feedback-modal/feedback-modal';
+import AuthorizationModal from '../authorization-modal/authorization-modal';
 import Branches from '../branches/branches';
 import {getFeedbackFlag, getModalFlag, getFeedbackModalFlag} from '../../store/selectors';
 import PropTypes from 'prop-types';
-
-const PromoSlider = loadable(() => import(
-  /* webpackPrefetch: true */
-  /* webpackChunkName: "promo" */
-  '../promo-slider/promo-slider'
-  ));
-const Services = loadable(() => import(
-  /* webpackPrefetch: true */
-  /* webpackChunkName: "services" */
-  '../services/services'
-  ));
-const Calculator = loadable(() => import(
-  /* webpackPrefetch: true */
-  /* webpackChunkName: "calculator" */
-  '../calculator/calculator'
-  ));
-const FeedbackForm = loadable(() => import('../feedback-form/feedback-form'));
-const FeedbackModal = loadable(() => import('../feedback-modal/feedback-modal'));
-const AuthorizationModal = loadable(() => import('../authorization-modal/authorization-modal'));
 
 const Main = ({isFeedbackOpen, isModalOpen, isFeedbackModalOpen}) => {
   const supportsWebP = useWebPSupportCheck();
