@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 
 const {CREDIT} = ParametersNames;
 
-const Credit = ({initialValues, creditData, onFieldChang}) => {
+const Credit = ({initialValues, creditData, onFieldChange}) => {
   const [focus, setFocus] = useState(false);
 
   const {credit, type} = creditData;
@@ -20,18 +20,18 @@ const Credit = ({initialValues, creditData, onFieldChang}) => {
 
   const handleButtonClick = useCallback((id) => {
     if (id === IdButton.INCREMENT) {
-      onFieldChang({
+      onFieldChange({
         name: CREDIT,
         value: (credit + step)
       });
       return;
     }
 
-    onFieldChang({
+    onFieldChange({
       name: CREDIT,
       value: (credit - step)
     });
-  }, [onFieldChang, credit, step]);
+  }, [onFieldChange, credit, step]);
 
   return (
     <CalculatorFieldset legend={`Расчет стоимости`} modifier={`--credit`} error={error}>
@@ -48,7 +48,7 @@ const Credit = ({initialValues, creditData, onFieldChang}) => {
         autoComplete="off"
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
-        onChange={(evt) => onFieldChang(evt.target)}
+        onChange={(evt) => onFieldChange(evt.target)}
       />
       <button
         className="form-calculator__button button button--minus"
@@ -92,7 +92,7 @@ Credit.propTypes = {
     casco: PropTypes.bool.isRequired,
     insurance: PropTypes.bool.isRequired,
   }).isRequired,
-  onFieldChang: PropTypes.func.isRequired,
+  onFieldChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

@@ -1,33 +1,44 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
-import {setCredit} from '../../store/action';
 import {ParametersNames} from '../../const';
 import {splittingDigits, getPercent, getContribution} from '../../utils';
 import PropTypes from 'prop-types';
 
 const {CONTRIBUTION} = ParametersNames;
 
-const Contribution = ({initialValues, creditData, onFieldChang}) => {
+const Contribution = ({initialValues, creditData, onFieldChange}) => {
   const [focus, setFocus] = useState(false);
 
   const {credit, contribution} = creditData;
   const {min, max} = initialValues;
 
-  useEffect(() => {
-    onFieldChang({
-      name: CONTRIBUTION,
-      value: getContribution(credit, min)
-    });
-
-    // eslint-disable-next-line
-  }, [credit, min, setCredit]);
-
   const minValue = getContribution(credit, min);
   const maxValue = getContribution(credit, max);
   const isCorrect = contribution && contribution >= minValue && contribution <= maxValue;
   const rangePercent = isCorrect ? getPercent(contribution, credit) : min;
+
+  const setMinContribution = useCallback(() => {
+    onFieldChange({
+      name: CONTRIBUTION,
+      value: getContribution(credit, min)
+    });
+  }, [credit, min, onFieldChange]);
+
+  const handleBlurChange = () => {
+    if (contribution < minValue) {
+      setMinContribution();
+    }
+
+    setFocus(false);
+  };
+
+  useEffect(() => {
+    setMinContribution();
+
+    // eslint-disable-next-line
+  }, [credit]);
 
   return (
     <CalculatorFieldset legend={`Расчет взноса`} modifier={`--contribution`} error={false}>
@@ -41,8 +52,8 @@ const Contribution = ({initialValues, creditData, onFieldChang}) => {
         placeholder="0"
         autoComplete="off"
         onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
-        onChange={(evt) => onFieldChang(evt.target)}
+        onBlur={handleBlurChange}
+        onChange={(evt) => onFieldChange(evt.target)}
       />
       <input
         {...initialValues}
@@ -51,7 +62,7 @@ const Contribution = ({initialValues, creditData, onFieldChang}) => {
         name="contribution"
         type="range"
         value={rangePercent}
-        onChange={(evt) => onFieldChang({
+        onChange={(evt) => onFieldChange({
           name: evt.target.name,
           value: getContribution(credit, evt.target.value)
         })}
@@ -78,7 +89,7 @@ Contribution.propTypes = {
     casco: PropTypes.bool.isRequired,
     insurance: PropTypes.bool.isRequired,
   }).isRequired,
-  onFieldChang: PropTypes.func.isRequired,
+  onFieldChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

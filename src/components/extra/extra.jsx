@@ -29,7 +29,7 @@ const Checkbox = ({callback, checked, name, label}) => {
   );
 };
 
-const Extra = ({creditData, onFieldChang}) => {
+const Extra = ({creditData, onFieldChange}) => {
   const {type, maternal, casco, insurance} = creditData;
 
   return (
@@ -37,7 +37,7 @@ const Extra = ({creditData, onFieldChang}) => {
       {
         type === CreditTypes.HOME ?
           <Checkbox
-            callback={onFieldChang}
+            callback={onFieldChange}
             checked={maternal}
             name={CheckboxType.MATERNAL}
             label={CheckboxLabels.MATERNAL}
@@ -45,13 +45,13 @@ const Extra = ({creditData, onFieldChang}) => {
           :
           <>
             <Checkbox
-              callback={onFieldChang}
+              callback={onFieldChange}
               checked={casco}
               name={CheckboxType.CASCO}
               label={CheckboxLabels.CASCO}
             />
             <Checkbox
-              callback={onFieldChang}
+              callback={onFieldChange}
               checked={insurance}
               name={CheckboxType.INSURANCE}
               label={CheckboxLabels.INSURANCE}
@@ -72,7 +72,7 @@ Extra.propTypes = {
     casco: PropTypes.bool.isRequired,
     insurance: PropTypes.bool.isRequired,
   }).isRequired,
-  onFieldChang: PropTypes.func.isRequired,
+  onFieldChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({

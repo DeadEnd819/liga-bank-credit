@@ -41,10 +41,10 @@ const Parameters = ({creditData, setCredit}) => {
   return (
     <div className="form-calculator__wrapper-step">
       <h3 className="form-calculator__title form-calculator__title--parameters">Шаг 2. Введите параметры кредита</h3>
-      <MemoCredit initialValues={CREDIT} onFieldChang={handleFieldChange} />
-      <MemoContribution initialValues={CONTRIBUTION} onFieldChang={handleFieldChange} />
-      <MemoTime initialValues={TIME} onFieldChang={handleFieldChange} />
-      <MemoExtra onFieldChang={handleFieldChange} />
+      <MemoCredit initialValues={CREDIT} onFieldChange={handleFieldChange} />
+      <MemoContribution initialValues={CONTRIBUTION} onFieldChange={handleFieldChange} />
+      <MemoTime initialValues={TIME} onFieldChange={handleFieldChange} />
+      <MemoExtra onFieldChange={handleFieldChange} />
     </div>
   );
 };

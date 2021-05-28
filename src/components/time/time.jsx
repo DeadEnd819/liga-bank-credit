@@ -4,19 +4,19 @@ import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import PropTypes from 'prop-types';
 
-const Time = ({initialValues, creditData, onFieldChang}) => {
+const Time = ({initialValues, creditData, onFieldChange}) => {
   const [focus, setFocus] = useState(false);
 
   const {time} = creditData;
   const {min, max} = initialValues;
 
   const handleBlurChange = useCallback((name) => {
-    (time < min) ? onFieldChang({name, value: min}) :
-      (time > max) ? onFieldChang({name, value: max}) :
-        onFieldChang({name, value: time});
+    (time < min) ? onFieldChange({name, value: min}) :
+      (time > max) ? onFieldChange({name, value: max}) :
+        onFieldChange({name, value: time});
 
     setFocus(false);
-  }, [time, max, min, onFieldChang]);
+  }, [time, max, min, onFieldChange]);
 
   return (
     <CalculatorFieldset legend={`Расчет срока`} modifier={`--time`} error={false}>
@@ -31,7 +31,7 @@ const Time = ({initialValues, creditData, onFieldChang}) => {
         autoComplete="off"
         onFocus={() => setFocus(true)}
         onBlur={(evt) => handleBlurChange(evt.target.name)}
-        onChange={(evt) => onFieldChang(evt.target)}
+        onChange={(evt) => onFieldChange(evt.target)}
       />
       <input
         {...initialValues}
@@ -40,7 +40,7 @@ const Time = ({initialValues, creditData, onFieldChang}) => {
         name="time"
         type="range"
         value={time}
-        onChange={(evt) => onFieldChang(evt.target)}
+        onChange={(evt) => onFieldChange(evt.target)}
       />
       <div className="form-calculator__span-wrapper">
         <span className="form-calculator__span form-calculator__span--time">{min} лет</span>
@@ -65,7 +65,7 @@ Time.propTypes = {
     casco: PropTypes.bool.isRequired,
     insurance: PropTypes.bool.isRequired,
   }).isRequired,
-  onFieldChang: PropTypes.func.isRequired,
+  onFieldChange: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({
