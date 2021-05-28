@@ -6,14 +6,14 @@ import IconLogoMobile from '../../assets/img/svg/logo-mobile.svg';
 
 const Logo = ({block}) => {
   return (
-    <div className={`${block}__logo`}>
+    <div className={`${block}__logo logo`}>
       {/*eslint-disable-next-line*/}
       <a href="#" aria-label="Перейти на главную страницу">
         <picture>
           <source media="(min-width: 1024px)" srcSet={IconLogoDesktop} />
             <source media="(min-width: 768px)" srcSet={IconLogoTablet} />
               <img
-                className="header__logo-image"
+                className="logo__image"
                 src={IconLogoMobile}
                 alt="Лого Лига Банк"
                 width="150"

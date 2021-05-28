@@ -1,0 +1,18 @@
+.logo__image {
+  width: 116px;
+  height: 19px;
+}
+
+@media (min-width: $tablet-width) {
+  .logo__image {
+    width: 134px;
+    height: 24px;
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .logo__image {
+    width: 150px;
+    height: 27px;
+  }
+}

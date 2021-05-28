@@ -15,11 +15,6 @@
   margin-left: 29px;
 }
 
-.header__logo-image {
-  width: 116px;
-  height: 19px;
-}
-
 .header__menu-buttons {
   position: absolute;
   display: flex;
@@ -49,11 +44,6 @@
     width: calc(100% - 183px);
     height: auto;
   }
-
-  .header__logo-image {
-    width: 134px;
-    height: 24px;
-  }
 }
 
 @media (min-width: $desktop-width) {
@@ -67,10 +57,5 @@
 
   .header__nav-wrapper {
     width: calc(100% - 301px);
-  }
-
-  .header__logo-image {
-    width: 150px;
-    height: 27px;
   }
 }
