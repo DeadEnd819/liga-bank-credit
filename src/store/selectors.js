@@ -41,3 +41,7 @@ export const getFeedbackFlag = (state) => {
 export const getFeedbackModalFlag = (state) => {
   return state.REQUEST.isModalOpen;
 };
+
+export const getErrorFlag = (state) => {
+  return state.REQUEST.isError;
+};

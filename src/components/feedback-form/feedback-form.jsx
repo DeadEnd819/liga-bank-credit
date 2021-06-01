@@ -3,11 +3,11 @@ import {connect} from 'react-redux';
 import NumberFormat from 'react-number-format';
 import {CreditTypes} from '../../const';
 import {extend, getFeedbackList} from '../../utils';
-import {getRequestNumber, getCredit, getName, getPhone, getEmail, getRequestData} from '../../store/selectors';
+import {getRequestNumber, getCredit, getName, getPhone, getEmail, getRequestData, getErrorFlag} from '../../store/selectors';
 import {setAddRequest, setRequestData} from '../../store/action';
 import PropTypes from 'prop-types';
 
-const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, name, phone, email, data}) => {
+const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, name, phone, email, data, error}) => {
 
   const {type, credit, contribution, time, maternal, casco, insurance} = creditData;
   const {HOME} = CreditTypes;
@@ -104,14 +104,18 @@ const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, na
               }))}
             />
           </fieldset>
-          <button className="feedback__button" type="submit">Отправить</button>
+          <button
+            className="feedback__button"
+            type="submit"
+            disabled={error}
+          >
+            Отправить
+          </button>
         </form>
       </div>
     </section>
   );
 };
-
-//requestNumber, creditData, addRequest, setRequestData, name, phone, email, data
 
 FeedbackForm.propTypes = {
   requestNumber: PropTypes.number.isRequired,
@@ -129,6 +133,7 @@ FeedbackForm.propTypes = {
   name: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
+  error: PropTypes.bool.isRequired,
   data: PropTypes.shape({
     name: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
@@ -142,7 +147,8 @@ const mapStateToProps = (store) => ({
   name: getName(store),
   phone: getPhone(store),
   email: getEmail(store),
-  data: getRequestData(store)
+  data: getRequestData(store),
+  error: getErrorFlag(store)
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -10,7 +10,8 @@ const {
   AUTHORIZED_CLEAR_DATA,
   FEEDBACK_OPEN,
   REQUEST_ADD,
-  DATA_CHANGE
+  DATA_CHANGE,
+  ERROR_CHANGE
 } = ActionType;
 
 export const setCredit = (data) => ({
@@ -60,4 +61,9 @@ export const setFeedbackOpen = () => ({
 export const setAddRequest = (data) => ({
   type: REQUEST_ADD,
   payload: data,
+});
+
+export const setErrorFlag = (flag) => ({
+  type: ERROR_CHANGE,
+  payload: flag,
 });

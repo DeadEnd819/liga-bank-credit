@@ -9,7 +9,8 @@ const {
   MODAL_CLOSE,
   FEEDBACK_OPEN,
   REQUEST_ADD,
-  DATA_CHANGE
+  DATA_CHANGE,
+  ERROR_CHANGE
 } = ActionType;
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   },
   isFeedbackOpen: false,
   isModalOpen: false,
+  isError: true,
   requests: [],
 };
 
@@ -39,6 +41,10 @@ const request = (state = initialState, action) => {
     case FEEDBACK_OPEN:
       return extend(state, {
         isFeedbackOpen: true
+      });
+    case ERROR_CHANGE:
+      return extend(state, {
+        isError: action.payload
       });
     case REQUEST_ADD:
       localStorage[STORE_REQUEST_LIST_DATA_NAME] = JSON.stringify(action.payload);

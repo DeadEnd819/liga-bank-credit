@@ -70,6 +70,7 @@
   &:hover,
   &:focus,
   &:active {
+    color: $button-color;
     cursor: pointer;
   }
 }
@@ -157,6 +158,13 @@
 .form-calculator__input {
   padding-left: 1px;
   text-align: center;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $global-background-color;
+    border-color: $button-color;
+  }
 }
 
 .form-calculator__span {
@@ -239,6 +247,7 @@
 .form-calculator__checkbox[type="checkbox"]:focus + .form-calculator__label--checkbox::before,
 .form-calculator__checkbox[type="checkbox"]:hover + .form-calculator__label--checkbox::after,
 .form-calculator__checkbox[type="checkbox"]:focus + .form-calculator__label--checkbox::after {
+  transform: scale(1.1);
   opacity: $hover-opacity;
 }
 

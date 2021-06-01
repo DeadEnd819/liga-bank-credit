@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import Slider from '../slider/slider';
-import {PROMOS, promoSliderOptions} from '../../const';
+import {PROMOS, PROMO_SLIDER_OPTIONS} from '../../const';
 
 const getSlides = (isWebp) => {
   return PROMOS.map((promo) => {
@@ -35,7 +35,7 @@ const PromoSlider = ({isWebp}) => {
     <section className="main__promo-slider promo-slider">
       <h2 className="visually-hidden">Промо предложения</h2>
       <Slider
-        option={promoSliderOptions}
+        option={PROMO_SLIDER_OPTIONS}
         slides={slides}
         onChange={handleSlideChange}
         activeItem={activeIndex}

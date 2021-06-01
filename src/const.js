@@ -28,6 +28,18 @@ export const MONTHS  = 12;
 export const PERCENTAGE_OF_SALARY = 45;
 export const FULL_PERCENTAGE = 100;
 
+export const PROMO_SLIDER_OPTIONS = {
+  autoPlay: true,
+  interval: 4000,
+  transitionTime: 1000,
+};
+
+export  const SERVICES_SLIDER_OPTIONS = {
+  autoPlay: false,
+  interval: 86400000,
+  transitionTime: 800,
+};
+
 export const NAVIGATION_ITEMS = [
   {
     name: `Услуги`,
@@ -116,7 +128,7 @@ export const PROMOS = [
 export const SERVICES = [
   {
     className: `--piggy`,
-  title: `Вклады Лига Банка — это выгодная инвестиция в свое будущее`,
+    title: `Вклады Лига Банка — это выгодная инвестиция в свое будущее`,
     list: [
       `Проценты по вкладам до 7%`,
       `Разнообразные условия`,
@@ -173,13 +185,13 @@ export const SERVICES = [
   },
 ];
 
-export const mapData = {
+export const MAP_DATA = {
   lat: 56.123,
   lng: 59.540,
   zoom: 5
 };
 
-export const mapPoints = [
+export const MAP_POINTS = [
   {
     lat: 56.203,
     lng: 37.595,
@@ -273,6 +285,7 @@ export const ActionType = {
   FEEDBACK_OPEN: `FEEDBACK_OPEN`,
   REQUEST_ADD: `REQUEST_ADD`,
   DATA_CHANGE: `DATA_CHANGE`,
+  ERROR_CHANGE: `ERROR_CHANGE`
 };
 
 export const Key = {
@@ -337,16 +350,4 @@ export const InitialValues = {
       step: 1,
     }
   }
-};
-
-export const promoSliderOptions = {
-  autoPlay: true,
-  interval: 4000,
-  transitionTime: 1000,
-};
-
-export  const servicesSliderOptions = {
-  autoPlay: false,
-  interval: 86400000,
-  transitionTime: 800,
 };

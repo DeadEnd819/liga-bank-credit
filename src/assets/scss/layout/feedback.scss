@@ -122,6 +122,11 @@
   &:active {
     opacity: $active-opacity;
   }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: inherit;
+  }
 }
 
 @media (min-width: $tablet-width) {

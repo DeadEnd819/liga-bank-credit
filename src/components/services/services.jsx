@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import useWindowDimensions from '../../hooks/use-window-dimensions';
 import TabsItem from '../tabs-item/tabs-item';
 import Slider from '../slider/slider';
-import {SERVICES, TabNames, WindowWidth, servicesSliderOptions} from '../../const';
+import {SERVICES, TabNames, WindowWidth, SERVICES_SLIDER_OPTIONS} from '../../const';
 
 const getServices = (isWebp) => {
   return SERVICES.map((promo) => {
@@ -70,7 +70,7 @@ const Services = ({isWebp}) => {
           </div>
           :
           <Slider
-            option={servicesSliderOptions}
+            option={SERVICES_SLIDER_OPTIONS}
             slides={services}
             onChange={handleTabChange}
             activeItem={activeTab}

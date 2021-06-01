@@ -1,22 +1,27 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {ReactComponent as IconMinus} from '../../assets/img/svg/icon-minus.svg';
 import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
 import {splittingDigits} from '../../utils';
 import {getCredit} from '../../store/selectors';
+import {setErrorFlag} from '../../store/action';
 import {IdButton, CreditTypes, ParametersNames} from '../../const';
 import PropTypes from 'prop-types';
 
 const {CREDIT} = ParametersNames;
 
-const Credit = ({initialValues, creditData, onFieldChange}) => {
+const Credit = ({initialValues, creditData, onFieldChange, setError}) => {
   const [focus, setFocus] = useState(false);
 
   const {credit, type} = creditData;
   const {min, max, step} = initialValues;
 
   const error = !(credit >= min && credit <= max);
+
+  useEffect(() => {
+    setError(error);
+  }, [error, setError]);
 
   const handleButtonClick = useCallback((id) => {
     if (id === IdButton.INCREMENT) {
@@ -93,10 +98,17 @@ Credit.propTypes = {
     insurance: PropTypes.bool.isRequired,
   }).isRequired,
   onFieldChange: PropTypes.func.isRequired,
+  setError: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (store) => ({
   creditData: getCredit(store)
 });
 
-export default connect(mapStateToProps)(Credit);
+const mapDispatchToProps = (dispatch) => ({
+  setError(flag) {
+    dispatch(setErrorFlag(flag));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Credit);

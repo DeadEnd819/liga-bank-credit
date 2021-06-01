@@ -1,7 +1,7 @@
 import React from 'react';
 import {useInView} from 'react-intersection-observer';
 import loadable from '@loadable/component';
-import {mapData, mapPoints} from '../../const';
+import {MAP_DATA, MAP_POINTS} from '../../const';
 
 const Map = loadable(() => import('../map/map'));
 
@@ -15,8 +15,8 @@ const Branches = () => {
       <div className="branches__wrapper container">
         <h2 className="branches__title">Отделения Лига Банка</h2>
         {inView && <Map
-          data={mapData}
-          points={mapPoints}
+          data={MAP_DATA}
+          points={MAP_POINTS}
         />}
       </div>
     </section>

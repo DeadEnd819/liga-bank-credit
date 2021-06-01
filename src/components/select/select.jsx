@@ -14,7 +14,7 @@ const Select = ({onTypeChange, items}) => {
   } = useSelect({
     items,
     onSelectedItemChange: onTypeChange
-  })
+  });
 
   return (
     <div className="form-calculator__wrapper-step">
