@@ -74,6 +74,10 @@
     margin-bottom: 0;
   }
 
+  &--error {
+    border-color: red;
+  }
+
   &::placeholder {
     line-height: 22px;
     letter-spacing: 0.03em;

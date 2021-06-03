@@ -27,6 +27,7 @@ export const HOME_PERCENTAGE_BAR = 15;
 export const MONTHS  = 12;
 export const PERCENTAGE_OF_SALARY = 45;
 export const FULL_PERCENTAGE = 100;
+export const PHONE_LENGTH = 10;
 
 export const PROMO_SLIDER_OPTIONS = {
   autoPlay: true,

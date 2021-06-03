@@ -1,13 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import NumberFormat from 'react-number-format';
-import {CreditTypes} from '../../const';
+import {CreditTypes, PHONE_LENGTH} from '../../const';
 import {extend, getFeedbackList} from '../../utils';
 import {getRequestNumber, getCredit, getName, getPhone, getEmail, getRequestData, getErrorFlag} from '../../store/selectors';
 import {setAddRequest, setRequestData} from '../../store/action';
 import PropTypes from 'prop-types';
 
 const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, name, phone, email, data, error}) => {
+  const [phoneError, setPhoneError] = useState(false);
 
   const {type, credit, contribution, time, maternal, casco, insurance} = creditData;
   const {HOME} = CreditTypes;
@@ -30,19 +31,23 @@ const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, na
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
 
-    addRequest({
-      id: requestNumber,
-      type,
-      credit,
-      contribution,
-      time,
-      user: {
-        name,
-        phone,
-        email,
-      },
-      options: getOptions()
-    });
+    if (phone.length === PHONE_LENGTH){
+      addRequest({
+        id: requestNumber,
+        type,
+        credit,
+        contribution,
+        time,
+        user: {
+          name,
+          phone,
+          email,
+        },
+        options: getOptions()
+      });
+    }
+
+    setPhoneError(true);
   };
 
   return (
@@ -79,7 +84,7 @@ const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, na
             />
             <label className="feedback__label visually-hidden" htmlFor="phone">Поле ввода телефона</label>
             <NumberFormat
-              className="feedback__input feedback__input--phone"
+              className={`feedback__input feedback__input--phone${phoneError ? ` feedback__input--error` : ``}`}
               type="tel"
               placeholder="Телефон"
               id="phone"
@@ -87,9 +92,12 @@ const FeedbackForm = ({requestNumber, creditData, addRequest, setRequestData, na
               mask="_"
               value={phone}
               required
-              onValueChange={(evt) => setRequestData(extend(data, {
-                phone: evt.value
-              }))}
+              onValueChange={(evt) => {
+                setPhoneError(false);
+                setRequestData(extend(data, {
+                  phone: evt.value
+                }))
+              }}
             />
             <label className="feedback__label visually-hidden" htmlFor="email">Поле ввода электронной почты</label>
             <input
