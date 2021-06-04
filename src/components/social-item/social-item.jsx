@@ -5,7 +5,7 @@ const SocialItem = ({link}) => {
   const {name, src, icon: Icon} = link;
 
   return (
-    <li className="social__item">
+    <li className={`social__item social__item--${name}`}>
       <a className="social__link" href={src} aria-label={name}>
         <Icon className={`social__icon social__icon--${name}`} />
       </a>

@@ -31,14 +31,22 @@
 
 @media (min-width: $desktop-width) {
   .social {
-    justify-content: space-between;
     align-items: center;
-    width: 106px;
-    margin-left: 0;
+    width: auto;
+    min-width: 101px;
+    margin-left: 8px;
     padding-top: 12px;
   }
 
-  .social__item:not(:last-child) {
-    margin-right: 0;
+  .social__item {
+    margin-bottom: 8px;
+
+    &:not(:last-child) {
+      margin-right: 0;
+    }
+
+    &:not(&--youtube) {
+      margin-right: 14%;
+    }
   }
 }

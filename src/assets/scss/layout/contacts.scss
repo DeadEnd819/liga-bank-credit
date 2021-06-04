@@ -66,27 +66,28 @@
 @media (min-width: $desktop-width) {
   .contacts {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: flex-start;
-    width: 537px;
-    margin-left: 59px;
+    width: auto;
+    min-width: 37.8%;
+    margin-left: 0;
     margin-right: 0;
   }
 
   .contacts__item {
     &--mobile {
-      width: 196px;
+      width: 205px;
       margin-right: 0;
       margin-left: 0;
       padding-top: 28px;
-      padding-left: 5.7%;
+      padding-left: 8.7%;
     }
 
     &--phone {
-      width: 235px;
+      width: 175px;
       margin-left: 0;
       padding-top: 20px;
-      padding-left: 22%;
+      padding-left: 11.5%;
     }
 
     &:last-child {
