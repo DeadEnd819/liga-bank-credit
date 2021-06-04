@@ -9,6 +9,7 @@ const {
   AUTHORIZED_SAVE_DATA,
   AUTHORIZED_CLEAR_DATA,
   FEEDBACK_OPEN,
+  FEEDBACK_CLOSE,
   REQUEST_ADD,
   DATA_CHANGE,
   ERROR_CHANGE
@@ -56,6 +57,10 @@ export const setRequestModalClose = () => ({
 
 export const setFeedbackOpen = () => ({
   type: FEEDBACK_OPEN,
+});
+
+export const setFeedbackClose = () => ({
+  type: FEEDBACK_CLOSE,
 });
 
 export const setAddRequest = (data) => ({

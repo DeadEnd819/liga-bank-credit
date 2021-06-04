@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {getCredit} from '../../store/selectors';
 import PropTypes from 'prop-types';
+import {setCurrentValue} from '../../utils';
 
 const Time = ({initialValues, creditData, onFieldChange}) => {
   const [focus, setFocus] = useState(false);
@@ -11,9 +12,7 @@ const Time = ({initialValues, creditData, onFieldChange}) => {
   const {min, max} = initialValues;
 
   const handleBlurChange = useCallback((name) => {
-    (time < min) ? onFieldChange({name, value: min}) :
-      (time > max) ? onFieldChange({name, value: max}) :
-        onFieldChange({name, value: time});
+    setCurrentValue(time, min, max, name, onFieldChange);
 
     setFocus(false);
   }, [time, max, min, onFieldChange]);

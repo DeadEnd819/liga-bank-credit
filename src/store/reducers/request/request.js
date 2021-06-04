@@ -8,6 +8,7 @@ import {
 const {
   MODAL_CLOSE,
   FEEDBACK_OPEN,
+  FEEDBACK_CLOSE,
   REQUEST_ADD,
   DATA_CHANGE,
   ERROR_CHANGE
@@ -41,6 +42,10 @@ const request = (state = initialState, action) => {
     case FEEDBACK_OPEN:
       return extend(state, {
         isFeedbackOpen: true
+      });
+    case FEEDBACK_CLOSE:
+      return extend(state, {
+        isFeedbackOpen: false
       });
     case ERROR_CHANGE:
       return extend(state, {

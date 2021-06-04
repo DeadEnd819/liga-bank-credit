@@ -7,8 +7,6 @@ import {CreditTypes, MinimumCredit} from '../../const';
 import {
   splittingDigits,
   getComma,
-  getCarRate,
-  getHomeRate,
   getOfferValues
 } from '../../utils';
 
@@ -38,23 +36,12 @@ const Offer = ({creditData, offerData, setOffer, feedbackOpen}) => {
   const {type, credit, contribution, time, maternal, casco, insurance} = creditData;
   const {total, rate, payment, income} = offerData;
 
-  const getRateValue = () => {
-    switch (type) {
-      case CreditTypes.HOME:
-        return getHomeRate(contribution, credit);
-      case CreditTypes.CAR:
-        return getCarRate(credit, casco, insurance);
-      default:
-        return null;
-    }
-  };
-
   const {
     totalValue,
     rateValue,
     paymentValue,
     incomeValue
-  } = getOfferValues(maternal, credit, contribution, time, getRateValue());
+  } = getOfferValues(maternal, casco, insurance, credit, contribution, time, type);
 
   useEffect(() => {
     setOffer({

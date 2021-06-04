@@ -6,7 +6,8 @@ import {
   CAR_PRICE_BAR,
   HOME_PERCENTAGE_BAR,
   CreditTypes,
-  MATERNAL
+  MATERNAL,
+  InitialValues
 } from './const';
 
 const {
@@ -72,16 +73,37 @@ export const addZero = (number, length = 4) => {
   return text;
 };
 
-export const getOfferValues = (maternal, credit, contribution, time, rate) => {
+export const getOfferValues = (maternal, casco, insurance, credit, contribution, time, type) => {
+  let currentCredit;
+  let currentContribution;
+
+  switch (true) {
+    case (credit < InitialValues[type].CREDIT.min):
+      currentCredit = InitialValues[type].CREDIT.min;
+      currentContribution = getContribution(InitialValues[type].CREDIT.min, InitialValues[type].CONTRIBUTION.min);
+      break;
+    case (credit > InitialValues[type].CREDIT.max):
+      currentCredit = InitialValues[type].CREDIT.max;
+      currentContribution = getContribution(InitialValues[type].CREDIT.max, InitialValues[type].CONTRIBUTION.min);
+      break;
+    default:
+      currentCredit = credit;
+      currentContribution = contribution;
+  }
+
+  const currentRate = CreditTypes.HOME === type ?
+    getHomeRate(currentContribution, currentCredit) :
+    getCarRate(currentCredit, casco, insurance);
+
   const maternalValue = maternal ? MATERNAL : 0;
-  const monthlyRate = getMonthlyRate(rate);
-  const totalValue = credit - contribution - maternalValue;
+  const monthlyRate = getMonthlyRate(currentRate);
+  const totalValue = currentCredit - currentContribution - maternalValue;
   const paymentValue = getAnnuityPayment(totalValue, monthlyRate, time);
   const incomeValue = getIncome(paymentValue)
 
   return {
     totalValue,
-    rateValue: rate,
+    rateValue: currentRate,
     paymentValue,
     incomeValue
   }
@@ -110,4 +132,10 @@ export const getFeedbackList = (requestNumber, type, credit, contribution, time)
       name: `Срок кредитования`,
     },
   ];
+};
+
+export const setCurrentValue = (value, min, max, name, callback) => {
+  (value < min) ? callback({name, value: min}) :
+    (value > max) ? callback({name, value: max}) :
+      callback({name, value: value});
 };

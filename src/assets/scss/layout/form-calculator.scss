@@ -127,7 +127,7 @@
   }
 }
 
-.form-calculator__fieldset--error .form-calculator__input {
+.form-calculator__fieldset--error .form-calculator__input:focus {
   border-color: red;
 }
 

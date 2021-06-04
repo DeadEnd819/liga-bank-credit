@@ -5,8 +5,8 @@ import Contribution from '../contribution/contribution';
 import Time from '../time/time';
 import Extra from '../extra/extra';
 import {getCredit} from '../../store/selectors';
-import {setCredit} from '../../store/action';
-import {InitialValues, DefaultCredit} from '../../const';
+import {setCredit, setFeedbackClose} from '../../store/action';
+import {InitialValues, DefaultCredit, INPUT_MAX_LENGTH} from '../../const';
 import {extend} from '../../utils';
 import PropTypes from 'prop-types';
 
@@ -15,7 +15,7 @@ const MemoContribution = memo(Contribution);
 const MemoTime = memo(Time);
 const MemoExtra = memo(Extra);
 
-const Parameters = ({creditData, setCredit}) => {
+const Parameters = ({creditData, setCredit, feedbackClose}) => {
   const {type} = creditData;
   const {CREDIT, CONTRIBUTION, TIME} = InitialValues[type]
 
@@ -30,13 +30,19 @@ const Parameters = ({creditData, setCredit}) => {
   }, [type, setCredit]);
 
   const handleFieldChange = useCallback(({name, value}) => {
+    feedbackClose();
+
+    if (value.length > INPUT_MAX_LENGTH) {
+      return;
+    }
+
     if (typeof value === `boolean`) {
       setCredit(extend(creditData,{[name]: value}));
       return;
     }
 
     setCredit(extend(creditData,{[name]: +value}));
-  }, [creditData, setCredit]);
+  }, [creditData, setCredit, feedbackClose]);
 
   return (
     <div className="form-calculator__wrapper-step">
@@ -60,6 +66,7 @@ Parameters.propTypes = {
     insurance: PropTypes.bool.isRequired,
   }).isRequired,
   setCredit: PropTypes.func.isRequired,
+  feedbackClose: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (store) => ({
@@ -69,6 +76,9 @@ const mapStateToProps = (store) => ({
 const mapDispatchToProps = (dispatch) => ({
   setCredit(data) {
     dispatch(setCredit(data));
+  },
+  feedbackClose() {
+    dispatch(setFeedbackClose());
   },
 });
 

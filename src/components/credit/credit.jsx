@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import CalculatorFieldset from '../calculator-fieldset/calculator-fieldset';
 import {ReactComponent as IconMinus} from '../../assets/img/svg/icon-minus.svg';
 import {ReactComponent as IconPlus} from '../../assets/img/svg/icon-plus.svg';
-import {splittingDigits} from '../../utils';
+import {splittingDigits, setCurrentValue} from '../../utils';
 import {getCredit} from '../../store/selectors';
 import {setErrorFlag} from '../../store/action';
 import {IdButton, CreditTypes, ParametersNames} from '../../const';
@@ -38,6 +38,12 @@ const Credit = ({initialValues, creditData, onFieldChange, setError}) => {
     });
   }, [onFieldChange, credit, step]);
 
+  const handleBlurChange = useCallback((name) => {
+    setCurrentValue(credit, min, max, name, onFieldChange);
+
+    setFocus(false);
+  }, [credit, max, min, onFieldChange]);
+
   return (
     <CalculatorFieldset legend={`Расчет стоимости`} modifier={`--credit`} error={error}>
       <label className="form-calculator__label form-calculator__label--credit" htmlFor="credit">
@@ -52,7 +58,7 @@ const Credit = ({initialValues, creditData, onFieldChange, setError}) => {
         placeholder="0"
         autoComplete="off"
         onFocus={() => setFocus(true)}
-        onBlur={() => setFocus(false)}
+        onBlur={(evt) => handleBlurChange(evt.target.name)}
         onChange={(evt) => onFieldChange(evt.target)}
       />
       <button
